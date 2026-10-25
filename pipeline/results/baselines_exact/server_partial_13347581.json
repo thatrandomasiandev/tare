@@ -1,0 +1,2362 @@
+{
+  "status": "partial_timeout",
+  "stage": "measured",
+  "pilot": false,
+  "walls_are_evidence": false,
+  "locked_claim": false,
+  "protocol": "docs/BASELINES_EXACT_PROTOCOL.md#2026-10-19-w12a",
+  "system_name": "TARE",
+  "package": "acts",
+  "worktree_start": "1c65571538afcc139af560156147e4276905f9b4",
+  "git_head": "79df1b0",
+  "driver_sha256": "8e1f0f52f6c18057b82c99b0d0715d2a4695cb6fa72968f776542fb8ae544e55",
+  "expert_script_lines": 190,
+  "slurm_job_id": "13347581",
+  "host": "b22-11.hpc.usc.edu",
+  "cpu_model": "AMD EPYC 7542 32-Core Processor",
+  "cpu": 32,
+  "nproc": 64,
+  "python": "3.11.9",
+  "reps": 3,
+  "seeds": {
+    "pilot_draw": 20261241,
+    "measured_draw": 20261242,
+    "bootstrap": 20261249
+  },
+  "min_body_lines": 1000,
+  "draw": {
+    "directory_sha256": "bf703062fb6adad0cbfd3335a7dfb7279bacff18a20a48e0aa95b2cb5ae5034d",
+    "pool_sha256": "199fc50c099f1e09ce443d8f03335a5a037bae22205933c3177be3476b60ca04",
+    "pool_n": 34,
+    "pilot": [
+      "GCF_003018855.1"
+    ],
+    "measured": [
+      "GCF_018415995.1",
+      "GCF_019969525.1",
+      "GCF_037231045.1",
+      "GCF_040271735.2",
+      "GCF_055807995.1"
+    ],
+    "w8_seed_20261222_not_committed": {
+      "note": "W8 seed 20261222 is not committed. These are the committed pool rule at that seed. They are not removed from our pool.",
+      "n3": [
+        "GCF_010365405.1",
+        "GCF_023370135.1",
+        "GCF_056784295.1"
+      ],
+      "n5": [
+        "GCF_010365405.1",
+        "GCF_023370135.1",
+        "GCF_024585005.1",
+        "GCF_056784295.1",
+        "GCF_057650775.1"
+      ],
+      "pilot_seed_20261221": [
+        "GCF_003018555.1"
+      ],
+      "n3_after_that_pilot": [
+        "GCF_014295275.1",
+        "GCF_024585005.1",
+        "GCF_057098645.1"
+      ],
+      "overlap_with_w12a": []
+    }
+  },
+  "exclusions": {
+    "headline_exclude_n": 50,
+    "headline_draw_n": 10,
+    "w8_named": {
+      "GCF_057650775.1": "RELEASE_CHAIN_PROTOCOL.md pilot, seed 20261121",
+      "GCF_025259645.1": "RELEASE_CHAIN_PROTOCOL.md measured, seed 20261122",
+      "GCF_057098645.1": "RELEASE_CHAIN_PROTOCOL.md measured, seed 20261122",
+      "GCF_900196535.2": "RELEASE_CHAIN_PROTOCOL.md measured, seed 20261122"
+    },
+    "d2_extra": {
+      "GCF_024585005.1": "D1 rescaler pilot, seed 20261133",
+      "GCF_977065495.1": "D2b locked measured genome, seed 20261132"
+    }
+  },
+  "hmmer_sha256": "ca70d94fd0cf271bd7063423aabb116d42de533117343a9b27a65c17ff06fbf3",
+  "hmmer_tarball": "/project2/biyik_1165/jjt_373/csci270-star/headline_exact/hmmer-3.4.tar.gz",
+  "pfam_old": "/project2/biyik_1165/jjt_373/csci270-star/reference_reannot/data/pfam38.1/Pfam-A.hmm.gz",
+  "pfam_new": "/project2/biyik_1165/jjt_373/csci270-star/pipeline/data/hmmer/Pfam-A.hmm.gz",
+  "timing_boundary": "HMMER build, full-database decompress, full-database hmmpress, the 38.1 cache fill, and the 38.1 stock table are outside S. Each timed TARE command is the published CLI, including its prep hmmpress. Stock times hmmscan only. The expert timer is the shell script, including its own hmmfetch index, discovery scan, and per-batch hmmpress. EXPERT_OMIT_Z is untimed and pilot-only.",
+  "paper_derived_not_a_measurement": {
+    "script_speedup_estimate": 4.6,
+    "tare_speedup_estimate": 3.4,
+    "ratio_tare_over_script": 0.7391304347826088,
+    "note": "Laptop derivation this run replaces. Not used to compute S."
+  },
+  "proteomes": [
+    {
+      "genome": "GCF_018415995.1_protein.faa.gz",
+      "stem": "GCF_018415995.1",
+      "untimed": {
+        "cache_fill": {
+          "argv": [
+            "/apps/spack/2406/apps/linux-rocky8-x86_64_v3/gcc-13.3.0/python-3.11.9-x74mtjf/bin/python3",
+            "-m",
+            "acts",
+            "run",
+            "--strategy",
+            "reference",
+            "--pin",
+            "-Z {entry_count}",
+            "--verify",
+            "audit",
+            "--prep",
+            "hmmpress -f {reference}",
+            "--input",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/queries.faa",
+            "--reference",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.1.hmm",
+            "--cache",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/cache_38.1.sqlite",
+            "-o",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/fill",
+            "--",
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "{output:tblout}",
+            "--domtblout",
+            "{output:domtblout}",
+            "-o",
+            "/dev/null",
+            "{reference}",
+            "{input}"
+          ],
+          "returncode": 0,
+          "wall_s": 3011.885337747168,
+          "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under pinned normalizer\nwrote /scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/fill/decision.txt\n",
+          "stderr_tail": "",
+          "decision": "SHIP"
+        },
+        "cache_bytes": 21946368,
+        "stock_38_1": {
+          "argv": [
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/S381.tbl",
+            "--domtblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/S381.dom",
+            "-o",
+            "/dev/null",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.1.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/queries.faa"
+          ],
+          "returncode": 0,
+          "wall_s": 3217.341060192324,
+          "stdout_tail": "",
+          "stderr_tail": ""
+        }
+      },
+      "runs": [
+        {
+          "argv": [
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r0/stock/out.tbl",
+            "--domtblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r0/stock/out.dom",
+            "-o",
+            "/dev/null",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/queries.faa"
+          ],
+          "returncode": 0,
+          "wall_s": 3103.185616596602,
+          "stdout_tail": "",
+          "stderr_tail": "",
+          "arm": "stock",
+          "replicate": 0,
+          "order": [
+            "stock",
+            "tare",
+            "expert"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r0/stock/out.tbl",
+              "lines": 9135,
+              "body_sha256": "6ba7763dae6cd46280690a59270732691d746cdfa8214ca17c0afd54325fdb14",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9135
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r0/stock/out.dom",
+              "lines": 8836,
+              "body_sha256": "1c1bd644fd042a4cf2aba67caa5465c5462098466c6850f65e457b2658fe6c5e",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8836
+            }
+          }
+        },
+        {
+          "argv": [
+            "/apps/spack/2406/apps/linux-rocky8-x86_64_v3/gcc-13.3.0/python-3.11.9-x74mtjf/bin/python3",
+            "-m",
+            "acts",
+            "run",
+            "--strategy",
+            "reference",
+            "--pin",
+            "-Z {entry_count}",
+            "--verify",
+            "audit",
+            "--prep",
+            "hmmpress -f {reference}",
+            "--input",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/queries.faa",
+            "--reference",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "--cache",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r0/tare/cache.sqlite",
+            "-o",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r0/tare/out",
+            "--",
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "{output:tblout}",
+            "--domtblout",
+            "{output:domtblout}",
+            "-o",
+            "/dev/null",
+            "{reference}",
+            "{input}"
+          ],
+          "returncode": 0,
+          "wall_s": 593.635233012028,
+          "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under pinned normalizer\nwrote /scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r0/tare/out/decision.txt\n",
+          "stderr_tail": "",
+          "arm": "tare",
+          "replicate": 0,
+          "order": [
+            "stock",
+            "tare",
+            "expert"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r0/tare/out/tables/tblout",
+              "lines": 9135,
+              "body_sha256": "6ba7763dae6cd46280690a59270732691d746cdfa8214ca17c0afd54325fdb14",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9135
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r0/tare/out/tables/domtblout",
+              "lines": 8836,
+              "body_sha256": "1c1bd644fd042a4cf2aba67caa5465c5462098466c6850f65e457b2658fe6c5e",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8836
+            }
+          },
+          "decision": "SHIP",
+          "why": "exact replay under pinned normalizer",
+          "phase_names": [
+            "cache_load_s",
+            "cache_store_s",
+            "coverage_read_s",
+            "diff_s",
+            "discovery_build_s",
+            "discovery_s",
+            "discovery_scan_s",
+            "ic2_neighbor_build_s",
+            "ic2_neighbor_s",
+            "ic2_neighbor_scan_s",
+            "ic2_random_20261031_build_s",
+            "ic2_random_20261031_s",
+            "ic2_random_20261031_scan_s",
+            "ic2_random_20261032_build_s",
+            "ic2_random_20261032_s",
+            "ic2_random_20261032_scan_s",
+            "ic2_random_20261033_build_s",
+            "ic2_random_20261033_s",
+            "ic2_random_20261033_scan_s",
+            "merge_rescale_s",
+            "parse_s",
+            "prep_s",
+            "probe_wall_s",
+            "read_output_s",
+            "render_s",
+            "replay_build_s",
+            "replay_plan_s",
+            "replay_s",
+            "replay_scan_s",
+            "subref_build_s",
+            "tool_s",
+            "total_s",
+            "verify_build_s",
+            "verify_s",
+            "verify_scan_s"
+          ]
+        },
+        {
+          "argv": [
+            "sh",
+            "/project2/biyik_1165/jjt_373/csci270-star/tare-w12a/checkout/pipeline/scripts/expert_update_hmmscan.sh",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.1.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/S381.tbl",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/queries.faa",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r0/expert/expert"
+          ],
+          "returncode": 0,
+          "wall_s": 558.9857331598178,
+          "stdout_tail": "3347581/g/GCF_018415995.1_protein.faa.gz/r0/expert/work/batches/b106.hmm.h3m\nSSI index for binary model file:   /scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r0/expert/work/batches/b106.hmm.h3i\nProfiles (MSV part) pressed into:  /scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r0/expert/work/batches/b106.hmm.h3f\nProfiles (remainder) pressed into: /scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r0/expert/work/batches/b106.hmm.h3p\n",
+          "stderr_tail": "",
+          "arm": "expert",
+          "replicate": 0,
+          "order": [
+            "stock",
+            "tare",
+            "expert"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r0/expert/expert.tbl",
+              "lines": 9135,
+              "body_sha256": "6ba7763dae6cd46280690a59270732691d746cdfa8214ca17c0afd54325fdb14",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9135
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r0/expert/expert.dom",
+              "lines": 8836,
+              "body_sha256": "1c1bd644fd042a4cf2aba67caa5465c5462098466c6850f65e457b2658fe6c5e",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8836
+            }
+          }
+        },
+        {
+          "argv": [
+            "/apps/spack/2406/apps/linux-rocky8-x86_64_v3/gcc-13.3.0/python-3.11.9-x74mtjf/bin/python3",
+            "-m",
+            "acts",
+            "run",
+            "--strategy",
+            "reference",
+            "--pin",
+            "-Z {entry_count}",
+            "--verify",
+            "audit",
+            "--prep",
+            "hmmpress -f {reference}",
+            "--input",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/queries.faa",
+            "--reference",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "--cache",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r1/tare/cache.sqlite",
+            "-o",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r1/tare/out",
+            "--",
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "{output:tblout}",
+            "--domtblout",
+            "{output:domtblout}",
+            "-o",
+            "/dev/null",
+            "{reference}",
+            "{input}"
+          ],
+          "returncode": 0,
+          "wall_s": 577.6151257501915,
+          "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under pinned normalizer\nwrote /scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r1/tare/out/decision.txt\n",
+          "stderr_tail": "",
+          "arm": "tare",
+          "replicate": 1,
+          "order": [
+            "tare",
+            "expert",
+            "stock"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r1/tare/out/tables/tblout",
+              "lines": 9135,
+              "body_sha256": "6ba7763dae6cd46280690a59270732691d746cdfa8214ca17c0afd54325fdb14",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9135
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r1/tare/out/tables/domtblout",
+              "lines": 8836,
+              "body_sha256": "1c1bd644fd042a4cf2aba67caa5465c5462098466c6850f65e457b2658fe6c5e",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8836
+            }
+          },
+          "decision": "SHIP",
+          "why": "exact replay under pinned normalizer",
+          "phase_names": [
+            "cache_load_s",
+            "cache_store_s",
+            "coverage_read_s",
+            "diff_s",
+            "discovery_build_s",
+            "discovery_s",
+            "discovery_scan_s",
+            "ic2_neighbor_build_s",
+            "ic2_neighbor_s",
+            "ic2_neighbor_scan_s",
+            "ic2_random_20261031_build_s",
+            "ic2_random_20261031_s",
+            "ic2_random_20261031_scan_s",
+            "ic2_random_20261032_build_s",
+            "ic2_random_20261032_s",
+            "ic2_random_20261032_scan_s",
+            "ic2_random_20261033_build_s",
+            "ic2_random_20261033_s",
+            "ic2_random_20261033_scan_s",
+            "merge_rescale_s",
+            "parse_s",
+            "prep_s",
+            "probe_wall_s",
+            "read_output_s",
+            "render_s",
+            "replay_build_s",
+            "replay_plan_s",
+            "replay_s",
+            "replay_scan_s",
+            "subref_build_s",
+            "tool_s",
+            "total_s",
+            "verify_build_s",
+            "verify_s",
+            "verify_scan_s"
+          ]
+        },
+        {
+          "argv": [
+            "sh",
+            "/project2/biyik_1165/jjt_373/csci270-star/tare-w12a/checkout/pipeline/scripts/expert_update_hmmscan.sh",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.1.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/S381.tbl",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/queries.faa",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r1/expert/expert"
+          ],
+          "returncode": 0,
+          "wall_s": 492.6669204328209,
+          "stdout_tail": "3347581/g/GCF_018415995.1_protein.faa.gz/r1/expert/work/batches/b106.hmm.h3m\nSSI index for binary model file:   /scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r1/expert/work/batches/b106.hmm.h3i\nProfiles (MSV part) pressed into:  /scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r1/expert/work/batches/b106.hmm.h3f\nProfiles (remainder) pressed into: /scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r1/expert/work/batches/b106.hmm.h3p\n",
+          "stderr_tail": "",
+          "arm": "expert",
+          "replicate": 1,
+          "order": [
+            "tare",
+            "expert",
+            "stock"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r1/expert/expert.tbl",
+              "lines": 9135,
+              "body_sha256": "6ba7763dae6cd46280690a59270732691d746cdfa8214ca17c0afd54325fdb14",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9135
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r1/expert/expert.dom",
+              "lines": 8836,
+              "body_sha256": "1c1bd644fd042a4cf2aba67caa5465c5462098466c6850f65e457b2658fe6c5e",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8836
+            }
+          }
+        },
+        {
+          "argv": [
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r1/stock/out.tbl",
+            "--domtblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r1/stock/out.dom",
+            "-o",
+            "/dev/null",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/queries.faa"
+          ],
+          "returncode": 0,
+          "wall_s": 3301.3076336388476,
+          "stdout_tail": "",
+          "stderr_tail": "",
+          "arm": "stock",
+          "replicate": 1,
+          "order": [
+            "tare",
+            "expert",
+            "stock"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r1/stock/out.tbl",
+              "lines": 9135,
+              "body_sha256": "6ba7763dae6cd46280690a59270732691d746cdfa8214ca17c0afd54325fdb14",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9135
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r1/stock/out.dom",
+              "lines": 8836,
+              "body_sha256": "1c1bd644fd042a4cf2aba67caa5465c5462098466c6850f65e457b2658fe6c5e",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8836
+            }
+          }
+        },
+        {
+          "argv": [
+            "sh",
+            "/project2/biyik_1165/jjt_373/csci270-star/tare-w12a/checkout/pipeline/scripts/expert_update_hmmscan.sh",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.1.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/S381.tbl",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/queries.faa",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r2/expert/expert"
+          ],
+          "returncode": 0,
+          "wall_s": 618.9059972250834,
+          "stdout_tail": "3347581/g/GCF_018415995.1_protein.faa.gz/r2/expert/work/batches/b106.hmm.h3m\nSSI index for binary model file:   /scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r2/expert/work/batches/b106.hmm.h3i\nProfiles (MSV part) pressed into:  /scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r2/expert/work/batches/b106.hmm.h3f\nProfiles (remainder) pressed into: /scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r2/expert/work/batches/b106.hmm.h3p\n",
+          "stderr_tail": "",
+          "arm": "expert",
+          "replicate": 2,
+          "order": [
+            "expert",
+            "stock",
+            "tare"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r2/expert/expert.tbl",
+              "lines": 9135,
+              "body_sha256": "6ba7763dae6cd46280690a59270732691d746cdfa8214ca17c0afd54325fdb14",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9135
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r2/expert/expert.dom",
+              "lines": 8836,
+              "body_sha256": "1c1bd644fd042a4cf2aba67caa5465c5462098466c6850f65e457b2658fe6c5e",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8836
+            }
+          }
+        },
+        {
+          "argv": [
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r2/stock/out.tbl",
+            "--domtblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r2/stock/out.dom",
+            "-o",
+            "/dev/null",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/queries.faa"
+          ],
+          "returncode": 0,
+          "wall_s": 3097.3768271598965,
+          "stdout_tail": "",
+          "stderr_tail": "",
+          "arm": "stock",
+          "replicate": 2,
+          "order": [
+            "expert",
+            "stock",
+            "tare"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r2/stock/out.tbl",
+              "lines": 9135,
+              "body_sha256": "6ba7763dae6cd46280690a59270732691d746cdfa8214ca17c0afd54325fdb14",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9135
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r2/stock/out.dom",
+              "lines": 8836,
+              "body_sha256": "1c1bd644fd042a4cf2aba67caa5465c5462098466c6850f65e457b2658fe6c5e",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8836
+            }
+          }
+        },
+        {
+          "argv": [
+            "/apps/spack/2406/apps/linux-rocky8-x86_64_v3/gcc-13.3.0/python-3.11.9-x74mtjf/bin/python3",
+            "-m",
+            "acts",
+            "run",
+            "--strategy",
+            "reference",
+            "--pin",
+            "-Z {entry_count}",
+            "--verify",
+            "audit",
+            "--prep",
+            "hmmpress -f {reference}",
+            "--input",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/queries.faa",
+            "--reference",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "--cache",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r2/tare/cache.sqlite",
+            "-o",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r2/tare/out",
+            "--",
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "{output:tblout}",
+            "--domtblout",
+            "{output:domtblout}",
+            "-o",
+            "/dev/null",
+            "{reference}",
+            "{input}"
+          ],
+          "returncode": 0,
+          "wall_s": 582.9148095953278,
+          "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under pinned normalizer\nwrote /scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r2/tare/out/decision.txt\n",
+          "stderr_tail": "",
+          "arm": "tare",
+          "replicate": 2,
+          "order": [
+            "expert",
+            "stock",
+            "tare"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r2/tare/out/tables/tblout",
+              "lines": 9135,
+              "body_sha256": "6ba7763dae6cd46280690a59270732691d746cdfa8214ca17c0afd54325fdb14",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9135
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_018415995.1_protein.faa.gz/r2/tare/out/tables/domtblout",
+              "lines": 8836,
+              "body_sha256": "1c1bd644fd042a4cf2aba67caa5465c5462098466c6850f65e457b2658fe6c5e",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8836
+            }
+          },
+          "decision": "SHIP",
+          "why": "exact replay under pinned normalizer",
+          "phase_names": [
+            "cache_load_s",
+            "cache_store_s",
+            "coverage_read_s",
+            "diff_s",
+            "discovery_build_s",
+            "discovery_s",
+            "discovery_scan_s",
+            "ic2_neighbor_build_s",
+            "ic2_neighbor_s",
+            "ic2_neighbor_scan_s",
+            "ic2_random_20261031_build_s",
+            "ic2_random_20261031_s",
+            "ic2_random_20261031_scan_s",
+            "ic2_random_20261032_build_s",
+            "ic2_random_20261032_s",
+            "ic2_random_20261032_scan_s",
+            "ic2_random_20261033_build_s",
+            "ic2_random_20261033_s",
+            "ic2_random_20261033_scan_s",
+            "merge_rescale_s",
+            "parse_s",
+            "prep_s",
+            "probe_wall_s",
+            "read_output_s",
+            "render_s",
+            "replay_build_s",
+            "replay_plan_s",
+            "replay_s",
+            "replay_scan_s",
+            "subref_build_s",
+            "tool_s",
+            "total_s",
+            "verify_build_s",
+            "verify_s",
+            "verify_scan_s"
+          ]
+        }
+      ],
+      "power_ok": true,
+      "stopped_for_power": false,
+      "stock_vs_stock_byte_identical": true,
+      "tare_ship": true,
+      "tare_byte_identical": true,
+      "expert_byte_identical": true,
+      "arms_complete": true,
+      "speed_scored": true,
+      "reference_body_lines": {
+        "tbl": 9135,
+        "dom": 8836
+      },
+      "median_wall_s": {
+        "stock": 3103.185616596602,
+        "tare": 582.9148095953278,
+        "expert": 558.9857331598178
+      },
+      "cv": {
+        "stock": 0.036655622514659134,
+        "tare": 0.013957877486040902,
+        "expert": 0.11339899792720363
+      },
+      "cv_above_0_05": {
+        "stock": false,
+        "tare": false,
+        "expert": true
+      },
+      "S_g": {
+        "tare": 5.323566266485665,
+        "expert": 5.5514576356985135
+      },
+      "R_g": 0.9589492734759609
+    },
+    {
+      "genome": "GCF_019969525.1_protein.faa.gz",
+      "stem": "GCF_019969525.1",
+      "untimed": {
+        "cache_fill": {
+          "argv": [
+            "/apps/spack/2406/apps/linux-rocky8-x86_64_v3/gcc-13.3.0/python-3.11.9-x74mtjf/bin/python3",
+            "-m",
+            "acts",
+            "run",
+            "--strategy",
+            "reference",
+            "--pin",
+            "-Z {entry_count}",
+            "--verify",
+            "audit",
+            "--prep",
+            "hmmpress -f {reference}",
+            "--input",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/queries.faa",
+            "--reference",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.1.hmm",
+            "--cache",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/cache_38.1.sqlite",
+            "-o",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/fill",
+            "--",
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "{output:tblout}",
+            "--domtblout",
+            "{output:domtblout}",
+            "-o",
+            "/dev/null",
+            "{reference}",
+            "{input}"
+          ],
+          "returncode": 1,
+          "wall_s": 2793.876670456957,
+          "stdout_tail": "strategy: reference\ndecision: REFUSE\nwhy:      duplicate row key ('WP_153681168.1', 'Cadherin_5', '2.2e-11')\nwrote /scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/fill/decision.txt\n",
+          "stderr_tail": "",
+          "decision": "REFUSE"
+        },
+        "cache_bytes": 86016,
+        "stock_38_1": {
+          "argv": [
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/S381.tbl",
+            "--domtblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/S381.dom",
+            "-o",
+            "/dev/null",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.1.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/queries.faa"
+          ],
+          "returncode": 0,
+          "wall_s": 2844.779578569811,
+          "stdout_tail": "",
+          "stderr_tail": ""
+        }
+      },
+      "runs": [
+        {
+          "argv": [
+            "/apps/spack/2406/apps/linux-rocky8-x86_64_v3/gcc-13.3.0/python-3.11.9-x74mtjf/bin/python3",
+            "-m",
+            "acts",
+            "run",
+            "--strategy",
+            "reference",
+            "--pin",
+            "-Z {entry_count}",
+            "--verify",
+            "audit",
+            "--prep",
+            "hmmpress -f {reference}",
+            "--input",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/queries.faa",
+            "--reference",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "--cache",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r0/tare/cache.sqlite",
+            "-o",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r0/tare/out",
+            "--",
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "{output:tblout}",
+            "--domtblout",
+            "{output:domtblout}",
+            "-o",
+            "/dev/null",
+            "{reference}",
+            "{input}"
+          ],
+          "returncode": 1,
+          "wall_s": 2579.917142963968,
+          "stdout_tail": "strategy: reference\ndecision: REFUSE\nwhy:      duplicate row key ('WP_153681168.1', 'Cadherin_5', '2.2e-11')\nwrote /scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r0/tare/out/decision.txt\n",
+          "stderr_tail": "",
+          "arm": "tare",
+          "replicate": 0,
+          "order": [
+            "tare",
+            "expert",
+            "stock"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r0/tare/out/tables/tblout",
+              "lines": 9162,
+              "body_sha256": "1302a1c501f511e05b5d2b9973ed25a0c491f0c26339eec5a7ffe261fa0b3086",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9162
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r0/tare/out/tables/domtblout",
+              "lines": 8917,
+              "body_sha256": "a780b9b84fcceea721c747f2ddf94e54982c0e8c83fe59b11c4fd66368bbb7e0",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8917
+            }
+          },
+          "decision": "REFUSE",
+          "why": "duplicate row key ('WP_153681168.1', 'Cadherin_5', '2.2e-11')",
+          "phase_names": [
+            "parse_s",
+            "prep_s",
+            "probe_wall_s",
+            "read_output_s",
+            "subref_build_s",
+            "tool_s",
+            "total_s"
+          ]
+        },
+        {
+          "argv": [
+            "sh",
+            "/project2/biyik_1165/jjt_373/csci270-star/tare-w12a/checkout/pipeline/scripts/expert_update_hmmscan.sh",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.1.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/S381.tbl",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/queries.faa",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r0/expert/expert"
+          ],
+          "returncode": 0,
+          "wall_s": 512.1056258981116,
+          "stdout_tail": "3347581/g/GCF_019969525.1_protein.faa.gz/r0/expert/work/batches/b112.hmm.h3m\nSSI index for binary model file:   /scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r0/expert/work/batches/b112.hmm.h3i\nProfiles (MSV part) pressed into:  /scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r0/expert/work/batches/b112.hmm.h3f\nProfiles (remainder) pressed into: /scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r0/expert/work/batches/b112.hmm.h3p\n",
+          "stderr_tail": "",
+          "arm": "expert",
+          "replicate": 0,
+          "order": [
+            "tare",
+            "expert",
+            "stock"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r0/expert/expert.tbl",
+              "lines": 9162,
+              "body_sha256": "1302a1c501f511e05b5d2b9973ed25a0c491f0c26339eec5a7ffe261fa0b3086",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9162
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r0/expert/expert.dom",
+              "lines": 8917,
+              "body_sha256": "a780b9b84fcceea721c747f2ddf94e54982c0e8c83fe59b11c4fd66368bbb7e0",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8917
+            }
+          }
+        },
+        {
+          "argv": [
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r0/stock/out.tbl",
+            "--domtblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r0/stock/out.dom",
+            "-o",
+            "/dev/null",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/queries.faa"
+          ],
+          "returncode": 0,
+          "wall_s": 3504.955285580829,
+          "stdout_tail": "",
+          "stderr_tail": "",
+          "arm": "stock",
+          "replicate": 0,
+          "order": [
+            "tare",
+            "expert",
+            "stock"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r0/stock/out.tbl",
+              "lines": 9162,
+              "body_sha256": "1302a1c501f511e05b5d2b9973ed25a0c491f0c26339eec5a7ffe261fa0b3086",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9162
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r0/stock/out.dom",
+              "lines": 8917,
+              "body_sha256": "a780b9b84fcceea721c747f2ddf94e54982c0e8c83fe59b11c4fd66368bbb7e0",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8917
+            }
+          }
+        },
+        {
+          "argv": [
+            "sh",
+            "/project2/biyik_1165/jjt_373/csci270-star/tare-w12a/checkout/pipeline/scripts/expert_update_hmmscan.sh",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.1.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/S381.tbl",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/queries.faa",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r1/expert/expert"
+          ],
+          "returncode": 0,
+          "wall_s": 518.5686274319887,
+          "stdout_tail": "3347581/g/GCF_019969525.1_protein.faa.gz/r1/expert/work/batches/b112.hmm.h3m\nSSI index for binary model file:   /scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r1/expert/work/batches/b112.hmm.h3i\nProfiles (MSV part) pressed into:  /scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r1/expert/work/batches/b112.hmm.h3f\nProfiles (remainder) pressed into: /scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r1/expert/work/batches/b112.hmm.h3p\n",
+          "stderr_tail": "",
+          "arm": "expert",
+          "replicate": 1,
+          "order": [
+            "expert",
+            "stock",
+            "tare"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r1/expert/expert.tbl",
+              "lines": 9162,
+              "body_sha256": "1302a1c501f511e05b5d2b9973ed25a0c491f0c26339eec5a7ffe261fa0b3086",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9162
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r1/expert/expert.dom",
+              "lines": 8917,
+              "body_sha256": "a780b9b84fcceea721c747f2ddf94e54982c0e8c83fe59b11c4fd66368bbb7e0",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8917
+            }
+          }
+        },
+        {
+          "argv": [
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r1/stock/out.tbl",
+            "--domtblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r1/stock/out.dom",
+            "-o",
+            "/dev/null",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/queries.faa"
+          ],
+          "returncode": 0,
+          "wall_s": 3133.8572382866405,
+          "stdout_tail": "",
+          "stderr_tail": "",
+          "arm": "stock",
+          "replicate": 1,
+          "order": [
+            "expert",
+            "stock",
+            "tare"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r1/stock/out.tbl",
+              "lines": 9162,
+              "body_sha256": "1302a1c501f511e05b5d2b9973ed25a0c491f0c26339eec5a7ffe261fa0b3086",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9162
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r1/stock/out.dom",
+              "lines": 8917,
+              "body_sha256": "a780b9b84fcceea721c747f2ddf94e54982c0e8c83fe59b11c4fd66368bbb7e0",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8917
+            }
+          }
+        },
+        {
+          "argv": [
+            "/apps/spack/2406/apps/linux-rocky8-x86_64_v3/gcc-13.3.0/python-3.11.9-x74mtjf/bin/python3",
+            "-m",
+            "acts",
+            "run",
+            "--strategy",
+            "reference",
+            "--pin",
+            "-Z {entry_count}",
+            "--verify",
+            "audit",
+            "--prep",
+            "hmmpress -f {reference}",
+            "--input",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/queries.faa",
+            "--reference",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "--cache",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r1/tare/cache.sqlite",
+            "-o",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r1/tare/out",
+            "--",
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "{output:tblout}",
+            "--domtblout",
+            "{output:domtblout}",
+            "-o",
+            "/dev/null",
+            "{reference}",
+            "{input}"
+          ],
+          "returncode": 1,
+          "wall_s": 2518.878874001093,
+          "stdout_tail": "strategy: reference\ndecision: REFUSE\nwhy:      duplicate row key ('WP_153681168.1', 'Cadherin_5', '2.2e-11')\nwrote /scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r1/tare/out/decision.txt\n",
+          "stderr_tail": "",
+          "arm": "tare",
+          "replicate": 1,
+          "order": [
+            "expert",
+            "stock",
+            "tare"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r1/tare/out/tables/tblout",
+              "lines": 9162,
+              "body_sha256": "1302a1c501f511e05b5d2b9973ed25a0c491f0c26339eec5a7ffe261fa0b3086",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9162
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r1/tare/out/tables/domtblout",
+              "lines": 8917,
+              "body_sha256": "a780b9b84fcceea721c747f2ddf94e54982c0e8c83fe59b11c4fd66368bbb7e0",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8917
+            }
+          },
+          "decision": "REFUSE",
+          "why": "duplicate row key ('WP_153681168.1', 'Cadherin_5', '2.2e-11')",
+          "phase_names": [
+            "parse_s",
+            "prep_s",
+            "probe_wall_s",
+            "read_output_s",
+            "subref_build_s",
+            "tool_s",
+            "total_s"
+          ]
+        },
+        {
+          "argv": [
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r2/stock/out.tbl",
+            "--domtblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r2/stock/out.dom",
+            "-o",
+            "/dev/null",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/queries.faa"
+          ],
+          "returncode": 0,
+          "wall_s": 3063.4098943280987,
+          "stdout_tail": "",
+          "stderr_tail": "",
+          "arm": "stock",
+          "replicate": 2,
+          "order": [
+            "stock",
+            "tare",
+            "expert"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r2/stock/out.tbl",
+              "lines": 9162,
+              "body_sha256": "1302a1c501f511e05b5d2b9973ed25a0c491f0c26339eec5a7ffe261fa0b3086",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9162
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r2/stock/out.dom",
+              "lines": 8917,
+              "body_sha256": "a780b9b84fcceea721c747f2ddf94e54982c0e8c83fe59b11c4fd66368bbb7e0",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8917
+            }
+          }
+        },
+        {
+          "argv": [
+            "/apps/spack/2406/apps/linux-rocky8-x86_64_v3/gcc-13.3.0/python-3.11.9-x74mtjf/bin/python3",
+            "-m",
+            "acts",
+            "run",
+            "--strategy",
+            "reference",
+            "--pin",
+            "-Z {entry_count}",
+            "--verify",
+            "audit",
+            "--prep",
+            "hmmpress -f {reference}",
+            "--input",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/queries.faa",
+            "--reference",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "--cache",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r2/tare/cache.sqlite",
+            "-o",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r2/tare/out",
+            "--",
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "{output:tblout}",
+            "--domtblout",
+            "{output:domtblout}",
+            "-o",
+            "/dev/null",
+            "{reference}",
+            "{input}"
+          ],
+          "returncode": 1,
+          "wall_s": 3069.5370364617556,
+          "stdout_tail": "strategy: reference\ndecision: REFUSE\nwhy:      duplicate row key ('WP_153681168.1', 'Cadherin_5', '2.2e-11')\nwrote /scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r2/tare/out/decision.txt\n",
+          "stderr_tail": "",
+          "arm": "tare",
+          "replicate": 2,
+          "order": [
+            "stock",
+            "tare",
+            "expert"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r2/tare/out/tables/tblout",
+              "lines": 9162,
+              "body_sha256": "1302a1c501f511e05b5d2b9973ed25a0c491f0c26339eec5a7ffe261fa0b3086",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9162
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r2/tare/out/tables/domtblout",
+              "lines": 8917,
+              "body_sha256": "a780b9b84fcceea721c747f2ddf94e54982c0e8c83fe59b11c4fd66368bbb7e0",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8917
+            }
+          },
+          "decision": "REFUSE",
+          "why": "duplicate row key ('WP_153681168.1', 'Cadherin_5', '2.2e-11')",
+          "phase_names": [
+            "parse_s",
+            "prep_s",
+            "probe_wall_s",
+            "read_output_s",
+            "subref_build_s",
+            "tool_s",
+            "total_s"
+          ]
+        },
+        {
+          "argv": [
+            "sh",
+            "/project2/biyik_1165/jjt_373/csci270-star/tare-w12a/checkout/pipeline/scripts/expert_update_hmmscan.sh",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.1.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/S381.tbl",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/queries.faa",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r2/expert/expert"
+          ],
+          "returncode": 0,
+          "wall_s": 508.10935569508,
+          "stdout_tail": "3347581/g/GCF_019969525.1_protein.faa.gz/r2/expert/work/batches/b112.hmm.h3m\nSSI index for binary model file:   /scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r2/expert/work/batches/b112.hmm.h3i\nProfiles (MSV part) pressed into:  /scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r2/expert/work/batches/b112.hmm.h3f\nProfiles (remainder) pressed into: /scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r2/expert/work/batches/b112.hmm.h3p\n",
+          "stderr_tail": "",
+          "arm": "expert",
+          "replicate": 2,
+          "order": [
+            "stock",
+            "tare",
+            "expert"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r2/expert/expert.tbl",
+              "lines": 9162,
+              "body_sha256": "1302a1c501f511e05b5d2b9973ed25a0c491f0c26339eec5a7ffe261fa0b3086",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 9162
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_019969525.1_protein.faa.gz/r2/expert/expert.dom",
+              "lines": 8917,
+              "body_sha256": "a780b9b84fcceea721c747f2ddf94e54982c0e8c83fe59b11c4fd66368bbb7e0",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8917
+            }
+          }
+        }
+      ],
+      "power_ok": true,
+      "stopped_for_power": false,
+      "stock_vs_stock_byte_identical": true,
+      "tare_ship": false,
+      "tare_byte_identical": true,
+      "expert_byte_identical": true,
+      "arms_complete": true,
+      "speed_scored": false,
+      "reference_body_lines": {
+        "tbl": 9162,
+        "dom": 8917
+      }
+    },
+    {
+      "genome": "GCF_037231045.1_protein.faa.gz",
+      "stem": "GCF_037231045.1",
+      "untimed": {
+        "cache_fill": {
+          "argv": [
+            "/apps/spack/2406/apps/linux-rocky8-x86_64_v3/gcc-13.3.0/python-3.11.9-x74mtjf/bin/python3",
+            "-m",
+            "acts",
+            "run",
+            "--strategy",
+            "reference",
+            "--pin",
+            "-Z {entry_count}",
+            "--verify",
+            "audit",
+            "--prep",
+            "hmmpress -f {reference}",
+            "--input",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/queries.faa",
+            "--reference",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.1.hmm",
+            "--cache",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/cache_38.1.sqlite",
+            "-o",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/fill",
+            "--",
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "{output:tblout}",
+            "--domtblout",
+            "{output:domtblout}",
+            "-o",
+            "/dev/null",
+            "{reference}",
+            "{input}"
+          ],
+          "returncode": 0,
+          "wall_s": 2636.020897448063,
+          "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under pinned normalizer\nwrote /scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/fill/decision.txt\n",
+          "stderr_tail": "",
+          "decision": "SHIP"
+        },
+        "cache_bytes": 21667840,
+        "stock_38_1": {
+          "argv": [
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/S381.tbl",
+            "--domtblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/S381.dom",
+            "-o",
+            "/dev/null",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.1.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/queries.faa"
+          ],
+          "returncode": 0,
+          "wall_s": 2582.287482017651,
+          "stdout_tail": "",
+          "stderr_tail": ""
+        }
+      },
+      "runs": [
+        {
+          "argv": [
+            "sh",
+            "/project2/biyik_1165/jjt_373/csci270-star/tare-w12a/checkout/pipeline/scripts/expert_update_hmmscan.sh",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.1.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/S381.tbl",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/queries.faa",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r0/expert/expert"
+          ],
+          "returncode": 0,
+          "wall_s": 463.73013344220817,
+          "stdout_tail": "3347581/g/GCF_037231045.1_protein.faa.gz/r0/expert/work/batches/b114.hmm.h3m\nSSI index for binary model file:   /scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r0/expert/work/batches/b114.hmm.h3i\nProfiles (MSV part) pressed into:  /scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r0/expert/work/batches/b114.hmm.h3f\nProfiles (remainder) pressed into: /scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r0/expert/work/batches/b114.hmm.h3p\n",
+          "stderr_tail": "",
+          "arm": "expert",
+          "replicate": 0,
+          "order": [
+            "expert",
+            "stock",
+            "tare"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r0/expert/expert.tbl",
+              "lines": 8940,
+              "body_sha256": "e4a770efd949204ac90618e4eebdc243c0ab93ee1eeea1d9077cc086d73c6530",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8940
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r0/expert/expert.dom",
+              "lines": 8676,
+              "body_sha256": "dc32b51d8df2e7acc47bf6de099553cfc9504a506649179b70d2d8e054efa263",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8676
+            }
+          }
+        },
+        {
+          "argv": [
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r0/stock/out.tbl",
+            "--domtblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r0/stock/out.dom",
+            "-o",
+            "/dev/null",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/queries.faa"
+          ],
+          "returncode": 0,
+          "wall_s": 2842.904550405219,
+          "stdout_tail": "",
+          "stderr_tail": "",
+          "arm": "stock",
+          "replicate": 0,
+          "order": [
+            "expert",
+            "stock",
+            "tare"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r0/stock/out.tbl",
+              "lines": 8940,
+              "body_sha256": "e4a770efd949204ac90618e4eebdc243c0ab93ee1eeea1d9077cc086d73c6530",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8940
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r0/stock/out.dom",
+              "lines": 8676,
+              "body_sha256": "dc32b51d8df2e7acc47bf6de099553cfc9504a506649179b70d2d8e054efa263",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8676
+            }
+          }
+        },
+        {
+          "argv": [
+            "/apps/spack/2406/apps/linux-rocky8-x86_64_v3/gcc-13.3.0/python-3.11.9-x74mtjf/bin/python3",
+            "-m",
+            "acts",
+            "run",
+            "--strategy",
+            "reference",
+            "--pin",
+            "-Z {entry_count}",
+            "--verify",
+            "audit",
+            "--prep",
+            "hmmpress -f {reference}",
+            "--input",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/queries.faa",
+            "--reference",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "--cache",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r0/tare/cache.sqlite",
+            "-o",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r0/tare/out",
+            "--",
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "{output:tblout}",
+            "--domtblout",
+            "{output:domtblout}",
+            "-o",
+            "/dev/null",
+            "{reference}",
+            "{input}"
+          ],
+          "returncode": 0,
+          "wall_s": 549.6489286180586,
+          "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under pinned normalizer\nwrote /scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r0/tare/out/decision.txt\n",
+          "stderr_tail": "",
+          "arm": "tare",
+          "replicate": 0,
+          "order": [
+            "expert",
+            "stock",
+            "tare"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r0/tare/out/tables/tblout",
+              "lines": 8940,
+              "body_sha256": "e4a770efd949204ac90618e4eebdc243c0ab93ee1eeea1d9077cc086d73c6530",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8940
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r0/tare/out/tables/domtblout",
+              "lines": 8676,
+              "body_sha256": "dc32b51d8df2e7acc47bf6de099553cfc9504a506649179b70d2d8e054efa263",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8676
+            }
+          },
+          "decision": "SHIP",
+          "why": "exact replay under pinned normalizer",
+          "phase_names": [
+            "cache_load_s",
+            "cache_store_s",
+            "coverage_read_s",
+            "diff_s",
+            "discovery_build_s",
+            "discovery_s",
+            "discovery_scan_s",
+            "ic2_neighbor_build_s",
+            "ic2_neighbor_s",
+            "ic2_neighbor_scan_s",
+            "ic2_random_20261031_build_s",
+            "ic2_random_20261031_s",
+            "ic2_random_20261031_scan_s",
+            "ic2_random_20261032_build_s",
+            "ic2_random_20261032_s",
+            "ic2_random_20261032_scan_s",
+            "ic2_random_20261033_build_s",
+            "ic2_random_20261033_s",
+            "ic2_random_20261033_scan_s",
+            "merge_rescale_s",
+            "parse_s",
+            "prep_s",
+            "probe_wall_s",
+            "read_output_s",
+            "render_s",
+            "replay_build_s",
+            "replay_plan_s",
+            "replay_s",
+            "replay_scan_s",
+            "subref_build_s",
+            "tool_s",
+            "total_s",
+            "verify_build_s",
+            "verify_s",
+            "verify_scan_s"
+          ]
+        },
+        {
+          "argv": [
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r1/stock/out.tbl",
+            "--domtblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r1/stock/out.dom",
+            "-o",
+            "/dev/null",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/queries.faa"
+          ],
+          "returncode": 0,
+          "wall_s": 2446.0355164459907,
+          "stdout_tail": "",
+          "stderr_tail": "",
+          "arm": "stock",
+          "replicate": 1,
+          "order": [
+            "stock",
+            "tare",
+            "expert"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r1/stock/out.tbl",
+              "lines": 8940,
+              "body_sha256": "e4a770efd949204ac90618e4eebdc243c0ab93ee1eeea1d9077cc086d73c6530",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8940
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r1/stock/out.dom",
+              "lines": 8676,
+              "body_sha256": "dc32b51d8df2e7acc47bf6de099553cfc9504a506649179b70d2d8e054efa263",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8676
+            }
+          }
+        },
+        {
+          "argv": [
+            "/apps/spack/2406/apps/linux-rocky8-x86_64_v3/gcc-13.3.0/python-3.11.9-x74mtjf/bin/python3",
+            "-m",
+            "acts",
+            "run",
+            "--strategy",
+            "reference",
+            "--pin",
+            "-Z {entry_count}",
+            "--verify",
+            "audit",
+            "--prep",
+            "hmmpress -f {reference}",
+            "--input",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/queries.faa",
+            "--reference",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "--cache",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r1/tare/cache.sqlite",
+            "-o",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r1/tare/out",
+            "--",
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "{output:tblout}",
+            "--domtblout",
+            "{output:domtblout}",
+            "-o",
+            "/dev/null",
+            "{reference}",
+            "{input}"
+          ],
+          "returncode": 0,
+          "wall_s": 566.2258106046356,
+          "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under pinned normalizer\nwrote /scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r1/tare/out/decision.txt\n",
+          "stderr_tail": "",
+          "arm": "tare",
+          "replicate": 1,
+          "order": [
+            "stock",
+            "tare",
+            "expert"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r1/tare/out/tables/tblout",
+              "lines": 8940,
+              "body_sha256": "e4a770efd949204ac90618e4eebdc243c0ab93ee1eeea1d9077cc086d73c6530",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8940
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r1/tare/out/tables/domtblout",
+              "lines": 8676,
+              "body_sha256": "dc32b51d8df2e7acc47bf6de099553cfc9504a506649179b70d2d8e054efa263",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8676
+            }
+          },
+          "decision": "SHIP",
+          "why": "exact replay under pinned normalizer",
+          "phase_names": [
+            "cache_load_s",
+            "cache_store_s",
+            "coverage_read_s",
+            "diff_s",
+            "discovery_build_s",
+            "discovery_s",
+            "discovery_scan_s",
+            "ic2_neighbor_build_s",
+            "ic2_neighbor_s",
+            "ic2_neighbor_scan_s",
+            "ic2_random_20261031_build_s",
+            "ic2_random_20261031_s",
+            "ic2_random_20261031_scan_s",
+            "ic2_random_20261032_build_s",
+            "ic2_random_20261032_s",
+            "ic2_random_20261032_scan_s",
+            "ic2_random_20261033_build_s",
+            "ic2_random_20261033_s",
+            "ic2_random_20261033_scan_s",
+            "merge_rescale_s",
+            "parse_s",
+            "prep_s",
+            "probe_wall_s",
+            "read_output_s",
+            "render_s",
+            "replay_build_s",
+            "replay_plan_s",
+            "replay_s",
+            "replay_scan_s",
+            "subref_build_s",
+            "tool_s",
+            "total_s",
+            "verify_build_s",
+            "verify_s",
+            "verify_scan_s"
+          ]
+        },
+        {
+          "argv": [
+            "sh",
+            "/project2/biyik_1165/jjt_373/csci270-star/tare-w12a/checkout/pipeline/scripts/expert_update_hmmscan.sh",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.1.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/S381.tbl",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/queries.faa",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r1/expert/expert"
+          ],
+          "returncode": 0,
+          "wall_s": 478.8542747600004,
+          "stdout_tail": "3347581/g/GCF_037231045.1_protein.faa.gz/r1/expert/work/batches/b114.hmm.h3m\nSSI index for binary model file:   /scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r1/expert/work/batches/b114.hmm.h3i\nProfiles (MSV part) pressed into:  /scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r1/expert/work/batches/b114.hmm.h3f\nProfiles (remainder) pressed into: /scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r1/expert/work/batches/b114.hmm.h3p\n",
+          "stderr_tail": "",
+          "arm": "expert",
+          "replicate": 1,
+          "order": [
+            "stock",
+            "tare",
+            "expert"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r1/expert/expert.tbl",
+              "lines": 8940,
+              "body_sha256": "e4a770efd949204ac90618e4eebdc243c0ab93ee1eeea1d9077cc086d73c6530",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8940
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r1/expert/expert.dom",
+              "lines": 8676,
+              "body_sha256": "dc32b51d8df2e7acc47bf6de099553cfc9504a506649179b70d2d8e054efa263",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8676
+            }
+          }
+        },
+        {
+          "argv": [
+            "/apps/spack/2406/apps/linux-rocky8-x86_64_v3/gcc-13.3.0/python-3.11.9-x74mtjf/bin/python3",
+            "-m",
+            "acts",
+            "run",
+            "--strategy",
+            "reference",
+            "--pin",
+            "-Z {entry_count}",
+            "--verify",
+            "audit",
+            "--prep",
+            "hmmpress -f {reference}",
+            "--input",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/queries.faa",
+            "--reference",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "--cache",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r2/tare/cache.sqlite",
+            "-o",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r2/tare/out",
+            "--",
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "{output:tblout}",
+            "--domtblout",
+            "{output:domtblout}",
+            "-o",
+            "/dev/null",
+            "{reference}",
+            "{input}"
+          ],
+          "returncode": 0,
+          "wall_s": 701.9876758661121,
+          "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under pinned normalizer\nwrote /scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r2/tare/out/decision.txt\n",
+          "stderr_tail": "",
+          "arm": "tare",
+          "replicate": 2,
+          "order": [
+            "tare",
+            "expert",
+            "stock"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r2/tare/out/tables/tblout",
+              "lines": 8940,
+              "body_sha256": "e4a770efd949204ac90618e4eebdc243c0ab93ee1eeea1d9077cc086d73c6530",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8940
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r2/tare/out/tables/domtblout",
+              "lines": 8676,
+              "body_sha256": "dc32b51d8df2e7acc47bf6de099553cfc9504a506649179b70d2d8e054efa263",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8676
+            }
+          },
+          "decision": "SHIP",
+          "why": "exact replay under pinned normalizer",
+          "phase_names": [
+            "cache_load_s",
+            "cache_store_s",
+            "coverage_read_s",
+            "diff_s",
+            "discovery_build_s",
+            "discovery_s",
+            "discovery_scan_s",
+            "ic2_neighbor_build_s",
+            "ic2_neighbor_s",
+            "ic2_neighbor_scan_s",
+            "ic2_random_20261031_build_s",
+            "ic2_random_20261031_s",
+            "ic2_random_20261031_scan_s",
+            "ic2_random_20261032_build_s",
+            "ic2_random_20261032_s",
+            "ic2_random_20261032_scan_s",
+            "ic2_random_20261033_build_s",
+            "ic2_random_20261033_s",
+            "ic2_random_20261033_scan_s",
+            "merge_rescale_s",
+            "parse_s",
+            "prep_s",
+            "probe_wall_s",
+            "read_output_s",
+            "render_s",
+            "replay_build_s",
+            "replay_plan_s",
+            "replay_s",
+            "replay_scan_s",
+            "subref_build_s",
+            "tool_s",
+            "total_s",
+            "verify_build_s",
+            "verify_s",
+            "verify_scan_s"
+          ]
+        },
+        {
+          "argv": [
+            "sh",
+            "/project2/biyik_1165/jjt_373/csci270-star/tare-w12a/checkout/pipeline/scripts/expert_update_hmmscan.sh",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.1.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/S381.tbl",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/queries.faa",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r2/expert/expert"
+          ],
+          "returncode": 0,
+          "wall_s": 477.0159148420207,
+          "stdout_tail": "3347581/g/GCF_037231045.1_protein.faa.gz/r2/expert/work/batches/b114.hmm.h3m\nSSI index for binary model file:   /scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r2/expert/work/batches/b114.hmm.h3i\nProfiles (MSV part) pressed into:  /scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r2/expert/work/batches/b114.hmm.h3f\nProfiles (remainder) pressed into: /scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r2/expert/work/batches/b114.hmm.h3p\n",
+          "stderr_tail": "",
+          "arm": "expert",
+          "replicate": 2,
+          "order": [
+            "tare",
+            "expert",
+            "stock"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r2/expert/expert.tbl",
+              "lines": 8940,
+              "body_sha256": "e4a770efd949204ac90618e4eebdc243c0ab93ee1eeea1d9077cc086d73c6530",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8940
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r2/expert/expert.dom",
+              "lines": 8676,
+              "body_sha256": "dc32b51d8df2e7acc47bf6de099553cfc9504a506649179b70d2d8e054efa263",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8676
+            }
+          }
+        },
+        {
+          "argv": [
+            "hmmscan",
+            "--cut_ga",
+            "--noali",
+            "--cpu",
+            "32",
+            "--tblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r2/stock/out.tbl",
+            "--domtblout",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r2/stock/out.dom",
+            "-o",
+            "/dev/null",
+            "/scratch1/jjt_373/tare-w12a/13347581/pfam38.2.hmm",
+            "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/queries.faa"
+          ],
+          "returncode": 0,
+          "wall_s": 3030.6935790530406,
+          "stdout_tail": "",
+          "stderr_tail": "",
+          "arm": "stock",
+          "replicate": 2,
+          "order": [
+            "tare",
+            "expert",
+            "stock"
+          ],
+          "tables": {
+            "tbl": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r2/stock/out.tbl",
+              "lines": 8940,
+              "body_sha256": "e4a770efd949204ac90618e4eebdc243c0ab93ee1eeea1d9077cc086d73c6530",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8940
+            },
+            "dom": {
+              "present": true,
+              "path": "/scratch1/jjt_373/tare-w12a/13347581/g/GCF_037231045.1_protein.faa.gz/r2/stock/out.dom",
+              "lines": 8676,
+              "body_sha256": "dc32b51d8df2e7acc47bf6de099553cfc9504a506649179b70d2d8e054efa263",
+              "byte_identical": true,
+              "token_equal": true,
+              "classes": [],
+              "missing_keys": 0,
+              "extra_keys": 0,
+              "lines_stock": 8676
+            }
+          }
+        }
+      ],
+      "power_ok": true,
+      "stopped_for_power": false,
+      "stock_vs_stock_byte_identical": true,
+      "tare_ship": true,
+      "tare_byte_identical": true,
+      "expert_byte_identical": true,
+      "arms_complete": true,
+      "speed_scored": true,
+      "reference_body_lines": {
+        "tbl": 8940,
+        "dom": 8676
+      },
+      "median_wall_s": {
+        "stock": 2842.904550405219,
+        "tare": 566.2258106046356,
+        "expert": 477.0159148420207
+      },
+      "cv": {
+        "stock": 0.10763506855860669,
+        "tare": 0.13793036279850335,
+        "expert": 0.01743995276310336
+      },
+      "cv_above_0_05": {
+        "stock": true,
+        "tare": true,
+        "expert": false
+      },
+      "S_g": {
+        "tare": 5.02079646876123,
+        "expert": 5.95976876651325
+      },
+      "R_g": 0.8424481998315241
+    }
+  ],
+  "pfam_old_sha256": "d3d30c8e6801bfedecf783408ecc98916f8f1dda8974c6e51036fcbdd765f591",
+  "pfam_new_sha256": "2d82087b6c5c60d762cc767f98e8260b273134c215ab7efccf7440614a4e5dab",
+  "full_database_press_wall_s": 89.17817590106279,
+  "hmmscan_version_line": [
+    "# hmmscan :: search sequence(s) against a profile database",
+    "# HMMER 3.4 (Aug 2023); http://hmmer.org/"
+  ],
+  "collection": {
+    "collected_at": "2026-10-25T14:10:00-07:00",
+    "source_carc_path": "/project2/biyik_1165/jjt_373/csci270-star/tare-w12a/checkout/pipeline/results/baselines_exact/server.json",
+    "source_scratch_partial": "/scratch1/jjt_373/tare-w12a/13347581/server_partial.json",
+    "log": "/project2/biyik_1165/jjt_373/csci270-star/tare-w12a/logs/tare-w12a-measured-13347581.out",
+    "sacct_state": "TIMEOUT",
+    "sacct_elapsed": "18:00:09",
+    "sacct_end": "2026-10-25T09:24:41",
+    "disclosure": "Job 13347581 hit the 18h Slurm time limit during untimed prep of measured genome index 3 (GCF_040271735.2). JSON status was still 'running' because SIGKILL followed SIGTERM before on_signal could rewrite status. Three proteomes were fully timed; genome indices 3\u20134 were not. Walls below were not re-scored after collection."
+  },
+  "timeout": {
+    "slurm_job_id": "13347581",
+    "time_limit_h": 18,
+    "completed_genome_indices": [
+      0,
+      1,
+      2
+    ],
+    "completed_stems": [
+      "GCF_018415995.1",
+      "GCF_019969525.1",
+      "GCF_037231045.1"
+    ],
+    "speed_scored_stems": [
+      "GCF_018415995.1",
+      "GCF_037231045.1"
+    ],
+    "not_speed_scored": [
+      {
+        "stem": "GCF_019969525.1",
+        "reason": "tare_ship=False (all three TARE decisions REFUSE)"
+      }
+    ],
+    "remaining_genome_indices": [
+      3,
+      4
+    ],
+    "remaining_stems": [
+      "GCF_040271735.2",
+      "GCF_055807995.1"
+    ],
+    "inflight_at_timeout": "GCF_040271735.2 untimed cache fill / 38.1 stock started; no timed arm walls"
+  },
+  "genomes_speed_scored": 2,
+  "summary_partial_3of5": {
+    "S_g_tare": {
+      "n": 2,
+      "values": [
+        5.323566266485665,
+        5.02079646876123
+      ],
+      "median": 5.172181367623447,
+      "geometric_mean": 5.169965445918148,
+      "min": 5.02079646876123,
+      "max": 5.323566266485665,
+      "bootstrap_n": 10000,
+      "bootstrap_seed": 20261249,
+      "percentile": "linear",
+      "ci95": [
+        5.02079646876123,
+        5.323566266485665
+      ]
+    },
+    "S_g_expert": {
+      "n": 2,
+      "values": [
+        5.5514576356985135,
+        5.95976876651325
+      ],
+      "median": 5.755613201105882,
+      "geometric_mean": 5.751991292227196,
+      "min": 5.5514576356985135,
+      "max": 5.95976876651325,
+      "bootstrap_n": 10000,
+      "bootstrap_seed": 20261249,
+      "percentile": "linear",
+      "ci95": [
+        5.5514576356985135,
+        5.95976876651325
+      ]
+    },
+    "R_g": {
+      "n": 2,
+      "values": [
+        0.9589492734759609,
+        0.8424481998315241
+      ],
+      "median": 0.9006987366537424,
+      "geometric_mean": 0.8988131558725491,
+      "min": 0.8424481998315241,
+      "max": 0.9589492734759609,
+      "bootstrap_n": 10000,
+      "bootstrap_seed": 20261249,
+      "percentile": "linear",
+      "ci95": [
+        0.8424481998315241,
+        0.9589492734759609
+      ]
+    },
+    "n_scored": 2,
+    "scored_genomes": [
+      "GCF_018415995.1",
+      "GCF_037231045.1"
+    ],
+    "not_the_locked_five": true,
+    "note": "Pre-registration: fewer than five scored genomes \u2192 not the locked claim. No re-scoring."
+  }
+}
