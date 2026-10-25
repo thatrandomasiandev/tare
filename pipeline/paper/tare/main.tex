@@ -54,16 +54,15 @@
 \ifdefined\arxivbuild
   \newcommand{\sys}{TARE\xspace}
   \newcommand{\sysexpansion}{Tool Annotation Reuse, Exact}
-  \author{{\rm Joshua Terranova}\\University of Southern California
-    \and {\rm Jiapeng Zhang}\\University of Southern California}
+  % Names only in the arXiv/reading build; author_local.tex (gitignored) overrides this block.
+  \IfFileExists{author_local.tex}{\input{author_local.tex}}{%
+    \author{{\rm Joshua Terranova}\\Thomas Lord Department of Computer Science\\University of Southern California
+      \and {\rm Jiapeng Zhang}\\Thomas Lord Department of Computer Science\\University of Southern California}}
 \else
   \newcommand{\sys}{PARE\xspace}
   \newcommand{\sysexpansion}{Pin And Replay Exact}
-  % Personal names: USENIX author columns in author_local.tex (gitignored).
-\author{Anonymous Submission}
-\hypersetup{pdfauthor={}}
-% Names only in the arXiv/reading build (\arxivbuild set by build_arxiv.sh); the OSDI build stays anonymous.
-\ifdefined\arxivbuild\IfFileExists{author_local.tex}{\input{author_local.tex}}{}\fi
+  \author{Anonymous Submission}
+  \hypersetup{pdfauthor={}}
 \fi
 \newcommand{\pending}[1]{\textcolor{red}{\mbox{[PENDING: #1]}}}
 \newcommand{\tbd}{\textcolor{red}{TBD}}
