@@ -183,10 +183,10 @@ changed (\cref{sec:model}), reruns each protein only against its few candidate f
 Worked numbers for Pfam 38.1$\rightarrow$38.2: pin \texttt{-Z 30134} and, on one genome, replay 3{,}719 candidate families rather than all 30{,}134 (\cref{fig:pin}).
 % source: MEASURED pipeline/results/reference_kill_r1.json z_new=30134; HAS 38.1; HAS 38.2; MEASURED pipeline/results/exact_replay/e1scale.json proteomes.0.candidate_models_E1=3719
 
-We evaluate \sys on four programs: two where it reproduces full runs exactly (HMMER and Infernal) and two it refuses:
-DIAMOND, whose results depend on database order, and BLAST+, whose unpinned probes fit none of \sys's column rules. On Infernal, updates ran about twice as fast as a full rerun; on genomes made of
-a few long DNA sequences, \sys skips two of its sampled checks and relies on the remaining two (\cref{sec:eval-time}).
-Our contributions are:
+We evaluate \sys on four programs: HMMER and Infernal, where it reproduces full runs exactly, and DIAMOND and BLAST+,
+which it refuses. Infernal updates ran about twice as fast as a full rerun, with a reduced check on long\nobreakdash-DNA inputs
+(\cref{sec:eval-time}). Our contributions are:
+
 \begin{enumerate}
   \item \textbf{Exact replay across releases with check\nobreakdash-or\nobreakdash-refuse.} Release\nobreakdash-diff selection and candidate\nobreakdash-only, batched,
   pinned replay that makes an unmodified program print byte\nobreakdash-identical output, guarded by a
@@ -195,13 +195,13 @@ Our contributions are:
   \item \textbf{A root cause for a refusal.} Investigating a failure of our first check revealed why DIAMOND cannot be
   replayed exactly: its first filter reads bytes belonging to the neighboring database entry, so its results depend
   on database order (\cref{sec:eval-safety}).
-  \item \textbf{A pre\nobreakdash-registered evaluation.} Exactness over 715{,}704 output lines, speedups with their run\nobreakdash-to-run
-  variation, known\nobreakdash-bad controls that must refuse, and comparisons with general\nobreakdash-purpose caches and approximate
-  incremental search, from experiments whose design and pass/fail
-% source: MEASURED pipeline/results/exact_replay/exactness_totals.json total_lines=715704 p_up=4.185705269055262e-06
-  rules were committed before they ran (\cref{sec:eval}).
+  \item \textbf{A pre\nobreakdash-registered evaluation.} Exactness over 715{,}704 output lines; Pfam 38.1$\rightarrow$38.2 median
+  $4.24\times$ (Bernoulli audit) and $\HeadlineBoundedMedian\times$ under the $s{=}299$ default (nine genomes; every update
+  byte\nobreakdash-identical); known\nobreakdash-bad controls that must refuse; and comparisons with caches and approximate incremental search,
+  with designs locked before the measured runs (\cref{sec:eval}).
+% source: MEASURED pipeline/results/exact_replay/exactness_totals.json total_lines=715704 p_up=4.185705269055262e-06; MEASURED pipeline/results/exact_replay/headline_carc.json headline_median=4.243202948728078; MEASURED pipeline/results/exact_replay/headline_bounded.json headline_median=3.485836273912707 n_speedups=9 any_fail=false; NOMINAL sbound=299; MEASURED pipeline/results/reference_kill_r1.json; HAS 38.1; HAS 38.2
 \end{enumerate}
-Cite $\HeadlineBoundedMedian\times$ whenever the $s{=}299$ guarantee is claimed; the $4.24\times$ figure is the lighter Bernoulli audit.
+Cite $\HeadlineBoundedMedian\times$ with the $s{=}299$ guarantee; $4.24\times$ is the lighter Bernoulli audit.
 % source: MEASURED pipeline/results/exact_replay/headline_bounded.json headline_median=3.485836273912707; MEASURED pipeline/results/exact_replay/headline_carc.json headline_median=4.243202948728078; NOMINAL sbound=299
 
 % =====================================================================
@@ -392,11 +392,10 @@ compete. On a subset, \sys rewrites that file to the families present, because t
 find. If any member of a declared group changes, \sys re\nobreakdash-searches the whole group, because a change to one member
 can reveal a hit of another that the cache never recorded.
 
-The gate applies refusal rules R1--R6 from \cref{sec:model} as one surface: R1--R3 on the probe (no contract; size
-dependence without a pin; in\nobreakdash-situ pin check), and R4--R6 on the update (non\nobreakdash-candidate pair; pad change; audit).
-Every refusal runs the program in full; \dec{refuse\_pin} (R2/R3) differs from \dec{refuse} only in what it reports: the
-output does decompose, so declaring a working pin could enable replay. Before replaying, the gate also falls back to a
-full run when $f_\Delta$ exceeds the break\nobreakdash-even point $(1-c)/a$ of \cref{eq:cost}; with no timing history it uses 0.80.
+The gate applies R1--R6 from \cref{sec:model} (R1--R3 on the probe; R4--R6 on the update). Every refusal runs the program
+in full; \dec{refuse\_pin} (R2/R3) differs from \dec{refuse} only in reporting that a working pin could enable replay.
+Before replaying, the gate also falls back when $f_\Delta$ exceeds the break\nobreakdash-even point $(1-c)/a$ of \cref{eq:cost}
+(default 0.80 with no timing history).
 % source: MEASURED pipeline/results/breakeven/measured.json threshold_default=0.8; NOMINAL one=1
 
 \subsection{Stage 4: Selection}
@@ -679,17 +678,12 @@ unchanged with 8 hours, a deviation we recorded before the rerun. The largest pe
 as pre\nobreakdash-registered). Filling the cache took a median $1.37\times$ a stock run, so \sys pays for itself on the first update.
 % source: MEASURED pipeline/results/exact_replay/headline_bounded.json headline_median=3.485836273912707 bootstrap_ci95.low=3.3205734893494188 bootstrap_ci95.high=4.101134747066627 geometric_mean=3.6242015105685748 range.0=3.2968696675100615 range.1=4.244800716462076 n_speedups=9 any_fail=false first_run_overhead_median=1.3748997580347246 genomes.0.cv_A=0.16955105293917724 paired_ratio_min=0.6555583678696068 paired_ratio_max=0.9951363979803959 paired_ratio_median=0.8215106173409888; MEASURED pipeline/results/exact_replay/headline_carc.json headline_median=4.243202948728078 bootstrap_ci95.low=4.172363531540619 bootstrap_ci95.high=4.683831507831228; DERIVED cv=100*genomes_0_cv_A; NOMINAL ci=95; NOMINAL three=3; NOMINAL four=4; NOMINAL eight=8; NOMINAL sbound=299; MEASURED pipeline/docs/EXACT_REPLAY_PROTOCOL.md
 
-\textbf{Infernal, with a reduced check.} On Infernal, \sys ships with two of its four safety layers skipped on most
-inputs, and readers should weigh its Infernal speedups accordingly.
+\textbf{Infernal, with a reduced check.}
 \begin{plainbox}{Infernal reduced check (long DNA)}
 When one record holds $>$half the input residues, the sampled audit and the random pads are skipped (an audit of the whole genome \textit{is} a stock run).
 What remains: the neighbor pad and the in\nobreakdash-situ pin check. Speedups below must be read with that caveat; every known\nobreakdash-bad control still refused.
 \end{plainbox}
-The speedup did not at first carry over: only 457 of
-Rfam 15.1's 4{,}227 families (10.8\%) changed, yet in the measured single\nobreakdash-family removal the update took 666\,s against a
-328\,s stock run, exact but $0.49\times$. A bacterial genome is one DNA sequence or a handful, so the audit's record
-sample and the random pads covered the entire genome. We therefore budget those two layers by residues as above;
-the neighbor pad and the in\nobreakdash-situ check always run. The change leaves HMMER's decisions and output byte\nobreakdash-identical on a proteome.
+The need for that rule showed up on a single\nobreakdash-family removal: only 457 of Rfam 15.1's 4{,}227 families (10.8\%) changed, yet the update took 666\,s against a 328\,s stock run ($0.49\times$), exact but slower, because a bacterial genome is one DNA sequence (or a handful) and the full audit covered everything. Budgeting audit and random pads by residues as above leaves HMMER's decisions and proteome output unchanged.
 % source: MEASURED pipeline/results/infernal/family_diff_15.json n_15_1=4227 changed_or_new=457 fraction_changed_or_new=0.10811450201088242; HAS 15.1; MEASURED pipeline/docs/INFERNAL_PROTOCOL.md; TEXT update_s=666.0; TEXT stock_s=328.4; DERIVED frac_pct=100*fraction_changed_or_new; DERIVED sg=stock_s/update_s
 
 With this change, Infernal updates on ten fresh genomes ran a median $S_g = 2.16\times$ faster than stock without clan
@@ -838,7 +832,7 @@ run costs more than INCR's on this 500\nobreakdash-protein input because fixed s
 parse took 48.9\,s, press 9.7\,s, the fill tool 405.5\,s, selection 246.5\,s, and the pin check 151.8\,s, against about
 240\,s stock. On whole genomes the first\nobreakdash-run cost is a median $1.32\times$ stock with a median break\nobreakdash-even of
 0.26 updates, and the headline update still replays only the changed part (\cref{sec:eval-exact}).
-A shared\nobreakdash-contract pilot on $N{=}1$ genome (reusing one fill's contract across genomes) completed two of three planned replicates before an 8\,h TIMEOUT; both shipped exact with first\nobreakdash-run $\rho_C$ 1.55 and 1.40 (mean 1.47). That is better than \cref{tab:baselines}'s $4.20\times$ on 500 proteins, but $r{=}2$ after TIMEOUT is not a locked $N{\in}\{5,20\}$ result---we treat multi\nobreakdash-genome fill cost as still open.
+A shared\nobreakdash-contract pilot ($N{=}1$, reuse one fill's contract) completed $r{=}2$ of 3 planned replicates before an 8\,h TIMEOUT; both shipped exact with first\nobreakdash-run $\rho_C$ 1.55 and 1.40 (mean 1.47), better than \cref{tab:baselines}'s $4.20\times$ on 500 proteins, but not a locked $N{\in}\{5,20\}$ result---multi\nobreakdash-genome fill cost remains open.
 % source: MEASURED pipeline/results/baselines_x86/measured.json systems.incr.mean_paired_ratio=1.5016538545974609 systems.incr.ci95_low=0.872721258401594800186617420 systems.incr.ci95_high=2.130586450793326999813382580 systems.processcache.mean_paired_ratio=14.487587190012003 systems.processcache.ci95_low=14.05616313999156513761127335 systems.processcache.ci95_high=14.91901124003244086238872665 systems.tare.mean_paired_ratio=4.2031065769226535 systems.tare.ci95_low=4.169675298307389414409348942 systems.tare.ci95_high=4.236537855537917585590651058 systems.riker.status="BLOCKED" workload.n_proteins=500 workload.n_models_locked=30134; MEASURED pipeline/results/baselines_x86/measured.json runs.5.decision.phases.parse_s=48.93809331487864 runs.5.decision.phases.prep_s=9.726494803093374 runs.5.decision.phases.tool_s=405.49296357342973 runs.5.decision.phases.discovery_s=246.5162044931203 runs.5.decision.phases.pin_check_s=151.8117145737633 runs.4.wall_s=240.37273310683668; NOMINAL ci=95; HAS 7542; MEASURED pipeline/results/exact_replay/headline_carc.json first_run_overhead_median=1.320843729040477 break_even_n_median=0.25991830789174863; MEASURED pipeline/results/shared_contract/measured_N1.json outcome="TIMEOUT" replicates_completed=2 replicates_planned=3 scores.1.rho.mean=1.473889341472594 scores.1.rho.values.0=1.5493798088928736 scores.1.rho.values.1=1.3983988740523141; NOMINAL eight=8; NOMINAL one=1; NOMINAL three=3; NOMINAL five=5; NOMINAL twenty=20
 
 \begin{figure}[t]
@@ -872,12 +866,10 @@ Attack & Defeating experiment / proof \\
 \end{center}
 % source: NOMINAL sbound=299
 
-\textbf{Same problem outside biology (designed for; measured in bio).} Reference releases that change a global normalizer (IR IDF~\cite{hadjieleftheriou2009incremental,staudinger2024reproducible}, mass\nobreakdash-spec database\nobreakdash-size {FDR}~\cite{frank2011spectral,aggarwal2022fdr}, astronomy catalog priors~\cite{delchambre2023gaia}) force the same pin\nobreakdash-or\nobreakdash-refuse choice when the normalizer is exposed.
-% source: CITED pipeline/docs/NONBIO_LITERATURE.md
-
-\paragraph{Beyond biology (Semgrep).}
-A Semgrep 1.182.1 measured attempt on a dedicated server failed its stock\nobreakdash-vs\nobreakdash-stock control at \texttt{-j 32}: two identical stock runs reported 745 vs.\ 746 findings (\texttt{count\_mismatch} on one rule/location). We do not claim a Semgrep speedup; the finding is that multi\nobreakdash-worker Semgrep is not deterministic enough for \sys's exactness predicate, so a measured run must pin single\nobreakdash-threaded execution (or otherwise stabilize) before any pin\nobreakdash-or\nobreakdash-refuse claim.
-% source: MEASURED pipeline/results/nonbio/semgrep_j32_stock_diff.json j=32 n_findings_run1=745 n_findings_run2=746 diff_class="count_mismatch"; MEASURED pipeline/results/nonbio/semgrep_measured_13415938.json status="FAIL" fail_reason="stock_vs_stock"; HAS 1.182.1; HAS count_mismatch
+\textbf{Beyond biology (designed for; measured in bio).}
+Reference releases that change a global normalizer (IR IDF~\cite{hadjieleftheriou2009incremental,staudinger2024reproducible}, mass\nobreakdash-spec database\nobreakdash-size {FDR}~\cite{frank2011spectral,aggarwal2022fdr}, astronomy catalog priors~\cite{delchambre2023gaia}) force the same pin\nobreakdash-or\nobreakdash-refuse choice when the normalizer is exposed.
+A Semgrep 1.182.1 measured attempt failed its stock\nobreakdash-vs\nobreakdash-stock control at \texttt{-j 32} (745 vs.\ 746 findings, \texttt{count\_mismatch}): multi\nobreakdash-worker Semgrep is not deterministic enough for \sys's exactness predicate, so we claim no Semgrep speedup and require a stabilized (e.g.\ single\nobreakdash-threaded) measured run before any pin\nobreakdash-or\nobreakdash-refuse claim.
+% source: CITED pipeline/docs/NONBIO_LITERATURE.md; MEASURED pipeline/results/nonbio/semgrep_j32_stock_diff.json j=32 n_findings_run1=745 n_findings_run2=746 diff_class="count_mismatch"; MEASURED pipeline/results/nonbio/semgrep_measured_13415938.json status="FAIL" fail_reason="stock_vs_stock"; HAS 1.182.1; HAS count_mismatch
 
 \textbf{Scale (PROJECTED, not measured).} Re-annotating every RefSeq bacterial genome against each new Pfam release is projected to cost
 143 core\nobreakdash-years (range 105--324) for a full stock \texttt{hmmscan} of 2.18 billion proteins, versus 34
