@@ -2,7 +2,7 @@
 
 Hub-only integrate into `pipeline/paper/tare/main.tex`. Experiment branch does not edit `main.tex`.
 
-**Measured status (freeze 05:00 PT Mon 2026-10-26):** exclusive resubmit **13448642** (`-j 16`, `r=2`) was PENDING at submit with `sbatch --test-only` start ≈ **2026-10-26T22:09** PT — after freeze. Locked fallback: paper keeps **pilot (labeled)**, **cost-shape**, **determinism**; measured = **not completed**.
+**Measured status (freeze 05:00 PT Mon 2026-10-26):** exclusive resubmit **13448662** (`-j 16`, `r=2`) was PENDING at submit with `sbatch --test-only` start ≈ **2026-10-26T22:09** PT — after freeze. Locked fallback: paper keeps **pilot (labeled)**, **cost-shape**, **determinism**; measured = **not completed**.
 
 ---
 
@@ -23,7 +23,7 @@ Stock-vs-stock is the gate that catches Semgrep nondeterminism: measured **13415
 Determinism sweep **13447196** then showed all three stock runs identical except `time` at each of `-j ∈ {16,8,4,1}` (746 findings); the largest stable parallelism locked for resubmit is **`-j 16`**.
 % source: pipeline/results/nonbio/semgrep_determinism_13447196.json; pipeline/docs/SEMGREP_PILOT.md §Addendum 2026-10-25
 
-**Measured per-step speedups with CIs:** not available by freeze (job **13448642** not completed). Do not invent walls; if 13448642 finishes later, replace this clause from `pipeline/results/nonbio/semgrep_measured.json` only after hub verification.
+**Measured per-step speedups with CIs:** not available by freeze (job **13448662** not completed). Do not invent walls; if 13448662 finishes later, replace this clause from `pipeline/results/nonbio/semgrep_measured.json` only after hub verification.
 
 ---
 

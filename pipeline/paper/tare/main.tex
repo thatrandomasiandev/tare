@@ -873,8 +873,8 @@ A laptop pilot (labeled) ships release\nobreakdash-pair updates equal to stock e
 % source: MEASURED pipeline/results/nonbio/semgrep_pilot.json; MEASURED pipeline/results/nonbio/semgrep_smoke_13415937.json corpus_subset.n=100; CITED pipeline/docs/SEMGREP_PILOT.md; HAS 1.182.1; HAS 13415937
 Stock\nobreakdash-vs\nobreakdash-stock is the gate that catches Semgrep nondeterminism: measured 13415938 failed at \texttt{-j 32} (745 vs.\ 746 findings; sole miss rule \texttt{identical-is-comparison} at line 651).
 % source: MEASURED pipeline/results/nonbio/semgrep_j32_stock_diff.json j=32 n_findings_run1=745 n_findings_run2=746 finding_diffs.0.start_line=651; MEASURED pipeline/results/nonbio/semgrep_measured_13415938.json; HAS 13415938; CITED pipeline/docs/SEMGREP_PAPER_PROPOSAL.md
-Determinism sweep 13447196 then found three stock runs identical except \texttt{time} at each of \texttt{-j}$\in\{16,8,4,1\}$ (746 findings), locking the exclusive measured resubmit at \texttt{-j 16}; that job (13448642) is not completed for this submission, and we claim no Semgrep speedup.
-% source: MEASURED pipeline/results/nonbio/semgrep_determinism_13447196.json locked_j_candidate=16 by_j.16.n_findings.0=746 reps=3; CITED pipeline/docs/SEMGREP_PAPER_PROPOSAL.md; HAS 13447196; HAS 13448642; NOMINAL sixteen=16; NOMINAL eight=8; NOMINAL four=4; NOMINAL one=1
+Determinism sweep 13447196 then found three stock runs identical except \texttt{time} at each of \texttt{-j}$\in\{16,8,4,1\}$ (746 findings), locking the exclusive measured resubmit at \texttt{-j 16}; that job (13448662) is not completed for this submission, and we claim no Semgrep speedup.
+% source: MEASURED pipeline/results/nonbio/semgrep_determinism_13447196.json locked_j_candidate=16 by_j.16.n_findings.0=746 reps=3; CITED pipeline/docs/SEMGREP_PAPER_PROPOSAL.md; HAS 13447196; HAS 13448662; NOMINAL sixteen=16; NOMINAL eight=8; NOMINAL four=4; NOMINAL one=1
 
 \textbf{Scale (PROJECTED, not measured).} Re-annotating every RefSeq bacterial genome against each new Pfam release is projected to cost
 143 core\nobreakdash-years (range 105--324) for a full stock \texttt{hmmscan} of 2.18 billion proteins, versus 34
