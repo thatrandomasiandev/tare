@@ -199,6 +199,8 @@ Our contributions are:
 % source: MEASURED pipeline/results/exact_replay/exactness_totals.json total_lines=715704 p_up=4.185705269055262e-06
   rules were committed before they ran (\cref{sec:eval}).
 \end{enumerate}
+Cite $\HeadlineBoundedMedian\times$ whenever the $s{=}299$ guarantee is claimed; the $4.24\times$ figure is the lighter Bernoulli audit.
+% source: MEASURED pipeline/results/exact_replay/headline_bounded.json headline_median=3.485836273912707; MEASURED pipeline/results/exact_replay/headline_carc.json headline_median=4.243202948728078; NOMINAL sbound=299
 
 % =====================================================================
 \section{Background}
@@ -942,8 +944,8 @@ Reference databases change every few weeks to months, and the programs that sear
 showed that for programs whose cross\nobreakdash-entry coupling lies in settings they already expose, this is unnecessary: pinning
 those settings lets an unmodified program reprint, byte for byte, the output of a full run while searching only what
 changed, and a check that adds back left\nobreakdash-out entries catches coupling the pin does not cover, as it did for DIAMOND,
-whose filter reads neighboring entries. With the audit sized to a stated bound, hidden coupling that reaches at least 1\% of records ships with probability at most 5\%. Every replayed line across HMMER and Infernal in \cref{tab:exact} was identical to a full rerun. Across seven Pfam releases the fraction that must be rerun ranges from 2.0\% to 93.1\%; the 13.4\% pair is $\HeadlineBoundedMedian\times$ on a dedicated server (median of nine genomes), and a measured chain across five releases stays exact when it ships. Next steps: BLAST+ with its pin, cheaper Infernal fill, and InterProScan.
-% source: MEASURED pipeline/results/release_chain/pairs.json pairs.3.f_delta=0.020132600258732213 pairs.4.f_delta=0.9311802701115678 pairs.6.f_delta=0.13446605163602576; DERIVED small=100*pairs_3_f_delta; DERIVED big=100*pairs_4_f_delta; DERIVED timed=100*pairs_6_f_delta; NOMINAL pct1=1; NOMINAL pct5=5; MEASURED pipeline/results/release_chain/measured.json n_pass=2
+whose filter reads neighboring entries. With the audit sized to a stated bound, hidden coupling that reaches at least 1\% of records ships with probability at most 5\%. Every replayed line across HMMER and Infernal in \cref{tab:exact} was identical to a full rerun. Across seven Pfam releases the fraction that must be rerun ranges from 2.0\% to 93.1\%; the 13.4\% pair is $\HeadlineBoundedMedian\times$ on a dedicated server (median of nine genomes) under the $s{=}299$ default that carries that guarantee---cite that number with the guarantee, not the lighter $4.24\times$ Bernoulli audit---and a measured chain across five releases stays exact when it ships. Next steps: BLAST+ with its pin, cheaper Infernal fill, and InterProScan.
+% source: MEASURED pipeline/results/release_chain/pairs.json pairs.3.f_delta=0.020132600258732213 pairs.4.f_delta=0.9311802701115678 pairs.6.f_delta=0.13446605163602576; DERIVED small=100*pairs_3_f_delta; DERIVED big=100*pairs_4_f_delta; DERIVED timed=100*pairs_6_f_delta; NOMINAL pct1=1; NOMINAL pct5=5; MEASURED pipeline/results/release_chain/measured.json n_pass=2; MEASURED pipeline/results/exact_replay/headline_bounded.json headline_median=3.485836273912707; MEASURED pipeline/results/exact_replay/headline_carc.json headline_median=4.243202948728078; NOMINAL sbound=299
 
 \section*{Availability}
 An anonymized artifact accompanies this submission: \sys, every pre\nobreakdash-registration and addendum, the result files behind each number, and the scripts that regenerate every figure. The repository URL is omitted for double\nobreakdash-blind review.
