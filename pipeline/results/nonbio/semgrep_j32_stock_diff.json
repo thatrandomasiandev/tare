@@ -1,0 +1,22 @@
+{
+  "source_job": 13415938,
+  "j": 32,
+  "n_findings_run1": 745,
+  "n_findings_run2": 746,
+  "wall_s_run1": 396.871695461683,
+  "wall_s_run2": 388.94623571727425,
+  "diff_class": "count_mismatch",
+  "finding_diffs": [
+    {
+      "check_id": "identical-is-comparison",
+      "file": "0809.py",
+      "start_line": 651,
+      "start_col": 8,
+      "end_line": 651,
+      "end_col": 28,
+      "count_run1": 0,
+      "count_run2": 1
+    }
+  ],
+  "source_measured_json": "pipeline/results/nonbio/semgrep_measured_13415938.json"
+}

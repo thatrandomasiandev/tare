@@ -1,0 +1,380 @@
+{
+  "protocol": "semgrep_measured",
+  "pre_reg": "pipeline/docs/SEMGREP_PILOT.md#carc-measured-pre-registration-locked-2026-10-24",
+  "mode": "smoke",
+  "status": "SHIP",
+  "started_utc": "2026-10-25T05:27:11.407219+00:00",
+  "git_head": "00734df8892b4af88b655d3b60def67db5c3290a",
+  "frozen_commit": "00734df8892b4af88b655d3b60def67db5c3290a",
+  "seeds": {
+    "corpus": 20261351,
+    "releases": 20261352,
+    "errors_dep": 20261353,
+    "smoke_subset": 20261354
+  },
+  "corpus_subset": {
+    "n": 100,
+    "seed": 20261354,
+    "from_n": 1000,
+    "names": [
+      "0000.py",
+      "0013.py",
+      "0018.py",
+      "0021.py",
+      "0026.py",
+      "0032.py",
+      "0035.py",
+      "0060.py",
+      "0063.py",
+      "0079.py",
+      "0089.py",
+      "0094.py",
+      "0098.py",
+      "0118.py",
+      "0123.py",
+      "0137.py",
+      "0140.py",
+      "0151.py",
+      "0154.py",
+      "0160.py",
+      "0163.py",
+      "0166.py",
+      "0177.py",
+      "0185.py",
+      "0192.py",
+      "0196.py",
+      "0201.py",
+      "0204.py",
+      "0210.py",
+      "0221.py",
+      "0223.py",
+      "0233.py",
+      "0237.py",
+      "0242.py",
+      "0253.py",
+      "0259.py",
+      "0291.py",
+      "0294.py",
+      "0328.py",
+      "0339.py",
+      "0340.py",
+      "0344.py",
+      "0351.py",
+      "0382.py",
+      "0396.py",
+      "0418.py",
+      "0419.py",
+      "0422.py",
+      "0424.py",
+      "0430.py",
+      "0444.py",
+      "0448.py",
+      "0450.py",
+      "0457.py",
+      "0462.py",
+      "0466.py",
+      "0472.py",
+      "0481.py",
+      "0486.py",
+      "0491.py",
+      "0493.py",
+      "0497.py",
+      "0501.py",
+      "0509.py",
+      "0528.py",
+      "0564.py",
+      "0576.py",
+      "0583.py",
+      "0584.py",
+      "0590.py",
+      "0608.py",
+      "0620.py",
+      "0644.py",
+      "0658.py",
+      "0665.py",
+      "0670.py",
+      "0683.py",
+      "0695.py",
+      "0705.py",
+      "0714.py",
+      "0716.py",
+      "0750.py",
+      "0764.py",
+      "0776.py",
+      "0778.py",
+      "0813.py",
+      "0816.py",
+      "0845.py",
+      "0851.py",
+      "0890.py",
+      "0893.py",
+      "0904.py",
+      "0917.py",
+      "0926.py",
+      "0932.py",
+      "0947.py",
+      "0973.py",
+      "0975.py",
+      "0991.py",
+      "0992.py"
+    ],
+    "names_sha256": "eaf1763f240fdd597dd92ae75e5f239f9266187e38ec044d4fe2498498b39bd3"
+  },
+  "semgrep": {
+    "path": "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+    "version": "1.182.1",
+    "sha256": "2728b88bb81ae2d1b15dcf4d5b7138c4025c9b29cc797c3d812587d030337d7c",
+    "flags": [
+      "--json",
+      "--no-rewrite-rule-ids",
+      "--metrics=off",
+      "--disable-version-check",
+      "--timeout",
+      "0",
+      "--timeout-threshold",
+      "0",
+      "--max-memory",
+      "0",
+      "-j",
+      "8"
+    ],
+    "wrapper": true,
+    "image_tag": "semgrep/semgrep:1.182.1",
+    "image_digest": "sha256:451b3d875c00dac7ed5db5293e584a07de11449a409c10b3c2d2652f429630b6",
+    "image_sif": "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/images/semgrep_1.182.1.sif",
+    "image_sif_sha256": "44921f9de406d6d2f278da2fa78eae1aa57fcf02c93b8d953f98e026939316bc"
+  },
+  "host": {
+    "iso_utc": "2026-10-25T05:27:15.958422+00:00",
+    "hostname": "d05-37.hpc.usc.edu",
+    "uptime": " 22:27:15 up 36 days,  2:16,  0 users,  load average: 7.12, 7.70, 8.03",
+    "cpu_model": "Intel(R) Xeon(R) Silver 4116 CPU @ 2.10GHz",
+    "nproc": "8",
+    "lscpu": "Architecture:        x86_64\nCPU op-mode(s):      32-bit, 64-bit\nByte Order:          Little Endian\nCPU(s):              24\nOn-line CPU(s) list: 0-23\nThread(s) per core:  1\nCore(s) per socket:  12\nSocket(s):           2\nNUMA node(s):        2\nVendor ID:           GenuineIntel\nCPU family:          6\nModel:               85\nModel name:          Intel(R) Xeon(R) Silver 4116 CPU @ 2.10GHz\nStepping:            4\nCPU MHz:             2423.689\nBogoMIPS:            4200.00\nL1d cache:           32K\nL1i cache:           32K\nL2 cache:            1024K\nL3 cache:            16896K\nNUMA node0 CPU(s):   0-11\nNUMA node1 CPU(s):   12-23\nFlags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3 invpcid_single pti intel_ppin ssbd mba ibrs ibpb stibp fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm cqm mpx rdt_a avx512f avx512dq rdseed adx smap clflushopt clwb intel_pt avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts pku ospke md_clear flush_l1d",
+    "slurm_job_id": "13415937",
+    "slurm_nodelist": "d05-37"
+  },
+  "chain": {
+    "seed": 20261352,
+    "n_candidate_windows": 374,
+    "window_index": 351,
+    "commits_oldest_to_newest": [
+      "f5bc5017d3ba026fcf805118eaca4e58acf2de54",
+      "9a23c1aafa8c5a9fc1954c1c93b353ca90f2b6b0",
+      "f63062f8cfae821739a8e2c092669cd74e3a803d"
+    ],
+    "subjects": [
+      "New Published Rules - python.django.security.audit.csrf-exempt (#758)",
+      "Removal potential false positives in python.requests.best-practice.use-raise-for-status (#762)",
+      "New Published Rules - python.flask.security.audit.directly-returned-format-string (#768)"
+    ],
+    "n_python_rule_commits_scanned": 376
+  },
+  "releases_sha256": [
+    "6b9ec04a3c4d3d46b2aa30fc8a762b5fa22dfeead38eced68906f64c27b03146",
+    "157440dd3537795a50e13962abe6ed8884cc35e7e1f9dabfcaefa83bb9214e9b",
+    "55acc3f9a4afb294400351d594993b15726d07b4577964a43b57abfe8ee84cb3"
+  ],
+  "corpus_meta": {
+    "seed": 20261351,
+    "n_files": 1000,
+    "site_packages": "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages",
+    "eligible_pool": 23742,
+    "skipped_path": 906,
+    "skipped_hash": 1992,
+    "excl_paths_n": 3754,
+    "excl_hashes_n": 3571,
+    "manifest_sha256": "86e7f26a4bc0a0e5dd2c7bb52bbb242c4c74e86f9e71e95deda4ed66497cd584",
+    "path_list_sha256": "ce1943c4a5994406726e24fb0bb31edc40729a7ce516bdb59345403190d6d3a4",
+    "records_sha256": "a294695d794a8d8b05fb1cc34bd0452b88edb18b95398554336c18da8298823f",
+    "disjoint_from": [
+      "G1 ~/tmp/tare_g1/semgrep/target (path+sha256)",
+      "P2 ~/tmp/tare_semgrep_p2/corpus (path+sha256)"
+    ]
+  },
+  "runs": [
+    {
+      "step": "A_to_B",
+      "rep": 0,
+      "stock": {
+        "rc": 0,
+        "wall_s": 89.12575240060687,
+        "n_findings": 19,
+        "n_errors": 11,
+        "out_sha256": "8068ca8437caa7dbfc9a4129c81f98a6d1f63e4b1909e4a5eddf4e2f3d7c2751",
+        "argv": [
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+          "--config",
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/assets/rules/rules_9a23c1aafa8c.yaml",
+          "--json",
+          "--no-rewrite-rule-ids",
+          "--metrics=off",
+          "--disable-version-check",
+          "--timeout",
+          "...(100 inputs)"
+        ],
+        "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 100 files tracked by git with 216 Code rules:\n  Scanning 100 files with 216 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 19 (19 blocking)\n \u2022 Rules run: 216\n \u2022 Targets scanned: 100\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 216 rules on 100 files: 19 findings.\n"
+      },
+      "tare": {
+        "rc": 0,
+        "wall_s": 183.40995399001986,
+        "decision": "SHIP",
+        "why": "exact replay under identity normalizer",
+        "out_path": "/scratch1/jjt_373/tare-semgrep/smoke_13415937/tare_A_to_B_r0/tables/out",
+        "out_sha256": "8718e917b6df5bf0992a3f71b6a450c338b58d104dfd0c358c52f4717a458798",
+        "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/smoke_13415937/tare_A_to_B_r0/decision.txt\n",
+        "stderr_tail": ""
+      },
+      "compare": {
+        "equal_except_time": true,
+        "diff_keys": [],
+        "diff_class": null
+      }
+    }
+  ],
+  "controls": {
+    "stock_vs_stock": {
+      "pass": true,
+      "compare": {
+        "equal_except_time": true,
+        "diff_keys": [],
+        "diff_class": null
+      },
+      "run1": {
+        "rc": 0,
+        "wall_s": 89.25176747795194,
+        "n_findings": 19,
+        "n_errors": 11,
+        "out_sha256": "30d05ea5015aa23e056cb8a8cc8e32b518d5eee9742b0003146db00a6b89b8df",
+        "argv": [
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+          "--config",
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/assets/rules/rules_9a23c1aafa8c.yaml",
+          "--json",
+          "--no-rewrite-rule-ids",
+          "--metrics=off",
+          "--disable-version-check",
+          "--timeout",
+          "...(100 inputs)"
+        ],
+        "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 100 files tracked by git with 216 Code rules:\n  Scanning 100 files with 216 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 19 (19 blocking)\n \u2022 Rules run: 216\n \u2022 Targets scanned: 100\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 216 rules on 100 files: 19 findings.\n"
+      },
+      "run2": {
+        "rc": 0,
+        "wall_s": 87.59532069694251,
+        "n_findings": 19,
+        "n_errors": 11,
+        "out_sha256": "7f1b764554f9a6612fb46ec3ffb40efadabf3bcfbd07bd638aadfa5a44217c37",
+        "argv": [
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+          "--config",
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/assets/rules/rules_9a23c1aafa8c.yaml",
+          "--json",
+          "--no-rewrite-rule-ids",
+          "--metrics=off",
+          "--disable-version-check",
+          "--timeout",
+          "...(100 inputs)"
+        ],
+        "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 100 files tracked by git with 216 Code rules:\n  Scanning 100 files with 216 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 19 (19 blocking)\n \u2022 Rules run: 216\n \u2022 Targets scanned: 100\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 216 rules on 100 files: 19 findings.\n"
+      }
+    }
+  },
+  "scores": {
+    "steps": [
+      {
+        "step": "A_to_B",
+        "r": 1,
+        "stock_walls": [
+          89.12575240060687
+        ],
+        "tare_walls": [
+          183.40995399001986
+        ],
+        "median_stock": 89.12575240060687,
+        "median_tare": 183.40995399001986,
+        "S": 0.48593737941538656,
+        "cv_stock": null,
+        "cv_tare": null,
+        "all_ship_ok": true,
+        "advance": {
+          "rc": 0,
+          "wall_s": 182.83730295486748,
+          "decision": "SHIP",
+          "why": "exact replay under identity normalizer",
+          "out_path": "/scratch1/jjt_373/tare-semgrep/smoke_13415937/advance_A_to_B/tables/out",
+          "out_sha256": "3aa609b8d52aae6b5d3f365a600a4521f82cc457a0561d5a057d10a5fc69f225",
+          "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/smoke_13415937/advance_A_to_B/decision.txt\n",
+          "stderr_tail": ""
+        },
+        "runs": [
+          {
+            "rep": 0,
+            "stock": {
+              "rc": 0,
+              "wall_s": 89.12575240060687,
+              "n_findings": 19,
+              "n_errors": 11,
+              "out_sha256": "8068ca8437caa7dbfc9a4129c81f98a6d1f63e4b1909e4a5eddf4e2f3d7c2751",
+              "argv": [
+                "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+                "--config",
+                "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/assets/rules/rules_9a23c1aafa8c.yaml",
+                "--json",
+                "--no-rewrite-rule-ids",
+                "--metrics=off",
+                "--disable-version-check",
+                "--timeout",
+                "...(100 inputs)"
+              ],
+              "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 100 files tracked by git with 216 Code rules:\n  Scanning 100 files with 216 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 19 (19 blocking)\n \u2022 Rules run: 216\n \u2022 Targets scanned: 100\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 216 rules on 100 files: 19 findings.\n"
+            },
+            "tare": {
+              "rc": 0,
+              "wall_s": 183.40995399001986,
+              "decision": "SHIP",
+              "why": "exact replay under identity normalizer",
+              "out_path": "/scratch1/jjt_373/tare-semgrep/smoke_13415937/tare_A_to_B_r0/tables/out",
+              "out_sha256": "8718e917b6df5bf0992a3f71b6a450c338b58d104dfd0c358c52f4717a458798",
+              "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/smoke_13415937/tare_A_to_B_r0/decision.txt\n",
+              "stderr_tail": ""
+            },
+            "compare": {
+              "equal_except_time": true,
+              "diff_keys": [],
+              "diff_class": null
+            },
+            "ship_ok": true
+          }
+        ]
+      }
+    ],
+    "payback": {
+      "fill_wall_s": 559.656963871792,
+      "sum_median_tare_s": 183.40995399001986,
+      "sum_median_stock_s": 89.12575240060687,
+      "tare_chain_s": 743.0669178618118,
+      "ratio_stock_over_tare_chain": 0.1199431037208167,
+      "note": "Payback uses medians over r; fill counted once; refusals counted in runs"
+    },
+    "all_ship_stock_identical": true
+  },
+  "power": {
+    "n_findings_newest": 19,
+    "floor": null,
+    "met": null,
+    "enforced": false
+  },
+  "fill_A": {
+    "rc": 0,
+    "wall_s": 559.656963871792,
+    "decision": "SHIP",
+    "why": "exact replay under identity normalizer",
+    "out_path": "/scratch1/jjt_373/tare-semgrep/smoke_13415937/fill_A/tables/out",
+    "out_sha256": "6e7859353515b6bcd5a068ff9f5e6615bff91a21f319d30a16a8b1b73eab9714",
+    "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/smoke_13415937/fill_A/decision.txt\n",
+    "stderr_tail": ""
+  },
+  "verdict": "PASS",
+  "finished_utc": "2026-10-25T05:47:07.898644+00:00"
+}
