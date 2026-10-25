@@ -24,6 +24,18 @@ def main() -> int:
         return 2
     payload = load_json(dest)
     write_json(OUT, payload)
+    verdict = payload.get("verdict")
+    if verdict != "COMPLETE":
+        # Provenance kept; leave ISeqSearchSpeedup pending (no speed claim).
+        why = payload.get("why") or verdict
+        controls = payload.get("controls") or {}
+        status_line(
+            "W12b",
+            "COLLECTED",
+            f"verdict={verdict} no-fill why={why} "
+            f"tare_refused={controls.get('tare_refused')}",
+        )
+        return 0
     status_line("W12b", "COLLECTED", str(OUT.relative_to(REPO)))
     return 0
 

@@ -1,0 +1,438 @@
+{
+  "S_pred": 4.0832874372486945,
+  "a": 1.0146410126797523,
+  "any_cv_flag": true,
+  "any_fail": false,
+  "audit_mode": "bounded",
+  "audit_s_target": 299,
+  "bootstrap_ci95": {
+    "high": 4.101134747066627,
+    "low": 3.3205734893494188,
+    "quantile": "empirical cdf, ceil(p*n)-1",
+    "resamples": 10000,
+    "seed": 20261047
+  },
+  "break_even_n_median": 0.3948361503378582,
+  "c": 0.10846594102974193,
+  "dropped": 0,
+  "f": 0.13446605163602576,
+  "first_run_overhead_median": 1.3748997580347246,
+  "genomes": [
+    {
+      "S_g": 4.244800716462076,
+      "S_pred": 4.0832874372486945,
+      "break_even_n": 0.06998656313491283,
+      "completed": true,
+      "cpu_A_median_s": 4313.297637000001,
+      "cpu_B_median_s": 878.1131939999996,
+      "cpu_ratio": 4.9120064092784865,
+      "cv_A": 0.16955105293917724,
+      "cv_B": 0.017807988589740222,
+      "cv_flag_A": true,
+      "cv_flag_B": false,
+      "fail_reasons": [],
+      "first_run_overhead": 1.3748997580347246,
+      "flags": [
+        "CV A 0.1696"
+      ],
+      "job_id": "13260162",
+      "outcome": "EXACT",
+      "path": "pipeline/results/exact_replay/_w13_staging/headline_bounded_13260162_0.json",
+      "prediction_error": 0.03804967300043202,
+      "proteome": "GCF_002302335.1",
+      "shape_ok": true,
+      "stock_median_s": 2821.3261588849127,
+      "stock_walls_s": [
+        3264.0774753317237,
+        2821.3261588849127,
+        2315.2251606518403
+      ],
+      "stopped": null,
+      "tare_median_s": 664.65456150705,
+      "tare_walls_s": [
+        664.65456150705,
+        658.6411732216366,
+        681.5923236701638
+      ],
+      "task": 0
+    },
+    {
+      "S_g": 4.101134747066627,
+      "S_pred": 4.0832874372486945,
+      "break_even_n": 0.08007216317123891,
+      "completed": true,
+      "cpu_A_median_s": 4245.277808,
+      "cpu_B_median_s": 932.633949,
+      "cpu_ratio": 4.5519228766569375,
+      "cv_A": 0.10851540876529779,
+      "cv_B": 0.01822803681363556,
+      "cv_flag_A": true,
+      "cv_flag_B": false,
+      "fail_reasons": [],
+      "first_run_overhead": 1.4016535489978585,
+      "flags": [
+        "CV A 0.1085"
+      ],
+      "job_id": "13260162",
+      "outcome": "EXACT",
+      "path": "pipeline/results/exact_replay/_w13_staging/headline_bounded_13260162_1.json",
+      "prediction_error": 0.004351797958040334,
+      "proteome": "GCF_009433135.1",
+      "shape_ok": true,
+      "stock_median_s": 2926.3759580170736,
+      "stock_walls_s": [
+        2484.850621720776,
+        3075.0330448551103,
+        2926.3759580170736
+      ],
+      "stopped": null,
+      "tare_median_s": 713.552745398134,
+      "tare_walls_s": [
+        692.8117147702724,
+        713.552745398134,
+        716.4660199740902
+      ],
+      "task": 1
+    },
+    {
+      "S_g": 3.918722824082088,
+      "S_pred": 4.0832874372486945,
+      "break_even_n": 0.13063853622660493,
+      "completed": true,
+      "cpu_A_median_s": 4132.087790000001,
+      "cpu_B_median_s": 921.6652169999988,
+      "cpu_ratio": 4.48328494314873,
+      "cv_A": 0.16729772680439972,
+      "cv_B": 0.010469149530061093,
+      "cv_flag_A": true,
+      "cv_flag_B": false,
+      "fail_reasons": [],
+      "first_run_overhead": 1.3630114161777478,
+      "flags": [
+        "CV A 0.1673"
+      ],
+      "job_id": "13260162",
+      "outcome": "EXACT",
+      "path": "pipeline/results/exact_replay/_w13_staging/headline_bounded_13260162_2.json",
+      "prediction_error": 0.041994450884684224,
+      "proteome": "GCF_009948655.1",
+      "shape_ok": true,
+      "stock_median_s": 2769.6773990420625,
+      "stock_walls_s": [
+        2491.4074430027977,
+        3435.198745836038,
+        2769.6773990420625
+      ],
+      "stopped": null,
+      "tare_median_s": 706.780633226037,
+      "tare_walls_s": [
+        698.9840878662653,
+        713.7698934520595,
+        706.780633226037
+      ],
+      "task": 2
+    },
+    {
+      "S_g": 3.485836273912707,
+      "S_pred": 4.0832874372486945,
+      "break_even_n": 0.69786506947405,
+      "completed": true,
+      "cpu_A_median_s": 3587.385550999999,
+      "cpu_B_median_s": 862.8850689999999,
+      "cpu_ratio": 4.15743148175855,
+      "cv_A": 0.0954926169420097,
+      "cv_B": 0.01708864154378995,
+      "cv_flag_A": true,
+      "cv_flag_B": false,
+      "fail_reasons": [],
+      "first_run_overhead": 1.2431393196664373,
+      "flags": [
+        "CV A 0.0955"
+      ],
+      "job_id": "13260162",
+      "outcome": "EXACT",
+      "path": "pipeline/results/exact_replay/_w13_staging/headline_bounded_13260162_3.json",
+      "prediction_error": 0.1713939257007539,
+      "proteome": "GCF_022559285.1",
+      "shape_ok": true,
+      "stock_median_s": 2271.7619391032495,
+      "stock_walls_s": [
+        2655.0309522482567,
+        2248.199958543759,
+        2271.7619391032495
+      ],
+      "stopped": null,
+      "tare_median_s": 651.7121748100035,
+      "tare_walls_s": [
+        668.2215928491205,
+        646.8476267568767,
+        651.7121748100035
+      ],
+      "task": 3
+    },
+    {
+      "S_g": 3.529044094847676,
+      "S_pred": 4.0832874372486945,
+      "break_even_n": 0.37779022835621606,
+      "completed": true,
+      "cpu_A_median_s": 3836.2677079999985,
+      "cpu_B_median_s": 902.6322850000015,
+      "cpu_ratio": 4.25008918000312,
+      "cv_A": 0.0028576438797497917,
+      "cv_B": 0.009987975226176966,
+      "cv_flag_A": false,
+      "cv_flag_B": false,
+      "fail_reasons": [],
+      "first_run_overhead": 1.3894973206235597,
+      "flags": [],
+      "job_id": "13260162",
+      "outcome": "EXACT",
+      "path": "pipeline/results/exact_replay/_w13_staging/headline_bounded_13260162_4.json",
+      "prediction_error": 0.15705197427547063,
+      "proteome": "GCF_030347155.1",
+      "shape_ok": true,
+      "stock_median_s": 2399.1039514900185,
+      "stock_walls_s": [
+        2409.992893762421,
+        2397.307218460832,
+        2399.1039514900185
+      ],
+      "stopped": null,
+      "tare_median_s": 679.8169382447377,
+      "tare_walls_s": [
+        688.4492757506669,
+        675.0256580654532,
+        679.8169382447377
+      ],
+      "task": 4
+    },
+    {
+      "S_g": 3.2968696675100615,
+      "S_pred": 4.0832874372486945,
+      "break_even_n": 0.4309454325011961,
+      "completed": true,
+      "cpu_A_median_s": 3295.357432,
+      "cpu_B_median_s": 803.3453989999998,
+      "cpu_ratio": 4.102043076492432,
+      "cv_A": 0.007367945876816498,
+      "cv_B": 0.011032803164417515,
+      "cv_flag_A": false,
+      "cv_flag_B": false,
+      "fail_reasons": [],
+      "first_run_overhead": 1.1108015642748252,
+      "flags": [],
+      "job_id": "13260162",
+      "outcome": "EXACT",
+      "path": "pipeline/results/exact_replay/_w13_staging/headline_bounded_13260162_5.json",
+      "prediction_error": 0.23853468564093092,
+      "proteome": "GCF_049949335.1",
+      "shape_ok": true,
+      "stock_median_s": 2062.069161729887,
+      "stock_walls_s": [
+        2037.7439757487737,
+        2062.069161729887,
+        2065.5287201232277
+      ],
+      "stopped": null,
+      "tare_median_s": 625.4627479063347,
+      "tare_walls_s": [
+        615.2439103922807,
+        628.3168375538662,
+        625.4627479063347
+      ],
+      "task": 5
+    },
+    {
+      "S_g": 3.448565369920655,
+      "S_pred": 4.0832874372486945,
+      "break_even_n": 0.3948361503378582,
+      "completed": true,
+      "cpu_A_median_s": 3404.6222420000004,
+      "cpu_B_median_s": 831.9593740000009,
+      "cpu_ratio": 4.0922938648203715,
+      "cv_A": 0.036436528097120044,
+      "cv_B": 0.011656478635252288,
+      "cv_flag_A": false,
+      "cv_flag_B": false,
+      "fail_reasons": [],
+      "first_run_overhead": 1.4293219063122644,
+      "flags": [],
+      "job_id": "13260162",
+      "outcome": "EXACT",
+      "path": "pipeline/results/exact_replay/_w13_staging/headline_bounded_13260162_6.json",
+      "prediction_error": 0.18405394685693413,
+      "proteome": "GCF_054388855.1",
+      "shape_ok": true,
+      "stock_median_s": 2167.4397576670162,
+      "stock_walls_s": [
+        2167.4397576670162,
+        2115.743554886896,
+        2272.021300818771
+      ],
+      "stopped": null,
+      "tare_median_s": 628.5047621750273,
+      "tare_walls_s": [
+        628.5047621750273,
+        619.2813780629076,
+        633.7180505287834
+      ],
+      "task": 6
+    },
+    {
+      "S_g": 3.4047696476095624,
+      "S_pred": 4.0832874372486945,
+      "break_even_n": 0.40457160873622977,
+      "completed": true,
+      "cpu_A_median_s": 3413.678187,
+      "cpu_B_median_s": 825.9809159999995,
+      "cpu_ratio": 4.132877795205625,
+      "cv_A": 0.10582424751922988,
+      "cv_B": 0.01936522849072374,
+      "cv_flag_A": true,
+      "cv_flag_B": false,
+      "fail_reasons": [],
+      "first_run_overhead": 1.1431072850378998,
+      "flags": [
+        "CV A 0.1058"
+      ],
+      "job_id": "13260162",
+      "outcome": "EXACT",
+      "path": "pipeline/results/exact_replay/_w13_staging/headline_bounded_13260162_7.json",
+      "prediction_error": 0.19928449201123175,
+      "proteome": "GCF_055556535.1",
+      "shape_ok": true,
+      "stock_median_s": 2149.9597056056373,
+      "stock_walls_s": [
+        2559.1781183397397,
+        2149.9597056056373,
+        2132.8610271168873
+      ],
+      "stopped": null,
+      "tare_median_s": 631.4552607443184,
+      "tare_walls_s": [
+        645.0485125286505,
+        620.6078737676144,
+        631.4552607443184
+      ],
+      "task": 7
+    },
+    {
+      "S_g": 3.3205734893494188,
+      "S_pred": 4.0832874372486945,
+      "break_even_n": 0.4361584998220905,
+      "completed": true,
+      "cpu_A_median_s": 3367.3906430000006,
+      "cpu_B_median_s": 832.9762230000006,
+      "cpu_ratio": 4.042601157176126,
+      "cv_A": 0.01058549020063506,
+      "cv_B": 0.005714057311199928,
+      "cv_flag_A": false,
+      "cv_flag_B": false,
+      "fail_reasons": [],
+      "first_run_overhead": 1.4264523632225774,
+      "flags": [],
+      "job_id": "13260162",
+      "outcome": "EXACT",
+      "path": "pipeline/results/exact_replay/_w13_staging/headline_bounded_13260162_8.json",
+      "prediction_error": 0.22969344010775378,
+      "proteome": "GCF_061234675.1",
+      "shape_ok": true,
+      "stock_median_s": 2104.943185758777,
+      "stock_walls_s": [
+        2104.943185758777,
+        2115.5243583931588,
+        2072.8793135811575
+      ],
+      "stopped": null,
+      "tare_median_s": 633.9095317451283,
+      "tare_walls_s": [
+        639.6475492659956,
+        633.9095317451283,
+        632.9231283650734
+      ],
+      "task": 8
+    }
+  ],
+  "geometric_mean": 3.6242015105685748,
+  "headline_median": 3.485836273912707,
+  "job_array": "13260162_[0-8]",
+  "max_prediction_error": 0.23853468564093092,
+  "n_files": 9,
+  "n_speedups": 9,
+  "paired_ratio_max": 0.9951363979803959,
+  "paired_ratio_median": 0.8215106173409888,
+  "paired_ratio_min": 0.6555583678696068,
+  "paired_vs_bernoulli_headline": {
+    "genomes": [
+      {
+        "S_g_bounded": 4.244800716462076,
+        "S_g_original": 4.265546637703928,
+        "proteome": "GCF_002302335.1",
+        "ratio_bounded_over_original": 0.9951363979803959
+      },
+      {
+        "S_g_bounded": 4.101134747066627,
+        "S_g_original": 4.231789700624204,
+        "proteome": "GCF_009433135.1",
+        "ratio_bounded_over_original": 0.9691253670903579
+      },
+      {
+        "S_g_bounded": 3.918722824082088,
+        "S_g_original": 4.133848860006259,
+        "proteome": "GCF_009948655.1",
+        "ratio_bounded_over_original": 0.947959869068884
+      },
+      {
+        "S_g_bounded": 3.485836273912707,
+        "S_g_original": 4.243202948728078,
+        "proteome": "GCF_022559285.1",
+        "ratio_bounded_over_original": 0.8215106173409888
+      },
+      {
+        "S_g_bounded": 3.529044094847676,
+        "S_g_original": 4.172363531540619,
+        "proteome": "GCF_030347155.1",
+        "ratio_bounded_over_original": 0.8458141454286459
+      },
+      {
+        "S_g_bounded": 3.2968696675100615,
+        "S_g_original": 4.599361274428973,
+        "proteome": "GCF_049949335.1",
+        "ratio_bounded_over_original": 0.7168103288253606
+      },
+      {
+        "S_g_bounded": 3.448565369920655,
+        "S_g_original": 4.683831507831228,
+        "proteome": "GCF_054388855.1",
+        "ratio_bounded_over_original": 0.7362701591965372
+      },
+      {
+        "S_g_bounded": 3.4047696476095624,
+        "S_g_original": 4.215987201591899,
+        "proteome": "GCF_055556535.1",
+        "ratio_bounded_over_original": 0.8075853850609338
+      },
+      {
+        "S_g_bounded": 3.3205734893494188,
+        "S_g_original": 5.065259864107012,
+        "proteome": "GCF_061234675.1",
+        "ratio_bounded_over_original": 0.6555583678696068
+      }
+    ],
+    "original_bootstrap_ci95": {
+      "high": 4.683831507831228,
+      "low": 4.172363531540619,
+      "quantile": "empirical cdf, ceil(p*n)-1",
+      "resamples": 10000,
+      "seed": 20261047
+    },
+    "original_headline_median": 4.243202948728078,
+    "original_source": "pipeline/results/exact_replay/headline_carc.json"
+  },
+  "protocol": "pipeline/docs/EXACT_REPLAY_PROTOCOL.md",
+  "range": [
+    3.2968696675100615,
+    4.244800716462076
+  ],
+  "test": "headline-bounded"
+}
