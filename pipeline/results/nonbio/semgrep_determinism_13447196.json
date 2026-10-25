@@ -1,0 +1,329 @@
+{
+  "protocol": "semgrep_determinism_sweep",
+  "status": "DONE",
+  "started_utc": "2026-10-25T21:06:26.322959+00:00",
+  "git_head": "ea3d49b9bd0f74639d511791df982f8c43e90f9a",
+  "frozen_commit": "00734df8892b4af88b655d3b60def67db5c3290a",
+  "corpus_seed": 20261351,
+  "release_seed": 20261352,
+  "newest_rules": "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/assets/rules/rules_f63062f8cfae.yaml",
+  "newest_commit": "f63062f8cfae821739a8e2c092669cd74e3a803d",
+  "reps": 3,
+  "jobs_planned": [
+    16,
+    8,
+    4,
+    1
+  ],
+  "semgrep": {
+    "path": "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+    "version": "1.182.1",
+    "sha256": "2728b88bb81ae2d1b15dcf4d5b7138c4025c9b29cc797c3d812587d030337d7c",
+    "base_flags": [
+      "--json",
+      "--no-rewrite-rule-ids",
+      "--metrics=off",
+      "--disable-version-check",
+      "--timeout",
+      "0",
+      "--timeout-threshold",
+      "0",
+      "--max-memory",
+      "0"
+    ],
+    "image_tag": "semgrep/semgrep:1.182.1",
+    "image_digest": "sha256:451b3d875c00dac7ed5db5293e584a07de11449a409c10b3c2d2652f429630b6",
+    "image_sif_sha256": "44921f9de406d6d2f278da2fa78eae1aa57fcf02c93b8d953f98e026939316bc"
+  },
+  "host": {
+    "hostname": "a02-17.hpc.usc.edu",
+    "nproc": "16",
+    "slurm_job_id": "13447196",
+    "slurm_nodelist": "a02-17",
+    "cpu_model": "AMD EPYC 7513 32-Core Processor"
+  },
+  "j32_failed_pair_diff": {
+    "source_job": 13415938,
+    "note": "run1 745 vs run2 746; multiset diff recorded separately in results"
+  },
+  "by_j": {
+    "16": {
+      "j": 16,
+      "runs": [
+        {
+          "rc": 0,
+          "wall_s": 356.0303898132406,
+          "n_findings": 746,
+          "n_errors": 11,
+          "out_sha256": "b93fbc6f4a5cb2a53274149266a153dbbd1c444b5cf4cbe9415dabd781029d9f",
+          "out_path": "/scratch1/jjt_373/tare-semgrep/determinism_13447196/j16/stock_r0.json",
+          "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 217 Code rules:\n  Scanning 1000 files with 217 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 217\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 217 rules on 1000 files: 746 findings.\n"
+        },
+        {
+          "rc": 0,
+          "wall_s": 357.4915158948861,
+          "n_findings": 746,
+          "n_errors": 11,
+          "out_sha256": "396b1f7bc6e629a5e1cfb057b910af5ebb145ecb4d55fcc60a875326563ca60d",
+          "out_path": "/scratch1/jjt_373/tare-semgrep/determinism_13447196/j16/stock_r1.json",
+          "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 217 Code rules:\n  Scanning 1000 files with 217 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 217\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 217 rules on 1000 files: 746 findings.\n"
+        },
+        {
+          "rc": 0,
+          "wall_s": 358.25904414011165,
+          "n_findings": 746,
+          "n_errors": 11,
+          "out_sha256": "93c8e81279d5e7c98934ab795f0a7f587c6fc81f3638548151b1d7fc801f25ff",
+          "out_path": "/scratch1/jjt_373/tare-semgrep/determinism_13447196/j16/stock_r2.json",
+          "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 217 Code rules:\n  Scanning 1000 files with 217 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 217\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 217 rules on 1000 files: 746 findings.\n"
+        }
+      ],
+      "walls_s": [
+        356.0303898132406,
+        357.4915158948861,
+        358.25904414011165
+      ],
+      "n_findings": [
+        746,
+        746,
+        746
+      ],
+      "out_sha256": [
+        "b93fbc6f4a5cb2a53274149266a153dbbd1c444b5cf4cbe9415dabd781029d9f",
+        "396b1f7bc6e629a5e1cfb057b910af5ebb145ecb4d55fcc60a875326563ca60d",
+        "93c8e81279d5e7c98934ab795f0a7f587c6fc81f3638548151b1d7fc801f25ff"
+      ],
+      "identical_except_time": true,
+      "pairwise": [
+        {
+          "i": 0,
+          "k": 1,
+          "equal_except_time": true,
+          "diff_class": null
+        },
+        {
+          "i": 0,
+          "k": 2,
+          "equal_except_time": true,
+          "diff_class": null
+        },
+        {
+          "i": 1,
+          "k": 2,
+          "equal_except_time": true,
+          "diff_class": null
+        }
+      ],
+      "complete": true
+    },
+    "8": {
+      "j": 8,
+      "runs": [
+        {
+          "rc": 0,
+          "wall_s": 320.15846410766244,
+          "n_findings": 746,
+          "n_errors": 11,
+          "out_sha256": "ac2a5f852efe7a58c6b869c13c3489841ec9e0acbe211050f04dbb5b8960ba8f",
+          "out_path": "/scratch1/jjt_373/tare-semgrep/determinism_13447196/j8/stock_r0.json",
+          "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 217 Code rules:\n  Scanning 1000 files with 217 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 217\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 217 rules on 1000 files: 746 findings.\n"
+        },
+        {
+          "rc": 0,
+          "wall_s": 318.18740770732984,
+          "n_findings": 746,
+          "n_errors": 11,
+          "out_sha256": "099ddecd7c95c2cfd902783b909f7e083cf6c12b482233d1127c4674e73fce45",
+          "out_path": "/scratch1/jjt_373/tare-semgrep/determinism_13447196/j8/stock_r1.json",
+          "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 217 Code rules:\n  Scanning 1000 files with 217 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 217\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 217 rules on 1000 files: 746 findings.\n"
+        },
+        {
+          "rc": 0,
+          "wall_s": 323.3489909498021,
+          "n_findings": 746,
+          "n_errors": 11,
+          "out_sha256": "1cb67d317c0497cf2b5085b3820b99227602d350798943c2e492779fb89a2ef0",
+          "out_path": "/scratch1/jjt_373/tare-semgrep/determinism_13447196/j8/stock_r2.json",
+          "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 217 Code rules:\n  Scanning 1000 files with 217 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 217\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 217 rules on 1000 files: 746 findings.\n"
+        }
+      ],
+      "walls_s": [
+        320.15846410766244,
+        318.18740770732984,
+        323.3489909498021
+      ],
+      "n_findings": [
+        746,
+        746,
+        746
+      ],
+      "out_sha256": [
+        "ac2a5f852efe7a58c6b869c13c3489841ec9e0acbe211050f04dbb5b8960ba8f",
+        "099ddecd7c95c2cfd902783b909f7e083cf6c12b482233d1127c4674e73fce45",
+        "1cb67d317c0497cf2b5085b3820b99227602d350798943c2e492779fb89a2ef0"
+      ],
+      "identical_except_time": true,
+      "pairwise": [
+        {
+          "i": 0,
+          "k": 1,
+          "equal_except_time": true,
+          "diff_class": null
+        },
+        {
+          "i": 0,
+          "k": 2,
+          "equal_except_time": true,
+          "diff_class": null
+        },
+        {
+          "i": 1,
+          "k": 2,
+          "equal_except_time": true,
+          "diff_class": null
+        }
+      ],
+      "complete": true
+    },
+    "4": {
+      "j": 4,
+      "runs": [
+        {
+          "rc": 0,
+          "wall_s": 348.2314165616408,
+          "n_findings": 746,
+          "n_errors": 11,
+          "out_sha256": "1a2c8c60565e27ca5b20cb35156df36fe17067ca2301927051f4509c2c3923ad",
+          "out_path": "/scratch1/jjt_373/tare-semgrep/determinism_13447196/j4/stock_r0.json",
+          "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 217 Code rules:\n  Scanning 1000 files with 217 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 217\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 217 rules on 1000 files: 746 findings.\n"
+        },
+        {
+          "rc": 0,
+          "wall_s": 346.6700557572767,
+          "n_findings": 746,
+          "n_errors": 11,
+          "out_sha256": "050e34cd9c42f68b6c1ddeafec6b01b09d3c90b97fbf3cb9490b6f1f1f690b8c",
+          "out_path": "/scratch1/jjt_373/tare-semgrep/determinism_13447196/j4/stock_r1.json",
+          "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 217 Code rules:\n  Scanning 1000 files with 217 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 217\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 217 rules on 1000 files: 746 findings.\n"
+        },
+        {
+          "rc": 0,
+          "wall_s": 350.99296018714085,
+          "n_findings": 746,
+          "n_errors": 11,
+          "out_sha256": "2f6e8bdd26e81140fa4303eba39568298b4a6c8f528f934944d4ad6e81723167",
+          "out_path": "/scratch1/jjt_373/tare-semgrep/determinism_13447196/j4/stock_r2.json",
+          "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 217 Code rules:\n  Scanning 1000 files with 217 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 217\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 217 rules on 1000 files: 746 findings.\n"
+        }
+      ],
+      "walls_s": [
+        348.2314165616408,
+        346.6700557572767,
+        350.99296018714085
+      ],
+      "n_findings": [
+        746,
+        746,
+        746
+      ],
+      "out_sha256": [
+        "1a2c8c60565e27ca5b20cb35156df36fe17067ca2301927051f4509c2c3923ad",
+        "050e34cd9c42f68b6c1ddeafec6b01b09d3c90b97fbf3cb9490b6f1f1f690b8c",
+        "2f6e8bdd26e81140fa4303eba39568298b4a6c8f528f934944d4ad6e81723167"
+      ],
+      "identical_except_time": true,
+      "pairwise": [
+        {
+          "i": 0,
+          "k": 1,
+          "equal_except_time": true,
+          "diff_class": null
+        },
+        {
+          "i": 0,
+          "k": 2,
+          "equal_except_time": true,
+          "diff_class": null
+        },
+        {
+          "i": 1,
+          "k": 2,
+          "equal_except_time": true,
+          "diff_class": null
+        }
+      ],
+      "complete": true
+    },
+    "1": {
+      "j": 1,
+      "runs": [
+        {
+          "rc": 0,
+          "wall_s": 523.1406644503586,
+          "n_findings": 746,
+          "n_errors": 11,
+          "out_sha256": "bbc5850ddcb365e7ce7aeb34da438b4c8353d444659378b7d8661517812295af",
+          "out_path": "/scratch1/jjt_373/tare-semgrep/determinism_13447196/j1/stock_r0.json",
+          "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 217 Code rules:\n  Scanning 1000 files with 217 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 217\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 217 rules on 1000 files: 746 findings.\n"
+        },
+        {
+          "rc": 0,
+          "wall_s": 525.4502377891913,
+          "n_findings": 746,
+          "n_errors": 11,
+          "out_sha256": "b389b2e5b1a706d2edbc482e611aaaf9219d57c80805eecf810e71263400b96e",
+          "out_path": "/scratch1/jjt_373/tare-semgrep/determinism_13447196/j1/stock_r1.json",
+          "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 217 Code rules:\n  Scanning 1000 files with 217 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 217\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 217 rules on 1000 files: 746 findings.\n"
+        },
+        {
+          "rc": 0,
+          "wall_s": 530.8930356199853,
+          "n_findings": 746,
+          "n_errors": 11,
+          "out_sha256": "860e5f3da4fb3f14ad3a3cd63323c28c560332ce3112e7a2b376fc1e8c757e90",
+          "out_path": "/scratch1/jjt_373/tare-semgrep/determinism_13447196/j1/stock_r2.json",
+          "stderr_tail": "semgrep-core rule validation failed (RuleParseError)\n               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 217 Code rules:\n  Scanning 1000 files with 217 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 217\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 217 rules on 1000 files: 746 findings.\n"
+        }
+      ],
+      "walls_s": [
+        523.1406644503586,
+        525.4502377891913,
+        530.8930356199853
+      ],
+      "n_findings": [
+        746,
+        746,
+        746
+      ],
+      "out_sha256": [
+        "bbc5850ddcb365e7ce7aeb34da438b4c8353d444659378b7d8661517812295af",
+        "b389b2e5b1a706d2edbc482e611aaaf9219d57c80805eecf810e71263400b96e",
+        "860e5f3da4fb3f14ad3a3cd63323c28c560332ce3112e7a2b376fc1e8c757e90"
+      ],
+      "identical_except_time": true,
+      "pairwise": [
+        {
+          "i": 0,
+          "k": 1,
+          "equal_except_time": true,
+          "diff_class": null
+        },
+        {
+          "i": 0,
+          "k": 2,
+          "equal_except_time": true,
+          "diff_class": null
+        },
+        {
+          "i": 1,
+          "k": 2,
+          "equal_except_time": true,
+          "diff_class": null
+        }
+      ],
+      "complete": true
+    }
+  },
+  "locked_j_candidate": 16,
+  "finished_utc": "2026-10-25T22:24:08.328357+00:00"
+}
