@@ -91,9 +91,10 @@ possible is tested on every update, not proved. By default \sys also reruns the 
 so a hidden dependency that affects at least 1\% of records ships with probability at most 5\%.
 % source: MEASURED pipeline/results/adversarial/v2_summary.json arms.bounded.covered_unsafe=3 arms.bounded.covered_trials=400; MEASURED pipeline/docs/EXACT_REPLAY_PROTOCOL.md; TEXT s=299; NOMINAL eps_pct=5; NOMINAL kappa_pct=1
 
-On Pfam updates, \sys is $\HeadlineBoundedMedian\times$ faster than a full rerun (median of nine genomes on a dedicated
-server under the bounded-audit default; 95\% CI \HeadlineBoundedCIlow--\HeadlineBoundedCIhigh).
-% source: MEASURED pipeline/results/exact_replay/headline_bounded.json headline_median=3.485836273912707 bootstrap_ci95.low=3.3205734893494188 bootstrap_ci95.high=4.101134747066627 n_speedups=9 any_fail=false; NOMINAL ci=95
+On Pfam updates, \sys is $4.24\times$ faster than a full rerun with a lightweight sampled audit (median of nine genomes
+on a dedicated server; 95\% CI 4.17--4.68), and $\HeadlineBoundedMedian\times$ faster under the bounded-audit default
+that carries the guarantee above (same nine genomes; 95\% CI \HeadlineBoundedCIlow--\HeadlineBoundedCIhigh).
+% source: MEASURED pipeline/results/exact_replay/headline_carc.json headline_median=4.243202948728078 bootstrap_ci95.low=4.172363531540619 bootstrap_ci95.high=4.683831507831228; MEASURED pipeline/results/exact_replay/headline_bounded.json headline_median=3.485836273912707 bootstrap_ci95.low=3.3205734893494188 bootstrap_ci95.high=4.101134747066627 n_speedups=9 any_fail=false; NOMINAL ci=95
 Across 715{,}704 output lines from HMMER and Infernal, not one differed from a full run. \sys refused DIAMOND,
 whose first filter reads bytes of the neighboring database entry, and BLAST+, whose unpinned probe rows fit none of
 \sys's column rules.
