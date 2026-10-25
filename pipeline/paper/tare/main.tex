@@ -699,14 +699,16 @@ as pre\nobreakdash-registered). Filling the cache took a median $1.37\times$ a s
 % source: MEASURED pipeline/results/exact_replay/headline_bounded.json headline_median=3.485836273912707 bootstrap_ci95.low=3.3205734893494188 bootstrap_ci95.high=4.101134747066627 geometric_mean=3.6242015105685748 range.0=3.2968696675100615 range.1=4.244800716462076 n_speedups=9 any_fail=false first_run_overhead_median=1.3748997580347246 genomes.0.cv_A=0.16955105293917724 paired_ratio_min=0.6555583678696068 paired_ratio_max=0.9951363979803959 paired_ratio_median=0.8215106173409888; MEASURED pipeline/results/exact_replay/headline_carc.json headline_median=4.243202948728078 bootstrap_ci95.low=4.172363531540619 bootstrap_ci95.high=4.683831507831228; DERIVED cv=100*genomes_0_cv_A; NOMINAL ci=95; NOMINAL three=3; NOMINAL four=4; NOMINAL eight=8; NOMINAL sbound=299; MEASURED pipeline/docs/EXACT_REPLAY_PROTOCOL.md
 
 \textbf{Infernal, with a reduced check.} On Infernal, \sys ships with two of its four safety layers skipped on most
-inputs, and readers should weigh its Infernal speedups accordingly. The speedup did not at first carry over: only 457 of
+inputs, and readers should weigh its Infernal speedups accordingly.
+\begin{plainbox}{Infernal reduced check (long DNA)}
+When one record holds $>$half the input residues, the sampled audit and the random pads are skipped (an audit of the whole genome \textit{is} a stock run).
+What remains: the neighbor pad and the in\nobreakdash-situ pin check. Speedups below must be read with that caveat; every known\nobreakdash-bad control still refused.
+\end{plainbox}
+The speedup did not at first carry over: only 457 of
 Rfam 15.1's 4{,}227 families (10.8\%) changed, yet in the measured single\nobreakdash-family removal the update took 666\,s against a
 328\,s stock run, exact but $0.49\times$. A bacterial genome is one DNA sequence or a handful, so the audit's record
-sample and the random pads covered the entire genome, and an audit of a whole genome \textit{is} a stock run. We
-therefore budget the audit and the random\nobreakdash-pad sample by residues: when a single record holds more than half of the
-input's residues, those two layers are skipped and the output says so; the neighbor pad and the in\nobreakdash-situ check always
-run. The change leaves HMMER's decisions and output byte\nobreakdash-identical on a proteome, and every known\nobreakdash-bad control
-still refused.
+sample and the random pads covered the entire genome. We therefore budget those two layers by residues as above;
+the neighbor pad and the in\nobreakdash-situ check always run. The change leaves HMMER's decisions and output byte\nobreakdash-identical on a proteome.
 % source: MEASURED pipeline/results/infernal/family_diff_15.json n_15_1=4227 changed_or_new=457 fraction_changed_or_new=0.10811450201088242; HAS 15.1; MEASURED pipeline/docs/INFERNAL_PROTOCOL.md; TEXT update_s=666.0; TEXT stock_s=328.4; DERIVED frac_pct=100*fraction_changed_or_new; DERIVED sg=stock_s/update_s
 
 With this change, Infernal updates on ten fresh genomes ran a median $S_g = 2.16\times$ faster than stock without clan
