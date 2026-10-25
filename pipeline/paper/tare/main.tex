@@ -363,25 +363,12 @@ on entry hashes keeps every stable entry, 86.6\% of Pfam for 38.1$\rightarrow$38
 \subsection{Stage 2: Contract Inference}
 \label{sec:contract}
 
-\sys must learn how the program's output depends on the reference without reading the program's code. It runs the
-program on a sample of records three times: against the whole reference, and against each half of it. It then lines
-up the output lines of the three runs by record and entry name.
-
-\textit{Does the output split cleanly?} If every line of the whole run appears in exactly one half\nobreakdash-run, the output
-\textit{decomposes} over entries: each line comes from one entry. If the whole run reports a line that neither half
-reports, entries interact in ways \sys cannot replay, and it refuses. The opposite case, a half reporting a line the
-whole omits, happens when entries compete and suppress each other; \sys accepts it only when the user declares which
-entries compete (\cref{sec:gate}).
-
-\textit{How does each number depend on the reference?} For each numeric column, \sys tests a small fixed set of
-hypotheses: the column does not depend on the reference at all (\textit{identity}), or it scales with the number of
-entries, their total length, or the number of hits per record. A hypothesis fits if rescaling every half\nobreakdash-run value by
-the corresponding ratio reproduces the whole\nobreakdash-run value within the printed precision. A column that fits no hypothesis
-causes refusal. Columns that are ranks or labels rather than measurements are recognized and left to the program to
-reprint.
-
-The result, called a \textit{contract}, records how the output splits and how each column depends on the reference.
-It is computed once per command and reused for every later release.
+Without reading the program's code, \sys probes a sample of records three times---whole reference and each half---and
+aligns lines by record and entry. If every whole\nobreakdash-run line appears in exactly one half, the output \textit{decomposes}
+over entries; a whole\nobreakdash-only line means unreplayable interaction (refuse). A half\nobreakdash-only line is allowed only when the
+user declares competing entries (\cref{sec:gate}). For each numeric column it tests identity or scaling with entry
+count, total length, or hits per record; a fit within printed precision is required, else refuse. Ranks and labels are
+left to the program. The resulting \textit{contract} is computed once per command and reused across releases.
 
 \subsection{Stage 3: The Coupling Gate}
 \label{sec:gate}
@@ -425,44 +412,35 @@ reference. It is the one cost \sys cannot avoid (\cref{sec:cost}).
 \subsection{Stage 5: Batched Exact Replay}
 \label{sec:replay}
 
-Cached lines cannot be returned as they are, because their numbers were computed for the old release. \sys instead
-reruns the program on the candidates with the pin set, and the program prints the new numbers itself. Rerunning every
-protein against all candidates of all proteins would waste work: on one genome, the proteins' candidates together
-cover 3{,}719 families, but the mean protein has two.
+Cached lines cannot be returned as they are: their numbers used the old release. \sys reruns the program on the
+candidates with the pin set so the program reprints. A naive all\nobreakdash-candidates universe wastes work---on one genome the
+union covers 3{,}719 families while the mean protein has two---so proteins are batched against only their own
+candidates and stitched in record order, choosing the grouping that minimizes
 % source: MEASURED pipeline/results/exact_replay/costpass_baseline.json 'replay_38.2'.runs.0.replay_entries=3719 'replay_38.2'.runs.0.candidate_pairs=9094 'replay_38.2'.runs.0.replay_records=4555; DERIVED mean_hits=candidate_pairs/replay_records
-\sys therefore groups proteins into batches, runs each batch
-against only its own proteins' candidates, and stitches the outputs back together in the original order. It chooses
-the grouping that minimizes
 \begin{equation}
 T_{\text{replay}} = \alpha k + \beta \sum_b |U_b| + \gamma \sum_b |B_b|\,|U_b|,
 \label{eq:batch}
 \end{equation}
-where $k$ is the number of batches, $|B_b|$ and $|U_b|$ the proteins and families in batch $b$, $\alpha$ the cost of
-starting the program, $\beta$ the cost per family of preparing a sub\nobreakdash-database, and $\gamma$ the cost of one
-protein--family comparison. Stitching is safe for HMMER because, in its source code, each protein's output block
-depends only on that protein's own hits, including the column widths and the per\nobreakdash-protein statistics. As a tripwire
-(R4 in \cref{sec:model}), if a replay ever reports a protein--family pair outside the candidates, \sys refuses, because
-a full run could contain pairs the cache never saw.
+with $k$ batches, $|B_b|$/$|U_b|$ proteins/families in batch $b$, and $\alpha,\beta,\gamma$ start, prepare, and
+compare costs. HMMER's per\nobreakdash-protein blocks depend only on that protein's hits. Tripwire R4: a pair outside
+$C_r$ refuses.
 
 \subsection{Stage 6: Check or Refuse}
 \label{sec:check}
 
-The check tries to falsify C0/C1 on the actual run. It reruns the replay with \textit{pads} (left\nobreakdash-out families added
-back). The \textit{neighbor pad} adds file\nobreakdash-order neighbors of every candidate (R5; catches C2 as in DIAMOND,
-\cref{sec:eval-safety}). \textit{Random pads} add three random samples of left\nobreakdash-out families, each as large as the
-candidate set, for a fixed sample of $s=50$ proteins.
+The check falsifies C0/C1 on the run: replay with \textit{pads} (left\nobreakdash-out families added back). The
+\textit{neighbor pad} adds file\nobreakdash-order neighbors of every candidate (R5; catches C2 as in DIAMOND,
+\cref{sec:eval-safety}). \textit{Random pads} add three random left\nobreakdash-out samples, each as large as the candidate set,
+on $s{=}50$ proteins.
 % source: MEASURED pipeline/docs/EXACT_REPLAY_PROTOCOL.md; TEXT sample_s=50
-If an unknown dependency affects $k$ of $n$ proteins and a random pad includes the responsible family with probability
-$q$, the check misses it with probability approximately
+If a dependency affects $k$ of $n$ proteins and a pad hits the responsible family with probability $q$,
 \begin{equation}
-P_{\text{miss}} \approx h + (1-h)(1-q)^3, \qquad h = \binom{n-k}{s}\Big/\binom{n}{s},
+P_{\text{miss}} \approx h + (1-h)(1-q)^3, \qquad h = \binom{n-k}{s}\Big/\binom{n}{s}.
 \label{eq:miss}
 \end{equation}
 % source: MEASURED pipeline/results/reference_diamond/dx3.json; LEN pad_seeds=3; NOMINAL one=1
-where $h$ is the chance that the protein sample contains no affected protein. Pads are a test of C0/C1, not the audit
-bound: R6's sample size $s$ is \cref{eq:audit-s} in \cref{sec:model}. The measured runs in \cref{sec:eval} that predate
-the bounded default used an earlier audit (each record with probability 0.02 and at least 20). An optional
-first\nobreakdash-use mode compares the first two updates of a new program with a full run.
+Pads test C0/C1; the audit bound is R6 with $s$ from \cref{eq:audit-s}. Runs that predate the bounded default used an
+earlier audit ($p{=}0.02$, floor 20). An optional first\nobreakdash-use mode compares the first two updates to a full run.
 % source: MEASURED pipeline/docs/EXACT_REPLAY_PROTOCOL.md; TEXT audit_p=0.02; TEXT audit_floor=20; NOMINAL one=1
 
 \subsection{Cost Model}
