@@ -10,13 +10,17 @@ if [[ ! -f macros_pending.tex ]]; then
   echo "build_arxiv: missing macros_pending.tex" >&2
   exit 1
 fi
-if grep -q '\\pending{' macros_pending.tex; then
+# Match real unfilled macros: \pending{...} on a non-comment line.
+# Ignore the fill_macros header comment and the \newcommand{\pending} definition.
+if grep -v '^%' macros_pending.tex | grep -q '\\pending{'; then
   echo "build_arxiv: refuses PENDING macros — run finalize.sh until macros are filled" >&2
-  grep '\\pending{' macros_pending.tex >&2 || true
+  grep -v '^%' macros_pending.tex | grep '\\pending{' >&2 || true
   exit 1
 fi
-if grep -E '\\pending\{|\[PENDING' main.tex | grep -v '^%' >/dev/null; then
+# Exclude comments and the \pending macro definition line itself (-F: literal).
+if grep -v '^%' main.tex | grep -vF '\newcommand{\pending}' | grep -E '\\pending\{|\[PENDING' >/dev/null; then
   echo "build_arxiv: refuses PENDING markers in main.tex" >&2
+  grep -v '^%' main.tex | grep -vF '\newcommand{\pending}' | grep -E '\\pending\{|\[PENDING' >&2 || true
   exit 1
 fi
 
