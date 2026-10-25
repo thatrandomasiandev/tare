@@ -841,14 +841,13 @@ parse took 48.9\,s, press 9.7\,s, the fill tool 405.5\,s, selection 246.5\,s, an
 \includegraphics[width=\linewidth]{figures/idiamond.pdf}
 \caption{\textbf{Approximate versus exact.} Output of iSeqSearch's incremental DIAMOND after a Swiss\nobreakdash-Prot update, compared
 line by line with a full run. Its numbers are close, but only 1.3\% of lines match exactly and 133 lines report sequences
-the new release deleted. \sys refuses this program and returns the stock run, so it is exact but no faster; we did not
-time iSeqSearch.}
+the new release deleted. \sys refuses this program and returns the stock run (exact, not faster).}
 % source: MEASURED pipeline/results/reference_diamond/dx.json idiamond.shared_byte_identical=407 idiamond.shared_rows=31377 idiamond.row_extra=133; DERIVED ident_pct=100*shared_byte_identical/shared_rows
 \label{fig:idiamond}
 \end{figure}
 
-\textbf{Approximate incremental search.} iSeqSearch's incremental DIAMOND~\cite{yoo2025iseqsearch} on 300 proteins (Swiss\nobreakdash-Prot 2026\_01$\rightarrow$2026\_03) matched only 407 of 31{,}377 shared lines byte\nobreakdash-for\nobreakdash-byte (1.30\%) and retained 133 hits to deleted sequences (\cref{fig:idiamond}); \sys refuses and returns stock.
-% source: MEASURED pipeline/docs/EXACT_REPLAY_PROTOCOL.md; TEXT q300=300; MEASURED pipeline/results/reference_diamond/dx.json idiamond.shared_rows=31377 idiamond.shared_byte_identical=407 idiamond.row_extra=133; DERIVED ident_pct=100*shared_byte_identical/shared_rows; NOMINAL q300=300
+\textbf{Approximate incremental search.} iSeqSearch's incremental DIAMOND~\cite{yoo2025iseqsearch} on 300 proteins (Swiss\nobreakdash-Prot 2026\_01$\rightarrow$2026\_03) matched only 407 of 31{,}377 shared lines byte\nobreakdash-for\nobreakdash-byte (1.30\%) and retained 133 hits to deleted sequences (\cref{fig:idiamond}); \sys refuses and returns stock. A second locked attempt to time that refuse path failed its pre\nobreakdash-registered control (scorer \texttt{tare\_refused} false) while every timed \sys arm recorded \dec{refuse} with stock\nobreakdash-identical output; we state that as a limitation and do not claim an iSeqSearch speedup.
+% source: MEASURED pipeline/docs/EXACT_REPLAY_PROTOCOL.md; TEXT q300=300; MEASURED pipeline/results/reference_diamond/dx.json idiamond.shared_rows=31377 idiamond.shared_byte_identical=407 idiamond.row_extra=133; DERIVED ident_pct=100*shared_byte_identical/shared_rows; NOMINAL q300=300; MEASURED pipeline/results/iseqsearch_timing/LIMITATION.md; HAS FAIL_CONTROL; HAS REFUSE
 
 % =====================================================================
 \section{Discussion}
@@ -868,8 +867,8 @@ time iSeqSearch.}
 
 \textbf{Threats to validity.}
 \textit{Generality:} HMMER and Infernal share lineage; DIAMOND and BLAST+ are refused from other codebases; we claim the method for programs whose coupling is in exposed settings, not that it works for most search programs (\cref{sec:eval-safety}).
-SIB's \texttt{pfscanV3} (no pin) shipped 26/30 genomes byte\nobreakdash-identical across two draws (4 below power floor); both draws are inconclusive under our rules and supporting only.
-% source: MEASURED pipeline/results/unrelated_ship/measured.json checks.n=10 checks.n_ship=8 checks.n_differing=0; MEASURED pipeline/results/unrelated_ship/measured_v2.json checks.n=20 checks.n_ship=18 checks.n_differing=0 checks.n_unsafe=0; DERIVED ship=8+18; DERIVED total=10+20; DERIVED short=total-ship
+SIB's \texttt{pfscanV3} (no pin) shipped 26/30 genomes byte\nobreakdash-identical across two draws (4 below power floor); both draws are inconclusive under our rules and supporting only, so a PROSITE timing bake\nobreakdash-off was not run.
+% source: MEASURED pipeline/results/unrelated_ship/measured.json checks.n=10 checks.n_ship=8 checks.n_differing=0; MEASURED pipeline/results/unrelated_ship/measured_v2.json checks.n=20 checks.n_ship=18 checks.n_differing=0 checks.n_unsafe=0; DERIVED ship=8+18; DERIVED total=10+20; DERIVED short=total-ship; HAS INCONCLUSIVE
 \textit{Release choice:} \cref{fig:pairs} spans 2.0\%--93.1\% rewrite; the headline times 38.1$\rightarrow$38.2 (13.4\%), and the chain covers 37.3$\rightarrow$38.2 without break\nobreakdash-even fallback (\cref{sec:eval-exact}).
 \textit{Timing:} laptop numbers are indicative; headline and matched baselines are exclusive-node alternating runs.
 \textit{Check strength:} below the audit's 1\% guarantee, hidden coupling can ship (\cref{sec:eval-safety}).
