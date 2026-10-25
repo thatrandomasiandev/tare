@@ -26,16 +26,24 @@ def main() -> int:
     write_json(OUT, payload)
     verdict = payload.get("verdict")
     if verdict != "COMPLETE":
-        # Provenance kept; leave ISeqSearchSpeedup pending (no speed claim).
+        # Provenance kept; never fill ISeqSearchSpeedup (stated limitation).
         why = payload.get("why") or verdict
         controls = payload.get("controls") or {}
+        lim = REPO / "pipeline/results/iseqsearch_timing/LIMITATION.md"
+        if not lim.is_file():
+            lim.write_text(
+                "# W12b stated limitation\n\n"
+                f"verdict={verdict}; why={why}; "
+                f"tare_refused={controls.get('tare_refused')}. "
+                "Second locked failure — no third attempt.\n"
+            )
         status_line(
             "W12b",
-            "COLLECTED",
-            f"verdict={verdict} no-fill why={why} "
+            "FAILED",
+            f"stated limitation verdict={verdict} why={why} "
             f"tare_refused={controls.get('tare_refused')}",
         )
-        return 0
+        return 1
     status_line("W12b", "COLLECTED", str(OUT.relative_to(REPO)))
     return 0
 

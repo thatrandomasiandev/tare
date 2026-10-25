@@ -32,7 +32,7 @@ def main() -> None:
         "ReleaseChainPayback": r"\pending{W8 cumulative payback}",
         "BaselinesEpycRho": r"\pending{W5x Table 4 rho}",
         "ExpertScriptRatio": r"\pending{W12a system/expert ratio}",
-        "ISeqSearchSpeedup": r"\pending{W12b iSeqSearch timing}",
+        "ISeqSearchSpeedup": r"\pending{W12b stated limitation (FAIL_CONTROL)}",
         "PfscanTiming": r"\pending{WA2 pfscanV3 timing}",
     }
 

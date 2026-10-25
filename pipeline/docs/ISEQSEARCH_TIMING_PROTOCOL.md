@@ -445,3 +445,22 @@ Queued CARC job `13347608` (W12b iSeqSearch measured; confirm `13347607` already
 moved from Slurm account `biyik_1165` to `biyik_1173` on 2026-10-24. Queue priority / fairshare
 only: identical hardware constraints and limits (`--exclusive`, `--mem=0`, `--constraint=epyc-7542`,
 same wall and exclusive node caps). No cancel, resubmit, or redesign; job IDs unchanged.
+
+## Addendum 2026-10-24 evening — measured `13347608` FAIL_CONTROL; stated limitation
+
+Job `13347608` COMPLETED in 00:02:46 with `verdict=FAIL_CONTROL` (committed
+`pipeline/results/iseqsearch_timing/measured.json`). This is the **second locked
+failure** for W12b timing. Per test-design standard and Josh (2026-10-24 ~22:15 PT):
+**no re-scoring and no third attempt.** Recorded as
+`pipeline/results/iseqsearch_timing/LIMITATION.md`.
+
+Accurate control picture (do not summarize as “TARE failed to refuse”):
+
+| Check | Value |
+|---|---|
+| Scorer `controls.tare_refused` | **false** → FAIL_CONTROL |
+| TARE decision in every timed arm | **`REFUSE`** (`out: row-key sets differ`) |
+| `controls.tare_returned_stock` | **true** on every arm |
+
+Paper: leave `\ISeqSearchSpeedup` unfilled / out of claims. Keep the existing
+iSeqSearch exactness result (1.30% of shared lines byte-identical).
