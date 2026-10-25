@@ -67,6 +67,11 @@ For $\varepsilon=0.05$, $\kappa=0.01$, $s=299$. This bounds shipping a wrong
 update given $\ge\kappa$ affected (R6), not couplings below $\kappa$. Empirically,
 3 of 400 adversarial trials at $\ge 1\%$ affected shipped under the bounded audit.
 % source: MEASURED pipeline/results/adversarial/v2_summary.json arms.bounded.covered_unsafe=3 arms.bounded.covered_trials=400
+\begin{plainbox}{What the audit does \emph{not} cover}
+It is not a 5\% per\nobreakdash-line error rate, nor a proof that the program is entry\nobreakdash-local.
+Couplings that affect fewer than $\kappa$ of records can still ship; so can structured faults that evade the pads and the sample (limitation F6).
+C2--C4 are refused when observed (R1--R6), not ``covered'' by $s{=}299$.
+\end{plainbox}
 
 \paragraph{Cost model.}
 With stock time $T_{\mathrm{stock}}$,
