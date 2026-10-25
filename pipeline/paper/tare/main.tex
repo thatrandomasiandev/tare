@@ -27,7 +27,7 @@
 \usepackage{xspace}
 \usepackage[capitalise,noabbrev]{cleveref}
 
-\hypersetup{pdfauthor={},pdftitle={Pin and Replay, or Refuse},colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black}
+\hypersetup{pdftitle={Pin and Replay, or Refuse},colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
@@ -59,7 +59,11 @@
 \else
   \newcommand{\sys}{PARE\xspace}
   \newcommand{\sysexpansion}{Pin And Replay Exact}
-  \author{Anonymous Submission}
+  % Personal names: USENIX author columns in author_local.tex (gitignored).
+\author{Anonymous Submission}
+\hypersetup{pdfauthor={}}
+% Names only in the arXiv/reading build (\arxivbuild set by build_arxiv.sh); the OSDI build stays anonymous.
+\ifdefined\arxivbuild\IfFileExists{author_local.tex}{\input{author_local.tex}}{}\fi
 \fi
 \newcommand{\pending}[1]{\textcolor{red}{\mbox{[PENDING: #1]}}}
 \newcommand{\tbd}{\textcolor{red}{TBD}}
