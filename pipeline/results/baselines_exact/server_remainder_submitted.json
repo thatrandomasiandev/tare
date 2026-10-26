@@ -1,0 +1,29 @@
+{
+  "status": "remainder_submitted",
+  "walls_are_evidence": false,
+  "locked_claim": false,
+  "protocol": "docs/BASELINES_EXACT_PROTOCOL.md#2026-10-25-measured-timeout-remainder",
+  "addendum_sha": "6933190f74177d62fc04671a52396f833fbd3916",
+  "partial_collection": "pipeline/results/baselines_exact/server_partial_13347581.json",
+  "parent_timeout_job": "13347581",
+  "submitted_at": "2026-10-25T14:20:00-07:00",
+  "account": "biyik_1173",
+  "time_limit": "09:00:00",
+  "jobs": [
+    {
+      "slurm_job_id": "13447212",
+      "job_name": "tare-w12a-rem-g3",
+      "ACTS_MEASURED_INDICES": "3",
+      "stem": "GCF_040271735.2",
+      "expected_out": "pipeline/results/baselines_exact/server_remainder_g3.json"
+    },
+    {
+      "slurm_job_id": "13447213",
+      "job_name": "tare-w12a-rem-g4",
+      "ACTS_MEASURED_INDICES": "4",
+      "stem": "GCF_055807995.1",
+      "expected_out": "pipeline/results/baselines_exact/server_remainder_g4.json"
+    }
+  ],
+  "note": "Same measured design as 2026-10-19; one genome each. No walls in this file."
+}
