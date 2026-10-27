@@ -1,0 +1,47 @@
+{
+  "accession": "GCF_023370135.1",
+  "domtbl_sha256": "5e68a10c76c434b5ba4fa12561c77af9373f41c88f28168c9beda346beb881ab",
+  "label": "ARM_A",
+  "outcome": "PASS",
+  "pfam": {
+    "path": "/project2/biyik_1165/jjt_373/csci270-star/tare-sharedcontract/pfam_pressed/Pfam-A.hmm",
+    "sha256": "4b0da6399b97d2b23329de82190b2e5705bde1dea4cb2d028a52712d5966739e",
+    "shared": true
+  },
+  "phase": "arm-a",
+  "protocol": "docs/SHARED_CONTRACT_MEASURED_ADDENDUM_2026-10-25b.md",
+  "provenance": {
+    "account_note": "biyik_1173",
+    "acts_a_offset": "5",
+    "acts_draw_index": "6",
+    "cpu": "4",
+    "equal_footing_exclusive": true,
+    "excluded_prior_job": "13447415",
+    "git_dirty": "false",
+    "git_head": "33a95592e1005ca5a5d9730ed03c575b1030be09",
+    "hmmer_sha256_expected": "ca70d94fd0cf271bd7063423aabb116d42de533117343a9b27a65c17ff06fbf3",
+    "host": {
+      "cpu_model": "AMD EPYC 7542 32-Core Processor",
+      "load": [
+        1.34,
+        1.61,
+        1.59
+      ],
+      "mem": {
+        "MemAvailable": 258475339776,
+        "MemFree": 177743253504,
+        "MemTotal": 269877268480
+      },
+      "node": "b22-15.hpc.usc.edu",
+      "nproc": 64,
+      "unix": 1793030643.9099176
+    },
+    "slurm_array_task_id": "1",
+    "slurm_job_id": "13460360",
+    "stock_root": "/project2/biyik_1165/jjt_373/csci270-star/tare-sharedcontract/stock"
+  },
+  "stock_domtbl": "/project2/biyik_1165/jjt_373/csci270-star/tare-sharedcontract/stock/GCF_023370135.1/stock.domtbl",
+  "stock_tbl": "/project2/biyik_1165/jjt_373/csci270-star/tare-sharedcontract/stock/GCF_023370135.1/stock.tbl",
+  "tbl_sha256": "52f904ba073c3280042f454caa2a6c1565be461410180e8d06655f84382c395e",
+  "wall_s": 3292.889682773035
+}
