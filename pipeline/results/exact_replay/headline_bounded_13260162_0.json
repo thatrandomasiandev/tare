@@ -1,0 +1,747 @@
+{
+  "S_g": 4.244800716462076,
+  "acts_commit": "4598262",
+  "argv_acts": "python3 -m acts run --strategy reference --pin '-Z {entry_count}' --verify audit --prep 'hmmpress -f {reference}' -- hmmscan --cut_ga --noali --cpu 4 (bounded audit default; no --first-use)",
+  "argv_stock": "hmmscan --cut_ga --noali --cpu 4 --tblout --domtblout",
+  "array_task_id": 0,
+  "bootstrap_seed": 20261047,
+  "bounded_audit_s_expected": 299,
+  "break_even_n": 0.06998656313491283,
+  "cache_limit_bytes": 5368709120,
+  "cpu_model": "AMD EPYC 7542 32-Core Processor",
+  "cpu_ratio": 4.9120064092784865,
+  "cv": {
+    "A": 0.16955105293917724,
+    "B": 0.017807988589740222,
+    "estimator": "stdev/mean",
+    "flag_if": "> 0.05",
+    "n": 3
+  },
+  "cv_flag": {
+    "A": true,
+    "B": false
+  },
+  "draw_substitution": "Fixed list of nine EXACT genomes from headline_carc.json; GCF_015290725.1 excluded (refused at fill under d125151). Not a new random draw; pool hash / seed 20261046 check replaced.",
+  "draws": [
+    "GCF_002302335.1",
+    "GCF_009433135.1",
+    "GCF_009948655.1",
+    "GCF_022559285.1",
+    "GCF_030347155.1",
+    "GCF_049949335.1",
+    "GCF_054388855.1",
+    "GCF_055556535.1",
+    "GCF_061234675.1"
+  ],
+  "excluded_refused": "GCF_015290725.1",
+  "fail_reasons": [],
+  "fill": {
+    "after": {
+      "load": [
+        1.42,
+        1.45,
+        1.61
+      ],
+      "mem_available_bytes": 256979410944,
+      "mem_free_bytes": 133500874752,
+      "node": "b22-07.hpc.usc.edu",
+      "scratch_free_bytes": 2754440049197056
+    },
+    "arm": "B",
+    "audit": "checked 299, residue fraction 0.070318",
+    "audit_checked": "299",
+    "audit_epsilon": "0.05",
+    "audit_k_min_fraction": "0.01",
+    "audit_mode": "bounded",
+    "audit_s_target": "299",
+    "before": {
+      "load": [
+        1.63,
+        1.63,
+        3.22
+      ],
+      "mem_available_bytes": 256826826752,
+      "mem_free_bytes": 130786758656,
+      "node": "b22-07.hpc.usc.edu",
+      "scratch_free_bytes": 2753797022547968
+    },
+    "cache_bytes": 21663744,
+    "cpu_s": 4542.223825000001,
+    "cpu_source": "resource.RUSAGE_CHILDREN",
+    "cpu_sys_s": 1212.7770300000002,
+    "cpu_user_s": 3329.4467950000003,
+    "decision": "SHIP",
+    "n_batches": "110",
+    "phases": {
+      "cache_load_s": 0.00047817500308156013,
+      "cache_store_s": 2.182421288918704,
+      "coverage_read_s": 0.0006318562664091587,
+      "diff_s": 0.004263830836862326,
+      "discovery_build_s": 0.016165019012987614,
+      "discovery_s": 2208.580078341998,
+      "discovery_scan_s": 2187.394373741001,
+      "ic2_neighbor_build_s": 23.362310328986496,
+      "ic2_neighbor_s": 48.57228768616915,
+      "ic2_neighbor_scan_s": 23.349107101093978,
+      "ic2_random_20261031_build_s": 5.437462699133903,
+      "ic2_random_20261031_s": 8.813741364050657,
+      "ic2_random_20261031_scan_s": 3.159065717831254,
+      "ic2_random_20261032_build_s": 5.313242522068322,
+      "ic2_random_20261032_s": 8.708604875952005,
+      "ic2_random_20261032_scan_s": 3.190722799859941,
+      "ic2_random_20261033_build_s": 5.2127192029729486,
+      "ic2_random_20261033_s": 8.568182724062353,
+      "ic2_random_20261033_scan_s": 3.146171555388719,
+      "merge_rescale_s": 0.1411429811269045,
+      "parse_s": 43.91334884474054,
+      "pin_check_s": 143.78939009876922,
+      "prep_s": 46.97156277671456,
+      "probe_wall_s": 313.99933173460886,
+      "read_output_s": 0.24289136240258813,
+      "render_s": 0.0053652990609407425,
+      "replay_build_s": 10.283094411250204,
+      "replay_plan_s": 0.020979836117476225,
+      "replay_s": 29.58936641877517,
+      "replay_scan_s": 18.79749078862369,
+      "subref_build_s": 3.353562941774726,
+      "tool_s": 2516.85587506555,
+      "total_s": 2971.7068705311976,
+      "verify_build_s": 0.0015928726643323898,
+      "verify_s": 136.00625337893143,
+      "verify_scan_s": 136.00307611795142
+    },
+    "repeat": 0,
+    "returncode": 0,
+    "wall_s": 2972.264191796072,
+    "why": "exact replay under pinned normalizer"
+  },
+  "finished_utc": "2026-10-24T07:58:46Z",
+  "first_run_overhead": 1.3748997580347246,
+  "first_use": false,
+  "flags": [
+    "CV A 0.1696"
+  ],
+  "git_dirty": "",
+  "git_head": "",
+  "hmmer_tarball_sha256": "ca70d94fd0cf271bd7063423aabb116d42de533117343a9b27a65c17ff06fbf3",
+  "hmmer_version_lines": [
+    "# hmmscan :: search sequence(s) against a profile database",
+    "# HMMER 3.4 (Aug 2023); http://hmmer.org/",
+    "# Copyright (C) 2023 Howard Hughes Medical Institute."
+  ],
+  "input_md5": {
+    "pfam38.1": "dc814cc181ece09102c09c4e6c19f2fd",
+    "pfam38.2": "7ab3c4e215d0daaea3004e37c4e24f8a",
+    "proteome": "789eb216d0c455e61563139696ed5b65"
+  },
+  "job_id": "13260162",
+  "mac_shape_s": {
+    "diff": 1.4,
+    "discovery": 91.0,
+    "neighbor": 27.0,
+    "parse": 14.0,
+    "random": 8.0,
+    "replay": 17.0,
+    "verify": 15.0
+  },
+  "median_wall_s": {
+    "A": 2821.3261588849127,
+    "B": 664.65456150705
+  },
+  "meminfo_start": {
+    "MemAvailable": 257340497920,
+    "MemFree": 141335920640,
+    "MemTotal": 269877260288
+  },
+  "notes": [
+    "Scratch is /scratch1/$USER only (not node tmpfs), per W13.",
+    "CV is reported and flagged when it exceeds 5%. It is not a stop and not a drop.",
+    "Walltime is 8 h per task.",
+    "CLI default bounded audit; --first-use is not passed.",
+    "Every B records audit_mode and audit_s_target from decision.txt."
+  ],
+  "original_draws": [
+    "GCF_002302335.1",
+    "GCF_009433135.1",
+    "GCF_009948655.1",
+    "GCF_015290725.1",
+    "GCF_022559285.1",
+    "GCF_030347155.1",
+    "GCF_049949335.1",
+    "GCF_054388855.1",
+    "GCF_055556535.1",
+    "GCF_061234675.1"
+  ],
+  "outcome": "EXACT",
+  "press": {
+    "38.1": {
+      "decompress_s": 10.692874702624977,
+      "ends": 27481,
+      "headers": 27481,
+      "hmmpress_s": 37.07232231320813
+    },
+    "38.2": {
+      "decompress_s": 11.610057297162712,
+      "ends": 30134,
+      "headers": 30134,
+      "hmmpress_s": 39.771322859916836
+    }
+  },
+  "press_charged_to_arms": false,
+  "proteome": "GCF_002302335.1",
+  "repeats": [
+    {
+      "after": {
+        "load": [
+          1.52,
+          1.54,
+          1.54
+        ],
+        "mem_available_bytes": 257238622208,
+        "mem_free_bytes": 137342263296,
+        "node": "b22-07.hpc.usc.edu",
+        "scratch_free_bytes": 2754334170284032
+      },
+      "arm": "A",
+      "before": {
+        "load": [
+          1.42,
+          1.45,
+          1.61
+        ],
+        "mem_available_bytes": 257276243968,
+        "mem_free_bytes": 139011727360,
+        "node": "b22-07.hpc.usc.edu",
+        "scratch_free_bytes": 2754439674855424
+      },
+      "cpu_s": 4869.739791,
+      "cpu_source": "resource.RUSAGE_CHILDREN",
+      "cpu_sys_s": 1387.97613,
+      "cpu_user_s": 3481.763661,
+      "repeat": 1,
+      "wall_s": 3264.0774753317237
+    },
+    {
+      "after": {
+        "load": [
+          1.58,
+          1.46,
+          1.48
+        ],
+        "mem_available_bytes": 256780009472,
+        "mem_free_bytes": 130672992256,
+        "node": "b22-07.hpc.usc.edu",
+        "scratch_free_bytes": 2754526784258048
+      },
+      "arm": "B",
+      "audit": "checked 299, residue fraction 0.071170",
+      "audit_checked": "299",
+      "audit_epsilon": "0.05",
+      "audit_k_min_fraction": "0.01",
+      "audit_mode": "bounded",
+      "audit_s_target": "299",
+      "before": {
+        "load": [
+          1.52,
+          1.54,
+          1.54
+        ],
+        "mem_available_bytes": 257228984320,
+        "mem_free_bytes": 137311465472,
+        "node": "b22-07.hpc.usc.edu",
+        "scratch_free_bytes": 2754334170284032
+      },
+      "compare": {
+        "byte_equal": true,
+        "dom": {
+          "byte_equal": true,
+          "classes": [],
+          "lines_replay": 8654,
+          "lines_stock": 8654,
+          "token_equal": true
+        },
+        "tbl": {
+          "byte_equal": true,
+          "classes": [],
+          "lines_replay": 8933,
+          "lines_stock": 8933,
+          "token_equal": true
+        }
+      },
+      "cpu_s": 878.1131939999996,
+      "cpu_source": "resource.RUSAGE_CHILDREN",
+      "cpu_sys_s": 217.07294999999976,
+      "cpu_user_s": 661.0402439999998,
+      "decision": "SHIP",
+      "n_batches": "105",
+      "phases": {
+        "cache_load_s": 3.3373694261536,
+        "cache_store_s": 1.227598945144564,
+        "coverage_read_s": 11.623103151097894,
+        "diff_s": 3.066681592259556,
+        "discovery_build_s": 5.662534057628363,
+        "discovery_s": 324.00269490713254,
+        "discovery_scan_s": 318.175457384903,
+        "ic2_neighbor_build_s": 23.060918791685253,
+        "ic2_neighbor_s": 48.48197495378554,
+        "ic2_neighbor_scan_s": 23.70543883088976,
+        "ic2_random_20261031_build_s": 5.555691189132631,
+        "ic2_random_20261031_s": 8.98866993514821,
+        "ic2_random_20261031_scan_s": 3.1975759780034423,
+        "ic2_random_20261032_build_s": 5.304571238812059,
+        "ic2_random_20261032_s": 8.78416269691661,
+        "ic2_random_20261032_scan_s": 3.2573113879188895,
+        "ic2_random_20261033_build_s": 5.47442949609831,
+        "ic2_random_20261033_s": 8.985975948162377,
+        "ic2_random_20261033_scan_s": 3.2883316040970385,
+        "merge_rescale_s": 2.7324207331985235,
+        "parse_s": 39.957494081929326,
+        "prep_s": 51.47590002510697,
+        "probe_wall_s": 0.0,
+        "read_output_s": 0.16338328877463937,
+        "render_s": 0.004985881969332695,
+        "replay_build_s": 9.619993084575981,
+        "replay_plan_s": 0.0253304410725832,
+        "replay_s": 31.76305945776403,
+        "replay_scan_s": 21.48950232518837,
+        "subref_build_s": 3.2039405242539942,
+        "tool_s": 521.3761133109219,
+        "total_s": 663.8821902973577,
+        "verify_build_s": 0.0017026914283633232,
+        "verify_s": 148.26596737792715,
+        "verify_scan_s": 148.26249579992145
+      },
+      "repeat": 1,
+      "returncode": 0,
+      "shape": {
+        "missing": [],
+        "seconds": {
+          "diff": 3.066681592259556,
+          "discovery": 324.00269490713254,
+          "neighbor": 48.48197495378554,
+          "parse": 39.957494081929326,
+          "random": 26.758808580227196,
+          "replay": 31.76305945776403,
+          "verify": 148.26596737792715
+        }
+      },
+      "shape_ok": true,
+      "shape_why": "discovery largest, diff smallest, pads present",
+      "wall_s": 664.65456150705,
+      "why": "exact replay under pinned normalizer"
+    },
+    {
+      "after": {
+        "load": [
+          1.45,
+          1.55,
+          1.55
+        ],
+        "mem_available_bytes": 257139060736,
+        "mem_free_bytes": 136530210816,
+        "node": "b22-07.hpc.usc.edu",
+        "scratch_free_bytes": 2753826323955712
+      },
+      "arm": "A",
+      "before": {
+        "load": [
+          1.58,
+          1.46,
+          1.48
+        ],
+        "mem_available_bytes": 257114312704,
+        "mem_free_bytes": 136508874752,
+        "node": "b22-07.hpc.usc.edu",
+        "scratch_free_bytes": 2754524397699072
+      },
+      "cpu_s": 4313.297637000001,
+      "cpu_source": "resource.RUSAGE_CHILDREN",
+      "cpu_sys_s": 1206.9037429999998,
+      "cpu_user_s": 3106.3938940000007,
+      "repeat": 2,
+      "wall_s": 2821.3261588849127
+    },
+    {
+      "after": {
+        "load": [
+          1.45,
+          1.4,
+          1.45
+        ],
+        "mem_available_bytes": 256785952768,
+        "mem_free_bytes": 130241814528,
+        "node": "b22-07.hpc.usc.edu",
+        "scratch_free_bytes": 2753749509472256
+      },
+      "arm": "B",
+      "audit": "checked 299, residue fraction 0.071170",
+      "audit_checked": "299",
+      "audit_epsilon": "0.05",
+      "audit_k_min_fraction": "0.01",
+      "audit_mode": "bounded",
+      "audit_s_target": "299",
+      "before": {
+        "load": [
+          1.45,
+          1.55,
+          1.55
+        ],
+        "mem_available_bytes": 257140396032,
+        "mem_free_bytes": 136488710144,
+        "node": "b22-07.hpc.usc.edu",
+        "scratch_free_bytes": 2753826323955712
+      },
+      "compare": {
+        "byte_equal": true,
+        "dom": {
+          "byte_equal": true,
+          "classes": [],
+          "lines_replay": 8654,
+          "lines_stock": 8654,
+          "token_equal": true
+        },
+        "tbl": {
+          "byte_equal": true,
+          "classes": [],
+          "lines_replay": 8933,
+          "lines_stock": 8933,
+          "token_equal": true
+        }
+      },
+      "cpu_s": 877.6138849999998,
+      "cpu_source": "resource.RUSAGE_CHILDREN",
+      "cpu_sys_s": 216.15355499999987,
+      "cpu_user_s": 661.4603299999999,
+      "decision": "SHIP",
+      "n_batches": "105",
+      "phases": {
+        "cache_load_s": 3.3315549017861485,
+        "cache_store_s": 0.8996995626948774,
+        "coverage_read_s": 11.7298100059852,
+        "diff_s": 3.075286784209311,
+        "discovery_build_s": 5.457258323207498,
+        "discovery_s": 316.8650185219012,
+        "discovery_scan_s": 311.2355200499296,
+        "ic2_neighbor_build_s": 22.88927161274478,
+        "ic2_neighbor_s": 48.116147841792554,
+        "ic2_neighbor_scan_s": 23.588966715615243,
+        "ic2_random_20261031_build_s": 5.48368234327063,
+        "ic2_random_20261031_s": 8.998167607933283,
+        "ic2_random_20261031_scan_s": 3.2820808752439916,
+        "ic2_random_20261032_build_s": 5.374069642275572,
+        "ic2_random_20261032_s": 8.8244199459441,
+        "ic2_random_20261032_scan_s": 3.202779379673302,
+        "ic2_random_20261033_build_s": 5.549508204218,
+        "ic2_random_20261033_s": 9.014079610817134,
+        "ic2_random_20261033_scan_s": 3.2404721290804446,
+        "merge_rescale_s": 2.741366934031248,
+        "parse_s": 40.46184355998412,
+        "prep_s": 51.47285581380129,
+        "probe_wall_s": 0.0,
+        "read_output_s": 0.14117330079898238,
+        "render_s": 0.005149983335286379,
+        "replay_build_s": 9.892543394118547,
+        "replay_plan_s": 0.025586496107280254,
+        "replay_s": 29.930127631872892,
+        "replay_scan_s": 19.478516997303814,
+        "subref_build_s": 3.175137366168201,
+        "tool_s": 515.2178682796657,
+        "total_s": 657.8181559382938,
+        "verify_build_s": 0.0016596601344645023,
+        "verify_s": 151.19282171688974,
+        "verify_scan_s": 151.1895321328193
+      },
+      "repeat": 2,
+      "returncode": 0,
+      "shape": {
+        "missing": [],
+        "seconds": {
+          "diff": 3.075286784209311,
+          "discovery": 316.8650185219012,
+          "neighbor": 48.116147841792554,
+          "parse": 40.46184355998412,
+          "random": 26.836667164694518,
+          "replay": 29.930127631872892,
+          "verify": 151.19282171688974
+        }
+      },
+      "shape_ok": true,
+      "shape_why": "discovery largest, diff smallest, pads present",
+      "wall_s": 658.6411732216366,
+      "why": "exact replay under pinned normalizer"
+    },
+    {
+      "after": {
+        "load": [
+          1.81,
+          1.64,
+          1.58
+        ],
+        "mem_available_bytes": 257306750976,
+        "mem_free_bytes": 138903719936,
+        "node": "b22-07.hpc.usc.edu",
+        "scratch_free_bytes": 2753577759014912
+      },
+      "arm": "A",
+      "before": {
+        "load": [
+          1.41,
+          1.4,
+          1.45
+        ],
+        "mem_available_bytes": 257108447232,
+        "mem_free_bytes": 136450777088,
+        "node": "b22-07.hpc.usc.edu",
+        "scratch_free_bytes": 2753739182047232
+      },
+      "cpu_s": 3645.9757610000006,
+      "cpu_source": "resource.RUSAGE_CHILDREN",
+      "cpu_sys_s": 981.0270250000003,
+      "cpu_user_s": 2664.9487360000003,
+      "repeat": 3,
+      "wall_s": 2315.2251606518403
+    },
+    {
+      "after": {
+        "load": [
+          1.64,
+          1.49,
+          1.51
+        ],
+        "mem_available_bytes": 256783106048,
+        "mem_free_bytes": 130217697280,
+        "node": "b22-07.hpc.usc.edu",
+        "scratch_free_bytes": 2754355314819072
+      },
+      "arm": "B",
+      "audit": "checked 299, residue fraction 0.071170",
+      "audit_checked": "299",
+      "audit_epsilon": "0.05",
+      "audit_k_min_fraction": "0.01",
+      "audit_mode": "bounded",
+      "audit_s_target": "299",
+      "before": {
+        "load": [
+          1.81,
+          1.64,
+          1.58
+        ],
+        "mem_available_bytes": 257307582464,
+        "mem_free_bytes": 138882875392,
+        "node": "b22-07.hpc.usc.edu",
+        "scratch_free_bytes": 2753577759014912
+      },
+      "compare": {
+        "byte_equal": true,
+        "dom": {
+          "byte_equal": true,
+          "classes": [],
+          "lines_replay": 8654,
+          "lines_stock": 8654,
+          "token_equal": true
+        },
+        "tbl": {
+          "byte_equal": true,
+          "classes": [],
+          "lines_replay": 8933,
+          "lines_stock": 8933,
+          "token_equal": true
+        }
+      },
+      "cpu_s": 897.5997839999991,
+      "cpu_source": "resource.RUSAGE_CHILDREN",
+      "cpu_sys_s": 215.917735,
+      "cpu_user_s": 681.6820489999991,
+      "decision": "SHIP",
+      "n_batches": "105",
+      "phases": {
+        "cache_load_s": 3.271340843755752,
+        "cache_store_s": 2.110453133005649,
+        "coverage_read_s": 12.96984654199332,
+        "diff_s": 3.0540891252458096,
+        "discovery_build_s": 6.459124729037285,
+        "discovery_s": 324.30860540876165,
+        "discovery_scan_s": 317.6848806818016,
+        "ic2_neighbor_build_s": 23.139039035420865,
+        "ic2_neighbor_s": 48.44341628393158,
+        "ic2_neighbor_scan_s": 23.69186038710177,
+        "ic2_random_20261031_build_s": 5.491439962759614,
+        "ic2_random_20261031_s": 8.884445666801184,
+        "ic2_random_20261031_scan_s": 3.1639072350226343,
+        "ic2_random_20261032_build_s": 5.363283478654921,
+        "ic2_random_20261032_s": 8.794220213778317,
+        "ic2_random_20261032_scan_s": 3.205233828164637,
+        "ic2_random_20261033_build_s": 5.485566100105643,
+        "ic2_random_20261033_s": 8.977152314968407,
+        "ic2_random_20261033_scan_s": 3.2669633720070124,
+        "merge_rescale_s": 2.7281162519939244,
+        "parse_s": 52.469163361005485,
+        "prep_s": 52.131959453225136,
+        "probe_wall_s": 0.0,
+        "read_output_s": 0.12326861964538693,
+        "render_s": 0.004967386834323406,
+        "replay_build_s": 9.85451831528917,
+        "replay_plan_s": 0.025438705924898386,
+        "replay_s": 29.821187870111316,
+        "replay_scan_s": 19.385706885252148,
+        "subref_build_s": 3.6627884991467,
+        "tool_s": 522.2708429722115,
+        "total_s": 680.8003877350129,
+        "verify_build_s": 0.001776331104338169,
+        "verify_s": 151.87576298275962,
+        "verify_scan_s": 151.87229058286175
+      },
+      "repeat": 3,
+      "returncode": 0,
+      "shape": {
+        "missing": [],
+        "seconds": {
+          "diff": 3.0540891252458096,
+          "discovery": 324.30860540876165,
+          "neighbor": 48.44341628393158,
+          "parse": 52.469163361005485,
+          "random": 26.65581819554791,
+          "replay": 29.821187870111316,
+          "verify": 151.87576298275962
+        }
+      },
+      "shape_ok": true,
+      "shape_why": "discovery largest, diff smallest, pads present",
+      "wall_s": 681.5923236701638,
+      "why": "exact replay under pinned normalizer"
+    }
+  ],
+  "runner_sha256": "2ddf1f1dc6f4316932263febb38fb758ea84f64b198b4b53fbe0efff2e2fe718",
+  "scored": {
+    "S_g": 4.244800716462076,
+    "S_pred": 4.0832874372486945,
+    "break_even_n": 0.06998656313491283,
+    "completed": true,
+    "cpu_A_median_s": 4313.297637000001,
+    "cpu_B_median_s": 878.1131939999996,
+    "cpu_ratio": 4.9120064092784865,
+    "cv_A": 0.16955105293917724,
+    "cv_B": 0.017807988589740222,
+    "cv_flag_A": true,
+    "cv_flag_B": false,
+    "fail_reasons": [],
+    "first_run_overhead": 1.3748997580347246,
+    "flags": [
+      "CV A 0.1696"
+    ],
+    "job_id": "13260162",
+    "outcome": "EXACT",
+    "prediction_error": 0.03804967300043202,
+    "proteome": "GCF_002302335.1",
+    "shape_ok": true,
+    "stock_median_s": 2821.3261588849127,
+    "stock_walls_s": [
+      3264.0774753317237,
+      2821.3261588849127,
+      2315.2251606518403
+    ],
+    "stopped": null,
+    "tare_median_s": 664.65456150705,
+    "tare_walls_s": [
+      664.65456150705,
+      658.6411732216366,
+      681.5923236701638
+    ],
+    "task": 0
+  },
+  "scratch": "/scratch1/jjt_373/headline_bounded_13260162_0",
+  "scratch_free_bytes_start": 2753686825598976,
+  "scratch_fstype": "lustre",
+  "seed": 20261291,
+  "stock_38_1": {
+    "after": {
+      "load": [
+        1.63,
+        1.63,
+        3.22
+      ],
+      "mem_available_bytes": 256829427712,
+      "mem_free_bytes": 130789359616,
+      "node": "b22-07.hpc.usc.edu",
+      "scratch_free_bytes": 2753797022547968
+    },
+    "arm": "A",
+    "before": {
+      "load": [
+        1.02,
+        4.27,
+        18.57
+      ],
+      "mem_available_bytes": 256786112512,
+      "mem_free_bytes": 130749390848,
+      "node": "b22-07.hpc.usc.edu",
+      "scratch_free_bytes": 2753669118296064
+    },
+    "cpu_s": 3441.935112,
+    "cpu_source": "resource.RUSAGE_CHILDREN",
+    "cpu_sys_s": 964.65252,
+    "cpu_user_s": 2477.282592,
+    "repeat": 0,
+    "wall_s": 2161.804287495557
+  },
+  "stock_vs_stock_byte_equal": true,
+  "task": 0,
+  "test": "headline-bounded",
+  "unpinned": {
+    "after": {
+      "load": [
+        1.3,
+        1.42,
+        1.48
+      ],
+      "mem_available_bytes": 257108672512,
+      "mem_free_bytes": 136326004736,
+      "node": "b22-07.hpc.usc.edu",
+      "scratch_free_bytes": 2754377478569984
+    },
+    "before": {
+      "load": [
+        1.54,
+        1.48,
+        1.5
+      ],
+      "mem_available_bytes": 257131372544,
+      "mem_free_bytes": 136451493888,
+      "node": "b22-07.hpc.usc.edu",
+      "scratch_free_bytes": 2754357160312832
+    },
+    "byte_equal": false,
+    "cpu_s": 27.59566299999915,
+    "cpu_source": "resource.RUSAGE_CHILDREN",
+    "cpu_sys_s": 5.7246729999997115,
+    "cpu_user_s": 21.870989999999438,
+    "differs": true,
+    "dom": {
+      "byte_equal": false,
+      "classes": [
+        "value-only"
+      ],
+      "extra_keys": 0,
+      "lines_replay": 8654,
+      "lines_stock": 8654,
+      "missing_keys": 0,
+      "token_equal": false
+    },
+    "n_batches": 105,
+    "n_records": 4408,
+    "pin": false,
+    "tbl": {
+      "byte_equal": false,
+      "classes": [
+        "value-only"
+      ],
+      "extra_keys": 0,
+      "lines_replay": 8933,
+      "lines_stock": 8933,
+      "missing_keys": 0,
+      "token_equal": false
+    },
+    "wall_s": 33.46687267487869
+  },
+  "workstream": "W13"
+}

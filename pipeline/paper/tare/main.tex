@@ -90,13 +90,17 @@ program only on the entries that can matter, with the program's own database\nob
 release, so that the program itself prints the numbers a full run would print. \sys then tests the replay by adding
 back entries it left out, and refuses, returning an ordinary full run, if any line changes. When it ships, every
 output line except comment headers is byte\nobreakdash-identical to a full rerun; the assumption that makes this
-possible is tested on every update, not proved. By default \sys also reruns the program in full on 299 sampled records,
-so a hidden dependency that affects at least 1\% of records ships with probability at most 5\%.
+possible is tested on every update, not proved. By default \sys also reruns the program in full on 299 sampled records
+drawn from those with at least one replay candidate, so a hidden dependency that affects at least 1\% of that
+candidate\nobreakdash-bearing population ships with probability at most 5\%; records with an empty candidate set are covered by
+the contract conditions (pinned $Z$, per\nobreakdash-family \cutga thresholds), not by the audit sample. We state three exactness
+claims separately: exact under the contract (\cref{prop:exact}); byte agreement on every evaluated run; and bounded
+detection for faults outside the contract.
 % source: MEASURED pipeline/results/adversarial/v2_summary.json arms.bounded.covered_unsafe=3 arms.bounded.covered_trials=400; MEASURED pipeline/docs/EXACT_REPLAY_PROTOCOL.md; TEXT s=299; NOMINAL eps_pct=5; NOMINAL kappa_pct=1
 
 On Pfam updates, \sys is $4.24\times$ faster than a full rerun with a lightweight sampled audit (median of nine genomes
 on a dedicated server; 95\% CI 4.17--4.68), and $\HeadlineBoundedMedian\times$ faster under the bounded-audit default
-that carries the guarantee above (same nine genomes; 95\% CI \HeadlineBoundedCIlow--\HeadlineBoundedCIhigh).
+that carries the candidate\nobreakdash-population guarantee above (same nine genomes; 95\% CI \HeadlineBoundedCIlow--\HeadlineBoundedCIhigh).
 % source: MEASURED pipeline/results/exact_replay/headline_carc.json headline_median=4.243202948728078 bootstrap_ci95.low=4.172363531540619 bootstrap_ci95.high=4.683831507831228; MEASURED pipeline/results/exact_replay/headline_bounded.json headline_median=3.485836273912707 bootstrap_ci95.low=3.3205734893494188 bootstrap_ci95.high=4.101134747066627 n_speedups=9 any_fail=false; NOMINAL ci=95
 Across 715{,}704 output lines from HMMER and Infernal, not one differed from a full run. \sys refused DIAMOND,
 whose first filter reads bytes of the neighboring database entry, and BLAST+, whose unpinned probe rows fit none of
@@ -406,6 +410,10 @@ C_r = \{e \in S : (r,e) \in P(R,E)\} \;\cup\; \{e : (r,e) \in P_\pi(R,\Delta)\}.
 \end{equation}
 Selection compares every record with every changed entry, so its cost is proportional to the changed fraction of the
 reference. It is the one cost \sys cannot avoid (\cref{sec:cost}).
+Candidate completeness for the merge is
+$\mathrm{Hits}(r,E_{\mathrm{new}})\subseteq\mathrm{Cached}(r)\cup\mathrm{Discovered}(r)$, which holds here because $Z$ is pinned and
+reporting thresholds are per family (\cutga); without those conditions an unchanged pair that was previously below a
+global threshold can become reportable and be missing from both sets.
 
 \subsection{Stage 5: Batched Exact Replay}
 \label{sec:replay}
@@ -437,9 +445,13 @@ P_{\text{miss}} \approx h + (1-h)(1-q)^3, \qquad h = \binom{n-k}{s}\Big/\binom{n
 \label{eq:miss}
 \end{equation}
 % source: MEASURED pipeline/results/reference_diamond/dx3.json; LEN pad_seeds=3; NOMINAL one=1
-Pads test C0/C1; the audit bound is R6 with $s$ from \cref{eq:audit-s}. Runs that predate the bounded default used an
-earlier audit ($p{=}0.02$, floor 20). An optional first\nobreakdash-use mode compares the first two updates to a full run.
-% source: MEASURED pipeline/docs/EXACT_REPLAY_PROTOCOL.md; TEXT audit_p=0.02; TEXT audit_floor=20; NOMINAL one=1
+Pads test C0/C1; the audit bound is R6 with $s$ from \cref{eq:audit-s}. The measured default samples only records that
+have at least one replay candidate; extending the bound to all input records (including empty candidate sets) is in
+progress and is not claimed for the $\HeadlineBoundedMedian\times$ timing. The audit oracle reruns stock on the sampled records
+alone; we treat record\nobreakdash-subset invariance of that oracle (sample\nobreakdash-only stock equals the projection of full\nobreakdash-query stock)
+as an assumption whose test is in progress. Runs that predate the bounded default used an earlier audit ($p{=}0.02$,
+floor 20). An optional first\nobreakdash-use mode compares the first two updates to a full run.
+% source: MEASURED pipeline/docs/EXACT_REPLAY_PROTOCOL.md; TEXT audit_p=0.02; TEXT audit_floor=20; NOMINAL one=1; MEASURED pipeline/results/exact_replay/headline_bounded.json headline_median=3.485836273912707
 
 \subsection{Cost Model}
 \label{sec:cost}
@@ -495,15 +507,18 @@ are indicative only.
 \subsection{Metrics}
 \label{sec:metrics}
 
-\textbf{Exactness.} A run is \dec{exact} if its body lines equal the stock run's as byte sequences; otherwise we count
-and classify the differing lines. Over $N$ compared lines with none differing, the one\nobreakdash-sided 95\% Clopper--Pearson upper
+\textbf{Exactness.} We separate three statements: (i)~\emph{exact under the contract}---\cref{prop:exact} under C0/C1 and
+(D)--(O); (ii)~\emph{byte agreement on evaluated runs}---a run is \dec{exact} in tables if its body lines equal the stock
+run's as byte sequences; (iii)~\emph{bounded detection} for a stated class of faults outside the contract (pads and the
+audit). Over $N$ compared lines with none differing, the one\nobreakdash-sided 95\% Clopper--Pearson upper
 bound on the per\nobreakdash-line error rate is
 \begin{equation}
 p_{\text{up}} = 1 - 0.05^{1/N}.
 \label{eq:cp}
 \end{equation}
 % source: NOMINAL ci=95; NOMINAL alpha=0.05; NOMINAL one=1
-Lines of one run share a pin and a reference, so they are not independent and the bound is descriptive, not a guarantee.
+Lines of one run share a pin and a reference, so they are not independent and that per\nobreakdash-line bound is descriptive, not a
+probability guarantee over independent observations.
 \textbf{Speedup.} For genome $g$ with $r$ alternating runs per arm, $S_g$ is the median stock wall time divided by the
 median \sys wall time, both measured around the whole process. Across genomes we report the median of $S_g$ with a 95\%
 percentile bootstrap interval, the geometric mean, and the range. Differing lines are classified as whitespace\nobreakdash-only,
@@ -781,10 +796,30 @@ BLAST+ does not ship.
 on a synthetic scorer (1{,}400 trials), file\nobreakdash-wide coupling was always refused, but hidden or distant coupling missed on 741 of
 800 trials. With the earlier audit, 489 of those 800 still shipped; with the bounded audit ($s{=}299$), where at least 1\% of
 records were affected only 3 of 400 shipped (vs.\ 127 of 400 earlier), matching the 5\% bound, and all 200 clean trials
-shipped. The bounded audit is the default (~6.4\% of a stock run vs.\ 2.1\% earlier). Guarantee: under C0/C1 with
-(D)--(O) in \cref{sec:model}, \cref{prop:exact} gives an exact merge; refuse C2--C4 when observed; for hidden
-coupling, wrong updates ship with probability $\le 5\%$ when $\ge 1\%$ of records are affected (\cref{eq:audit-s}).
+shipped. The bounded audit is the default (~6.4\% of a stock run vs.\ 2.1\% earlier). Guarantee (interim): under C0/C1 with
+(D)--(O) in \cref{sec:model}, \cref{prop:exact} gives an exact merge under the contract; refuse C2--C4 when observed; for
+hidden coupling among records with at least one replay candidate, wrong updates ship with probability $\le 5\%$ when
+$\ge 1\%$ of that population are affected (\cref{eq:audit-s}). Zero\nobreakdash-candidate records rely on pinned $Z$ and per\nobreakdash-family
+\cutga, not on this sample; an all\nobreakdash-record audit re\nobreakdash-timing is in progress (\cref{tab:config}).
 % source: MEASURED pipeline/results/adversarial/measured.json n_records=2000 n_models=2500; MEASURED pipeline/results/adversarial/v2_summary.json arms.shipped.hidden_unsafe=489 arms.shipped.hidden_trials=800 arms.bounded.hidden_unsafe=272 arms.bounded.covered_unsafe=3 arms.bounded.covered_trials=400 arms.shipped.covered_unsafe=127 arms.bounded.below_unsafe=269 arms.bounded.below_trials=400 arms.bounded.c0_trials=200 arms.bounded.c0_needless=0 bounded_audit_fraction_of_stock=0.06429750013644711 shipped_audit_fraction_of_stock=0.021358068062426384; DERIVED b=100*bounded_audit_fraction_of_stock; DERIVED sh=100*shipped_audit_fraction_of_stock; NOMINAL missed=741; NOMINAL trials1400=1400; NOMINAL pct1=1; NOMINAL pct5=5; NOMINAL sbound=299
+
+\begin{table}[t]
+\caption{Headline\nobreakdash-class configurations. Population is the audit sampling frame. The $\HeadlineBoundedMedian\times$ row keeps its
+own policy and commit; the corrected all\nobreakdash-record policy is not yet re\nobreakdash-timed.}
+\label{tab:config}
+\centering\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}lp{1.4cm}cp{1.6cm}p{1.35cm}llp{2.0cm}@{}}
+\toprule
+Claim & Policy & $s$ & Population & Commit & Jobs & Median [95\% CI] & Guarantee \\
+\midrule
+$4.24\times$ & Bernoulli & $p{=}0.02$, floor 20 & $\ge$1 candidate & Bernoulli freeze & 13208152 / 13227819 & $4.24$ [$4.17$, $4.68$] & lighter audit \\
+$\HeadlineBoundedMedian\times$ & bounded & 299 & $\ge$1 candidate & W13 freeze & 13260162 & $\HeadlineBoundedMedian$ [\HeadlineBoundedCIlow, \HeadlineBoundedCIhigh] & $\le 5\%$ if $\ge 1\%$ of cand.\ pop.\ \\
+(all\nobreakdash-record) & bounded & 299 & all records & --- & --- & re\nobreakdash-time in progress & intended broad bound \\
+\bottomrule
+\end{tabular}
+% source: MEASURED pipeline/results/exact_replay/headline_carc.json headline_median=4.243202948728078 bootstrap_ci95.low=4.172363531540619 bootstrap_ci95.high=4.683831507831228; MEASURED pipeline/results/exact_replay/headline_bounded.json headline_median=3.485836273912707 bootstrap_ci95.low=3.3205734893494188 bootstrap_ci95.high=4.101134747066627 audit_s_target=299; MEASURED pipeline/results/exact_replay/headline_bounded_13260162_0.json acts_commit=4598262 bounded_audit_s_expected=299 job_id=13260162; MEASURED pipeline/results/exact_replay/headline_measured/headline_measured_13208152_0.json job_id=13208152; MEASURED pipeline/docs/EXACT_REPLAY_PROTOCOL.md; TEXT audit_p=0.02; TEXT audit_floor=20; TEXT s=299; NOMINAL pct1=1; NOMINAL pct5=5; HAS 13227819
+\end{table}
 
 \begin{figure}[t]
 \centering
@@ -863,6 +898,20 @@ Attack & Defeating experiment / proof \\
 \end{center}
 % source: NOMINAL sbound=299
 
+\textbf{Where the costs come from (and how one might remove them).}
+Two hard boundaries: a fresh full stock verifier consumes the stock budget, so incremental work on top of it cannot
+save wall time; and a cold unique genome must still pay its own stock search. Measured overheads that motivate
+engineering (localizing cost, not attributing a root cause): in shared\nobreakdash-contract $N{=}5$ replicate~0, the first genome spent
+4{,}099\,s in reference parsing while later genomes spent 6.6--7.9\,s, cache writes ranged from 3.2\,s to 876\,s, and the
+HMMER search itself was 2{,}609--2{,}944\,s per genome.
+% source: MEASURED pipeline/results/shared_contract/measured_post_freeze.json scores.5.replicates.0.arm_c.0.phases.parse_s=4098.957506806124 scores.5.replicates.0.arm_c.1.phases.parse_s=7.931868065148592 scores.5.replicates.0.arm_c.2.phases.parse_s=6.609489330090582 scores.5.replicates.0.arm_c.3.phases.parse_s=7.101846957113594 scores.5.replicates.0.arm_c.4.phases.parse_s=6.597135207615793 scores.5.replicates.0.arm_c.0.phases.cache_store_s=3.209297524765134 scores.5.replicates.0.arm_c.1.phases.cache_store_s=564.6139736142941 scores.5.replicates.0.arm_c.2.phases.cache_store_s=502.68023383105174 scores.5.replicates.0.arm_c.3.phases.cache_store_s=6.640119696035981 scores.5.replicates.0.arm_c.4.phases.cache_store_s=876.0836872630753 scores.5.replicates.0.arm_c.0.phases.tool_s=2943.6759184268303 scores.5.replicates.0.arm_c.1.phases.tool_s=2893.0375417894684 scores.5.replicates.0.arm_c.2.phases.tool_s=2760.498512756545 scores.5.replicates.0.arm_c.3.phases.tool_s=2608.8726805527695 scores.5.replicates.0.arm_c.4.phases.tool_s=2755.429227279499; NOMINAL five=5; NOMINAL zero=0
+Unmeasured redesign directions (none of these shrink or skip a check): exact cold capture (deliver the stock output as
+the answer, then validate the contract before any reuse); reuse already\nobreakdash-collected fit observations after a shared
+contract hit instead of re\nobreakdash-invoking the same sample and partitions in \texttt{probe\_fit}, keeping independent controls
+fresh; a content\nobreakdash-addressed prepared\nobreakdash-reference bundle with atomic cache publication; cross\nobreakdash-query reuse of identical
+protein content (memoization); and, outside the black\nobreakdash-box scope, verified stage reuse inside a parser\nobreakdash-heavy engine
+such as Semgrep.
+
 \textbf{Beyond biology (designed for; measured in bio).}
 Reference releases that change a global normalizer (IR IDF~\cite{hadjieleftheriou2009incremental,staudinger2024reproducible}, mass\nobreakdash-spec database\nobreakdash-size {FDR}~\cite{frank2011spectral,aggarwal2022fdr}, astronomy catalog priors~\cite{delchambre2023gaia}) force the same pin\nobreakdash-or\nobreakdash-refuse choice when the normalizer is exposed.
 On Semgrep 1.182.1, a laptop cost\nobreakdash-shape fit is $T(f){=}4.3{+}171.3\cdot f$\,s with 97.6\% of full\nobreakdash-scan cost in the rule term (shape only; not a speed claim).
@@ -889,7 +938,8 @@ SIB's \texttt{pfscanV3} (no pin) shipped 26/30 genomes byte\nobreakdash-identica
 % source: MEASURED pipeline/results/unrelated_ship/measured.json checks.n=10 checks.n_ship=8 checks.n_differing=0; MEASURED pipeline/results/unrelated_ship/measured_v2.json checks.n=20 checks.n_ship=18 checks.n_differing=0 checks.n_unsafe=0; DERIVED ship=8+18; DERIVED total=10+20; DERIVED short=total-ship; HAS INCONCLUSIVE
 \textit{Release choice:} \cref{fig:pairs} spans 2.0\%--93.1\% rewrite; the headline times 38.1$\rightarrow$38.2 (13.4\%), and the chain covers 37.3$\rightarrow$38.2 without break\nobreakdash-even fallback (\cref{sec:eval-exact}).
 \textit{Timing:} laptop numbers are indicative; headline and matched baselines are exclusive-node alternating runs.
-\textit{Check strength:} below the audit's 1\% guarantee, hidden coupling can ship (\cref{sec:eval-safety}).
+\textit{Check strength:} below the audit's 1\% threshold on the candidate\nobreakdash-bearing population, hidden coupling can ship; the
+all\nobreakdash-record sampling fix is not yet attached to a re\nobreakdash-timed headline (\cref{sec:eval-safety}, \cref{tab:config}).
 % source: MEASURED pipeline/results/release_chain/pairs.json pairs.3.f_delta=0.020132600258732213 pairs.4.f_delta=0.9311802701115678 pairs.6.f_delta=0.13446605163602576; HAS 37.3; HAS 37.4; HAS 38.0; HAS 38.1; HAS 38.2; DERIVED small=100*pairs_3_f_delta; DERIVED big=100*pairs_4_f_delta; DERIVED timed=100*pairs_6_f_delta; NOMINAL pct1=1; MEASURED pipeline/results/release_chain/measured.json n_pass=2 n_genomes=3
 
 \textbf{Anticipated objections.} An expert shell script (changed families with \texttt{-Z}, then each protein's candidates) is \sys without gate/check/audit. On three of five locked genomes meeting the pre\nobreakdash-registered speed\nobreakdash-score rule, exclusive\nobreakdash-node EPYC 7542 timing gives median $S_g^{\mathrm{tare}}=5.32$ (95\% CI $[5.02, 5.35]$) and $S_g^{\mathrm{expert}}=5.96$ (CI $[5.55, 6.17]$), so \sys reaches about 87\% of that speedup ($R_g=0.866$, CI $[0.842, 0.959]$; $n{=}3$, seed 20261249)---\texttt{inconclusive}, not the locked five. The script needs per\nobreakdash-tool expertise (HMMER E-values depend on database size, hence \texttt{-Z}) that \sys derives by probing, and silently drops 68 of 227{,}223 DIAMOND hits; two genomes REFUSEd on non-unique keys Cadherin\_5 ($2.2\times10^{-11}$) and Gly-zipper\_OmpA ($1.2\times10^{-6}$). Rescaling cached E-values matched only 58.0\% of 44{,}132 HMMER hit lines (Wilson 95\% CI 57.5--58.5\%).
@@ -928,9 +978,12 @@ mpiBLAST~\cite{darling2003mpiblast} & database segment & yes & no & yes & yes & 
 
 \textbf{What is new.} Command\nobreakdash-keyed caches (Riker, ProcessCache, INCR, Nextflow/Snakemake)~\cite{curtsinger2022riker,shiptoski2023processcache,xie2026incr,ditommaso2017nextflow,molder2021snakemake}
 rerun when input bytes change, so a release invalidates everything; they are not release\nobreakdash-aware memoization.
+INCR reuses shell\nobreakdash-stage and intermediate command effects when dependencies are unchanged~\cite{xie2026incr}; Caruca mines
+invocation and filesystem specifications for opaque commands~\cite{lamprou2025caruca}---neither addresses coupled reference
+entries whose printed statistics depend on a pinned global size across database releases.
 iBLAST/iSeqSearch/GeStore~\cite{dash2021iblast,yoo2025iseqsearch,pedersen2014gestore} are release\nobreakdash-aware but rescale or
 plugin\nobreakdash-merge and are not byte\nobreakdash-identical (\cref{fig:idiamond}). mpiBLAST~\cite{darling2003mpiblast} contributes the pin;
-\sys adds candidate selection, batched replay, and check\nobreakdash-or\nobreakdash-refuse. Black\nobreakdash-box splitters and IVM~\cite{shen2022kumquat,vasilakis2021pash,lamprou2025caruca,blakeley1986views,acar2003selective}
+\sys adds candidate selection, batched replay, and check\nobreakdash-or\nobreakdash-refuse. Black\nobreakdash-box splitters and IVM~\cite{shen2022kumquat,vasilakis2021pash,blakeley1986views,acar2003selective}
 do not split a size\nobreakdash-coupled database argument of an unmodified binary. Probes borrow metamorphic testing~\cite{chen1998metamorphic,segura2016survey}, not a new testing method.
 \textit{Decision procedure:} command\nobreakdash-keyed caches miss releases; approximate incremental tools miss exactness; \sys's delta is pin $+$ candidate replay $+$ refuse.
 
