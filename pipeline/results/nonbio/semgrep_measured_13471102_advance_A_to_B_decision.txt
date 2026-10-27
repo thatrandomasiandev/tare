@@ -1,0 +1,29 @@
+strategy: reference
+decision: SHIP
+why:      exact replay under identity normalizer
+verify: full
+mode: exact
+match: body-bytes
+reused_rows: 746
+n_entries: 205
+n_stable: 204
+n_fresh: 1
+n_partial: 0
+length_entries: 281792
+length_fresh: 1460
+length_partial: 0
+f_delta: 0.004878048780487805
+f_threshold: 0.8
+f_threshold_source: default
+basis_entry_count_max: 205
+normalizer: identity
+replay_records: 123
+replay_entries: 30
+candidate_pairs: 148
+n_batches: 1
+random_pads: 3 on 50 records, residue fraction 0.000000
+ic2: pass
+volatile_json_fields: ['time']
+phases: {'parse_s': 0.7399225202389061, 'coverage_read_s': 0.20980573212727904, 'diff_s': 0.003522545099258423, 'cache_load_s': 0.010239596012979746, 'subref_build_s': 0.017883847001940012, 'prep_s': 7.366761565208435e-06, 'tool_s': 779.5795021746308, 'read_output_s': 0.005360011011362076, 'discovery_s': 174.90712972730398, 'discovery_build_s': 0.0022453470155596733, 'discovery_scan_s': 174.8990762438625, 'merge_rescale_s': 0.0033429660834372044, 'cache_store_s': 0.03403519280254841, 'replay_plan_s': 0.00033026328310370445, 'replay_s': 52.540873846039176, 'replay_build_s': 0.0022844099439680576, 'replay_scan_s': 52.50119397509843, 'ic2_neighbor_s': 61.81444557290524, 'ic2_neighbor_build_s': 0.004490712191909552, 'ic2_neighbor_scan_s': 61.76647013332695, 'ic2_random_20261031_s': 31.547216173261404, 'ic2_random_20261031_build_s': 0.0026906155981123447, 'ic2_random_20261031_scan_s': 31.529530512169003, 'ic2_random_20261032_s': 30.33893225900829, 'ic2_random_20261032_build_s': 0.0024859001860022545, 'ic2_random_20261032_scan_s': 30.320946210063994, 'ic2_random_20261033_s': 32.13746206695214, 'ic2_random_20261033_build_s': 0.0025604800321161747, 'ic2_random_20261033_scan_s': 32.11740921996534, 'render_s': 0.012068334966897964, 'verify_s': 396.4795050029643, 'verify_build_s': 0.001133748795837164, 'verify_scan_s': 396.44487588014454, 'total_s': 780.8314060731791, 'probe_wall_s': 0.0}
+probe_phases: {}
+program_binary: /project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep sha256:2728b88bb81ae2d1b15dcf4d5b7138c4025c9b29cc797c3d812587d030337d7c

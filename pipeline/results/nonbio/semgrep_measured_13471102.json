@@ -1,0 +1,621 @@
+{
+  "protocol": "semgrep_measured",
+  "pre_reg": "pipeline/docs/SEMGREP_PILOT.md#carc-measured-pre-registration-locked-2026-10-24",
+  "pre_reg_addendum": "pipeline/docs/SEMGREP_PILOT.md#addendum-2026-10-26-validated-ruleset-final-attempt-josh-authorized",
+  "mode": "measured",
+  "rehearsal": false,
+  "status": "SHIP",
+  "started_utc": "2026-10-27T04:27:15.737220+00:00",
+  "git_head": "397a13b0dc32ca90e8c69ffb5c4d995bb182b0e6",
+  "frozen_commit": "397a13b0dc32ca90e8c69ffb5c4d995bb182b0e6",
+  "reps": 2,
+  "seeds": {
+    "corpus": 20261351,
+    "releases": 20261352,
+    "errors_dep": 20261353,
+    "smoke_subset": null,
+    "rehearsal_corpus": null
+  },
+  "corpus_subset": null,
+  "rules_subdir": "cleaned_rules",
+  "semgrep": {
+    "path": "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+    "version": "1.182.1",
+    "sha256": "2728b88bb81ae2d1b15dcf4d5b7138c4025c9b29cc797c3d812587d030337d7c",
+    "flags": [
+      "--json",
+      "--no-rewrite-rule-ids",
+      "--metrics=off",
+      "--disable-version-check",
+      "--timeout",
+      "0",
+      "--timeout-threshold",
+      "0",
+      "--max-memory",
+      "0",
+      "-j",
+      "16"
+    ],
+    "wrapper": true,
+    "image_tag": "semgrep/semgrep:1.182.1",
+    "image_digest": "sha256:451b3d875c00dac7ed5db5293e584a07de11449a409c10b3c2d2652f429630b6",
+    "image_sif": "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/images/semgrep_1.182.1.sif",
+    "image_sif_sha256": "44921f9de406d6d2f278da2fa78eae1aa57fcf02c93b8d953f98e026939316bc"
+  },
+  "host": {
+    "iso_utc": "2026-10-27T04:27:19.024613+00:00",
+    "hostname": "b22-01.hpc.usc.edu",
+    "uptime": " 21:27:19 up 38 days,  3:18,  0 users,  load average: 50.47, 60.95, 63.00",
+    "cpu_model": "AMD EPYC 7542 32-Core Processor",
+    "nproc": "64",
+    "lscpu": "Architecture:         x86_64\nCPU op-mode(s):       32-bit, 64-bit\nByte Order:           Little Endian\nCPU(s):               128\nOn-line CPU(s) list:  0-63\nOff-line CPU(s) list: 64-127\nThread(s) per core:   1\nCore(s) per socket:   32\nSocket(s):            2\nNUMA node(s):         2\nVendor ID:            AuthenticAMD\nCPU family:           23\nModel:                49\nModel name:           AMD EPYC 7542 32-Core Processor\nStepping:             0\nCPU MHz:              2894.737\nBogoMIPS:             5789.47\nVirtualization:       AMD-V\nL1d cache:            32K\nL1i cache:            32K\nL2 cache:             512K\nL3 cache:             16384K\nNUMA node0 CPU(s):    0-31\nNUMA node1 CPU(s):    32-63\nFlags:                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate ssbd mba ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr wbnoinvd amd_ppin arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif v_spec_ctrl umip rdpid overflow_recov succor smca sme sev sev_es",
+    "slurm_job_id": "13471102",
+    "slurm_nodelist": "b22-01"
+  },
+  "chain": {
+    "seed": 20261352,
+    "n_candidate_windows": 374,
+    "window_index": 351,
+    "commits_oldest_to_newest": [
+      "f5bc5017d3ba026fcf805118eaca4e58acf2de54",
+      "9a23c1aafa8c5a9fc1954c1c93b353ca90f2b6b0",
+      "f63062f8cfae821739a8e2c092669cd74e3a803d"
+    ],
+    "subjects": [
+      "New Published Rules - python.django.security.audit.csrf-exempt (#758)",
+      "Removal potential false positives in python.requests.best-practice.use-raise-for-status (#762)",
+      "New Published Rules - python.flask.security.audit.directly-returned-format-string (#768)"
+    ],
+    "n_python_rule_commits_scanned": 376
+  },
+  "releases_sha256": [
+    "11b031bdeda01a15aecd85b231cca4742a74c365101bfcac5100717c54d9661d",
+    "5388a94b6792ddf25ba5ed0850bdd057d0e4856cbc739ffd69dbab272dccc024",
+    "5b2bd3d731231327b3a5bee8f2f05d30b736b4bc7fefcd2a9d352f5c58df9d00"
+  ],
+  "corpus_meta": {
+    "seed": 20261351,
+    "n_files": 1000,
+    "site_packages": "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages",
+    "eligible_pool": 23742,
+    "skipped_path": 906,
+    "skipped_hash": 1992,
+    "excl_paths_n": 3754,
+    "excl_hashes_n": 3571,
+    "manifest_sha256": "86e7f26a4bc0a0e5dd2c7bb52bbb242c4c74e86f9e71e95deda4ed66497cd584",
+    "path_list_sha256": "ce1943c4a5994406726e24fb0bb31edc40729a7ce516bdb59345403190d6d3a4",
+    "records_sha256": "a294695d794a8d8b05fb1cc34bd0452b88edb18b95398554336c18da8298823f",
+    "disjoint_from": [
+      "G1 ~/tmp/tare_g1/semgrep/target (path+sha256)",
+      "P2 ~/tmp/tare_semgrep_p2/corpus (path+sha256)"
+    ]
+  },
+  "runs": [
+    {
+      "step": "A_to_B",
+      "rep": 0,
+      "stock": {
+        "rc": 0,
+        "wall_s": 373.2372156367637,
+        "n_findings": 746,
+        "n_errors": 0,
+        "out_sha256": "24fa84d711412bd6665ecc4ec8424d223351f816589030cb1805d20385f316aa",
+        "argv": [
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+          "--config",
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/assets/cleaned_rules/cleaned_rules_9a23c1aafa8c.yaml",
+          "--json",
+          "--no-rewrite-rule-ids",
+          "--metrics=off",
+          "--disable-version-check",
+          "--timeout",
+          "...(1000 inputs)"
+        ],
+        "stderr_tail": "               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 205 Code rules:\n  Scanning 1000 files with 205 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 205\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 205 rules on 1000 files: 746 findings.\n"
+      },
+      "tare": {
+        "rc": 0,
+        "wall_s": 756.1951948511414,
+        "decision": "SHIP",
+        "why": "exact replay under identity normalizer",
+        "out_path": "/scratch1/jjt_373/tare-semgrep/measured_13471102/tare_A_to_B_r0/tables/out",
+        "out_sha256": "b3e11c708f3ca4f03ea62bbf572b84b5de729e0ab36ecd7c3f555558d12cc264",
+        "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/measured_13471102/tare_A_to_B_r0/decision.txt\n",
+        "stderr_tail": ""
+      },
+      "compare": {
+        "equal_except_time": true,
+        "diff_keys": [],
+        "diff_class": null
+      }
+    },
+    {
+      "step": "A_to_B",
+      "rep": 1,
+      "stock": {
+        "rc": 0,
+        "wall_s": 384.56395763438195,
+        "n_findings": 746,
+        "n_errors": 0,
+        "out_sha256": "d521019176e38a5172cf6d3fddbf025fdac1756756f0914b75a257813c82c70d",
+        "argv": [
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+          "--config",
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/assets/cleaned_rules/cleaned_rules_9a23c1aafa8c.yaml",
+          "--json",
+          "--no-rewrite-rule-ids",
+          "--metrics=off",
+          "--disable-version-check",
+          "--timeout",
+          "...(1000 inputs)"
+        ],
+        "stderr_tail": "               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 205 Code rules:\n  Scanning 1000 files with 205 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 205\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 205 rules on 1000 files: 746 findings.\n"
+      },
+      "tare": {
+        "rc": 0,
+        "wall_s": 768.8335032458417,
+        "decision": "SHIP",
+        "why": "exact replay under identity normalizer",
+        "out_path": "/scratch1/jjt_373/tare-semgrep/measured_13471102/tare_A_to_B_r1/tables/out",
+        "out_sha256": "c62bd9e6e5386ebf33a4b6acceac43cbf13c67b9849ef8b7f6db96e5a0f69c76",
+        "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/measured_13471102/tare_A_to_B_r1/decision.txt\n",
+        "stderr_tail": ""
+      },
+      "compare": {
+        "equal_except_time": true,
+        "diff_keys": [],
+        "diff_class": null
+      }
+    },
+    {
+      "step": "B_to_C",
+      "rep": 0,
+      "stock": {
+        "rc": 0,
+        "wall_s": 384.2699639168568,
+        "n_findings": 746,
+        "n_errors": 0,
+        "out_sha256": "e3038554f8e29b6bf1f64bb85cb4cd19a86df3b51f741d98b376124af085200b",
+        "argv": [
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+          "--config",
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/assets/cleaned_rules/cleaned_rules_f63062f8cfae.yaml",
+          "--json",
+          "--no-rewrite-rule-ids",
+          "--metrics=off",
+          "--disable-version-check",
+          "--timeout",
+          "...(1000 inputs)"
+        ],
+        "stderr_tail": "               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 206 Code rules:\n  Scanning 1000 files with 206 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 206\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 206 rules on 1000 files: 746 findings.\n"
+      },
+      "tare": {
+        "rc": 0,
+        "wall_s": 760.363099987153,
+        "decision": "SHIP",
+        "why": "exact replay under identity normalizer",
+        "out_path": "/scratch1/jjt_373/tare-semgrep/measured_13471102/tare_B_to_C_r0/tables/out",
+        "out_sha256": "a75d1b485b9768d2367013046bc13afbf3918071e987e3cb77d97927bae8f284",
+        "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/measured_13471102/tare_B_to_C_r0/decision.txt\n",
+        "stderr_tail": ""
+      },
+      "compare": {
+        "equal_except_time": true,
+        "diff_keys": [],
+        "diff_class": null
+      }
+    },
+    {
+      "step": "B_to_C",
+      "rep": 1,
+      "stock": {
+        "rc": 0,
+        "wall_s": 384.9223875920288,
+        "n_findings": 746,
+        "n_errors": 0,
+        "out_sha256": "aaecdb56a9decd6f1291b83a7b5db380e4e94c126ba1c625555f90bdb2338e3a",
+        "argv": [
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+          "--config",
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/assets/cleaned_rules/cleaned_rules_f63062f8cfae.yaml",
+          "--json",
+          "--no-rewrite-rule-ids",
+          "--metrics=off",
+          "--disable-version-check",
+          "--timeout",
+          "...(1000 inputs)"
+        ],
+        "stderr_tail": "               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 206 Code rules:\n  Scanning 1000 files with 206 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 206\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 206 rules on 1000 files: 746 findings.\n"
+      },
+      "tare": {
+        "rc": 0,
+        "wall_s": 755.4776903539896,
+        "decision": "SHIP",
+        "why": "exact replay under identity normalizer",
+        "out_path": "/scratch1/jjt_373/tare-semgrep/measured_13471102/tare_B_to_C_r1/tables/out",
+        "out_sha256": "a2d21ead6a3a3b97f410c2dba552c02a6e531ed217aea829b46330840725c205",
+        "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/measured_13471102/tare_B_to_C_r1/decision.txt\n",
+        "stderr_tail": ""
+      },
+      "compare": {
+        "equal_except_time": true,
+        "diff_keys": [],
+        "diff_class": null
+      }
+    }
+  ],
+  "controls": {
+    "stock_vs_stock": {
+      "pass": true,
+      "compare": {
+        "equal_except_time": true,
+        "diff_keys": [],
+        "diff_class": null
+      },
+      "run1": {
+        "rc": 0,
+        "wall_s": 376.54265753598884,
+        "n_findings": 746,
+        "n_errors": 0,
+        "out_sha256": "77e620fcceb08b1cd7fc38c0c76d866e807ff06a735a5b162f7e6aefdaefe72a",
+        "argv": [
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+          "--config",
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/assets/cleaned_rules/cleaned_rules_f63062f8cfae.yaml",
+          "--json",
+          "--no-rewrite-rule-ids",
+          "--metrics=off",
+          "--disable-version-check",
+          "--timeout",
+          "...(1000 inputs)"
+        ],
+        "stderr_tail": "               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 206 Code rules:\n  Scanning 1000 files with 206 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 206\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 206 rules on 1000 files: 746 findings.\n"
+      },
+      "run2": {
+        "rc": 0,
+        "wall_s": 392.9597101993859,
+        "n_findings": 746,
+        "n_errors": 0,
+        "out_sha256": "178ffda2508aa0d9eb7d0ae95920b1c9c9cd36d235fa3447ec7fa720fb55d364",
+        "argv": [
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+          "--config",
+          "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/assets/cleaned_rules/cleaned_rules_f63062f8cfae.yaml",
+          "--json",
+          "--no-rewrite-rule-ids",
+          "--metrics=off",
+          "--disable-version-check",
+          "--timeout",
+          "...(1000 inputs)"
+        ],
+        "stderr_tail": "               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 206 Code rules:\n  Scanning 1000 files with 206 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 206\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 206 rules on 1000 files: 746 findings.\n"
+      }
+    },
+    "errors_dependence": {
+      "seed": 20261353,
+      "rate": 0.0,
+      "full_n_errors": 0,
+      "n_differ": 0,
+      "subsets": [
+        {
+          "i": 0,
+          "differ": false,
+          "n_findings": 93
+        },
+        {
+          "i": 1,
+          "differ": false,
+          "n_findings": 114
+        },
+        {
+          "i": 2,
+          "differ": false,
+          "n_findings": 611
+        },
+        {
+          "i": 3,
+          "differ": false,
+          "n_findings": 608
+        },
+        {
+          "i": 4,
+          "differ": false,
+          "n_findings": 580
+        },
+        {
+          "i": 5,
+          "differ": false,
+          "n_findings": 194
+        },
+        {
+          "i": 6,
+          "differ": false,
+          "n_findings": 182
+        },
+        {
+          "i": 7,
+          "differ": false,
+          "n_findings": 129
+        },
+        {
+          "i": 8,
+          "differ": false,
+          "n_findings": 591
+        },
+        {
+          "i": 9,
+          "differ": false,
+          "n_findings": 635
+        }
+      ],
+      "pass": true
+    },
+    "negative_drop": {
+      "pass": true,
+      "fill": {
+        "rc": 0,
+        "wall_s": 1828.560426281765,
+        "decision": "SHIP",
+        "why": "exact replay under identity normalizer",
+        "out_path": "/scratch1/jjt_373/tare-semgrep/measured_13471102/negative/fill/tables/out",
+        "out_sha256": "c191a6595fb012618c4da2dc76ad03153209f0453dcfb070c76f5759a4bcf633",
+        "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/measured_13471102/negative/fill/decision.txt\n",
+        "stderr_tail": ""
+      },
+      "update": {
+        "rc": 1,
+        "wall_s": 1076.69074044656,
+        "decision": "REFUSE",
+        "why": "out: row-key sets differ (whole 370, union 369, only-union 0, only-whole 1)",
+        "out_path": "/scratch1/jjt_373/tare-semgrep/measured_13471102/negative/update/tables/out",
+        "out_sha256": "8956fa2badc0397fbbd84dad8dc30829ba772d2a2da4f471ccc0c853ecde1fac",
+        "stdout_tail": "strategy: reference\ndecision: REFUSE\nwhy:      out: row-key sets differ (whole 370, union 369, only-union 0, only-whole 1)\nwrote /scratch1/jjt_373/tare-semgrep/measured_13471102/negative/update/decision.txt\n",
+        "stderr_tail": ""
+      },
+      "refused": true
+    }
+  },
+  "scores": {
+    "steps": [
+      {
+        "step": "A_to_B",
+        "r": 2,
+        "stock_walls": [
+          373.2372156367637,
+          384.56395763438195
+        ],
+        "tare_walls": [
+          756.1951948511414,
+          768.8335032458417
+        ],
+        "median_stock": 378.90058663557284,
+        "median_tare": 762.5143490484916,
+        "S": 0.49690945109214846,
+        "cv_stock": 0.014946852020200626,
+        "cv_tare": 0.008287259387624039,
+        "all_ship_ok": true,
+        "advance": {
+          "rc": 0,
+          "wall_s": 781.5348675739951,
+          "decision": "SHIP",
+          "why": "exact replay under identity normalizer",
+          "out_path": "/scratch1/jjt_373/tare-semgrep/measured_13471102/advance_A_to_B/tables/out",
+          "out_sha256": "5bb4c5d5724ccae3c5e3260edcdfc47ca66b11589bd1fb9f88626b4a6d75f1db",
+          "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/measured_13471102/advance_A_to_B/decision.txt\n",
+          "stderr_tail": ""
+        },
+        "runs": [
+          {
+            "rep": 0,
+            "stock": {
+              "rc": 0,
+              "wall_s": 373.2372156367637,
+              "n_findings": 746,
+              "n_errors": 0,
+              "out_sha256": "24fa84d711412bd6665ecc4ec8424d223351f816589030cb1805d20385f316aa",
+              "argv": [
+                "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+                "--config",
+                "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/assets/cleaned_rules/cleaned_rules_9a23c1aafa8c.yaml",
+                "--json",
+                "--no-rewrite-rule-ids",
+                "--metrics=off",
+                "--disable-version-check",
+                "--timeout",
+                "...(1000 inputs)"
+              ],
+              "stderr_tail": "               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 205 Code rules:\n  Scanning 1000 files with 205 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 205\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 205 rules on 1000 files: 746 findings.\n"
+            },
+            "tare": {
+              "rc": 0,
+              "wall_s": 756.1951948511414,
+              "decision": "SHIP",
+              "why": "exact replay under identity normalizer",
+              "out_path": "/scratch1/jjt_373/tare-semgrep/measured_13471102/tare_A_to_B_r0/tables/out",
+              "out_sha256": "b3e11c708f3ca4f03ea62bbf572b84b5de729e0ab36ecd7c3f555558d12cc264",
+              "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/measured_13471102/tare_A_to_B_r0/decision.txt\n",
+              "stderr_tail": ""
+            },
+            "compare": {
+              "equal_except_time": true,
+              "diff_keys": [],
+              "diff_class": null
+            },
+            "ship_ok": true
+          },
+          {
+            "rep": 1,
+            "stock": {
+              "rc": 0,
+              "wall_s": 384.56395763438195,
+              "n_findings": 746,
+              "n_errors": 0,
+              "out_sha256": "d521019176e38a5172cf6d3fddbf025fdac1756756f0914b75a257813c82c70d",
+              "argv": [
+                "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+                "--config",
+                "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/assets/cleaned_rules/cleaned_rules_9a23c1aafa8c.yaml",
+                "--json",
+                "--no-rewrite-rule-ids",
+                "--metrics=off",
+                "--disable-version-check",
+                "--timeout",
+                "...(1000 inputs)"
+              ],
+              "stderr_tail": "               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 205 Code rules:\n  Scanning 1000 files with 205 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 205\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 205 rules on 1000 files: 746 findings.\n"
+            },
+            "tare": {
+              "rc": 0,
+              "wall_s": 768.8335032458417,
+              "decision": "SHIP",
+              "why": "exact replay under identity normalizer",
+              "out_path": "/scratch1/jjt_373/tare-semgrep/measured_13471102/tare_A_to_B_r1/tables/out",
+              "out_sha256": "c62bd9e6e5386ebf33a4b6acceac43cbf13c67b9849ef8b7f6db96e5a0f69c76",
+              "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/measured_13471102/tare_A_to_B_r1/decision.txt\n",
+              "stderr_tail": ""
+            },
+            "compare": {
+              "equal_except_time": true,
+              "diff_keys": [],
+              "diff_class": null
+            },
+            "ship_ok": true
+          }
+        ]
+      },
+      {
+        "step": "B_to_C",
+        "r": 2,
+        "stock_walls": [
+          384.2699639168568,
+          384.9223875920288
+        ],
+        "tare_walls": [
+          760.363099987153,
+          755.4776903539896
+        ],
+        "median_stock": 384.5961757544428,
+        "median_tare": 757.9203951705713,
+        "S": 0.5074361083367981,
+        "cv_stock": 0.0008481931390661965,
+        "cv_tare": 0.003222904189076409,
+        "all_ship_ok": true,
+        "advance": {
+          "rc": 0,
+          "wall_s": 763.5953294350766,
+          "decision": "SHIP",
+          "why": "exact replay under identity normalizer",
+          "out_path": "/scratch1/jjt_373/tare-semgrep/measured_13471102/advance_B_to_C/tables/out",
+          "out_sha256": "7fee6d4289c1106e432d29c2c70432d53ce48b5197381be455e1b1ff4e0cec7c",
+          "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/measured_13471102/advance_B_to_C/decision.txt\n",
+          "stderr_tail": ""
+        },
+        "runs": [
+          {
+            "rep": 0,
+            "stock": {
+              "rc": 0,
+              "wall_s": 384.2699639168568,
+              "n_findings": 746,
+              "n_errors": 0,
+              "out_sha256": "e3038554f8e29b6bf1f64bb85cb4cd19a86df3b51f741d98b376124af085200b",
+              "argv": [
+                "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+                "--config",
+                "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/assets/cleaned_rules/cleaned_rules_f63062f8cfae.yaml",
+                "--json",
+                "--no-rewrite-rule-ids",
+                "--metrics=off",
+                "--disable-version-check",
+                "--timeout",
+                "...(1000 inputs)"
+              ],
+              "stderr_tail": "               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 206 Code rules:\n  Scanning 1000 files with 206 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 206\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 206 rules on 1000 files: 746 findings.\n"
+            },
+            "tare": {
+              "rc": 0,
+              "wall_s": 760.363099987153,
+              "decision": "SHIP",
+              "why": "exact replay under identity normalizer",
+              "out_path": "/scratch1/jjt_373/tare-semgrep/measured_13471102/tare_B_to_C_r0/tables/out",
+              "out_sha256": "a75d1b485b9768d2367013046bc13afbf3918071e987e3cb77d97927bae8f284",
+              "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/measured_13471102/tare_B_to_C_r0/decision.txt\n",
+              "stderr_tail": ""
+            },
+            "compare": {
+              "equal_except_time": true,
+              "diff_keys": [],
+              "diff_class": null
+            },
+            "ship_ok": true
+          },
+          {
+            "rep": 1,
+            "stock": {
+              "rc": 0,
+              "wall_s": 384.9223875920288,
+              "n_findings": 746,
+              "n_errors": 0,
+              "out_sha256": "aaecdb56a9decd6f1291b83a7b5db380e4e94c126ba1c625555f90bdb2338e3a",
+              "argv": [
+                "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/bin/semgrep",
+                "--config",
+                "/project2/biyik_1165/jjt_373/csci270-star/tare-semgrep/assets/cleaned_rules/cleaned_rules_f63062f8cfae.yaml",
+                "--json",
+                "--no-rewrite-rule-ids",
+                "--metrics=off",
+                "--disable-version-check",
+                "--timeout",
+                "...(1000 inputs)"
+              ],
+              "stderr_tail": "               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 1000 files tracked by git with 206 Code rules:\n  Scanning 1000 files with 206 python rules.\n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 746 (746 blocking)\n \u2022 Rules run: 206\n \u2022 Targets scanned: 1000\n \u2022 Parsed lines: ~100.0%\n \u2022 No ignore information available\nRan 206 rules on 1000 files: 746 findings.\n"
+            },
+            "tare": {
+              "rc": 0,
+              "wall_s": 755.4776903539896,
+              "decision": "SHIP",
+              "why": "exact replay under identity normalizer",
+              "out_path": "/scratch1/jjt_373/tare-semgrep/measured_13471102/tare_B_to_C_r1/tables/out",
+              "out_sha256": "a2d21ead6a3a3b97f410c2dba552c02a6e531ed217aea829b46330840725c205",
+              "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/measured_13471102/tare_B_to_C_r1/decision.txt\n",
+              "stderr_tail": ""
+            },
+            "compare": {
+              "equal_except_time": true,
+              "diff_keys": [],
+              "diff_class": null
+            },
+            "ship_ok": true
+          }
+        ]
+      }
+    ],
+    "payback": {
+      "fill_wall_s": 2837.672271197196,
+      "sum_median_tare_s": 1520.4347442190628,
+      "sum_median_stock_s": 763.4967623900156,
+      "tare_chain_s": 4358.107015416259,
+      "ratio_stock_over_tare_chain": 0.17518999870568605,
+      "note": "Payback uses medians over r; fill counted once; refusals counted in runs"
+    },
+    "all_ship_stock_identical": true
+  },
+  "power": {
+    "n_findings_newest": 746,
+    "floor": 500,
+    "met": true,
+    "enforced": true
+  },
+  "fill_A": {
+    "rc": 0,
+    "wall_s": 2837.672271197196,
+    "decision": "SHIP",
+    "why": "exact replay under identity normalizer",
+    "out_path": "/scratch1/jjt_373/tare-semgrep/measured_13471102/fill_A/tables/out",
+    "out_sha256": "6c8d11527e2cb8bb4a16864d5b2e5377ae2cd1a6c54a968f4d677903cec61fc9",
+    "stdout_tail": "strategy: reference\ndecision: SHIP\nwhy:      exact replay under identity normalizer\nwrote /scratch1/jjt_373/tare-semgrep/measured_13471102/fill_A/decision.txt\n",
+    "stderr_tail": ""
+  },
+  "verdict": "PASS",
+  "finished_utc": "2026-10-27T08:47:50.670275+00:00"
+}
