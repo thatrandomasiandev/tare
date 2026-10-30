@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use TARE, please cite it as below."
+title: "TARE: Tool Annotation Reuse, Exact"
+authors:
+  - family-names: Terranova
+    given-names: Joshua
+    affiliation: "Thomas Lord Department of Computer Science, University of Southern California"
+  - family-names: Zhang
+    given-names: Jiapeng
+    affiliation: "Thomas Lord Department of Computer Science, University of Southern California"
+repository-code: "https://github.com/thatrandomasiandev/tare"
+preferred-citation:
+  type: article
+  title: "Pin and Replay, or Refuse: Exact Incremental Re-annotation Across Reference Database Releases"
+  authors:
+    - family-names: Terranova
+      given-names: Joshua
+      affiliation: "Thomas Lord Department of Computer Science, University of Southern California"
+    - family-names: Zhang
+      given-names: Jiapeng
+      affiliation: "Thomas Lord Department of Computer Science, University of Southern California"
+  year: 2026
+  status: preprint
