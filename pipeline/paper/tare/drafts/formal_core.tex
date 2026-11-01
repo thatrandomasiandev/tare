@@ -8,15 +8,16 @@ tabular body (headers ignored). Each entry of the ordered list $E$ has a strict
 hash $h(e)$ (SHA-256 after dropping caller-declared volatile tags). A release
 $E\!\to\!E'$ yields stable $S=\{e\in E':h(e)\in h(E)\}$, changed
 $\Delta=E'\setminus S$, and $f_\Delta=|\Delta|/|E'|$.
-% source: MEASURED pipeline/results/reference_kill_r1.json unchanged_strict=26082 z_new=30134; DERIVED identical_pct=100*unchanged_strict/z_new
-Every body row is attributable to a pair $(r,e)$ with printable fields
-$f(r,e,o,g(E'))$, where $g(E')$ is a reference-wide statistic (entry count,
-length, \ldots). Exact re-annotation returns $\mathrm{body}(P(R,E',o))$ byte for
-byte, or refuses and returns that full run.
+% source: MEASURED pipeline/results/reference_kill_r1.json unchanged_strict=26082 z_new=30134; DERIVED identical_pct=100*unchanged_strict/z_new; NOMINAL sha_bits=256
+For each pair $(r,e)$, let $f(r,e,o,g(E'))$ be its possibly empty sequence
+of emitted body rows, including bytes and multiplicities, where $g(E')$
+collects reference-wide quantities (entry count, length, \ldots).
+Exact re-annotation reproduces $\mathrm{body}(P(R,E',o))$ under the
+conditions below; an observed check failure returns the full run instead.
 
 \paragraph{Coupling taxonomy.}
 \textbf{C0} (entry-local): $f$ independent of $g$ and of every $e'\neq e$
-(Infernal under Rfam's recommended command) $\rightarrow$ replay.
+(Infernal's no-clan variant) $\rightarrow$ replay.
 \textbf{C1} (reference-size): $f$ depends on $E'$ only through a normalizer in
 $g$ that $P$ exposes or \sys rescales (HMMER \texttt{-Z}) $\rightarrow$ pin, or
 refuse if uncovered.
@@ -28,25 +29,37 @@ Refusal rules R1--R6 form one surface: R1 no contract; R2 size-dependent, no
 pin; R3 in-situ pin check fails; R4 non-candidate pair in replay; R5 pad changes
 a line; R6 audit differs. C0/C1 replay; C2--C4 refuse (R1--R3 on the probe,
 R4--R6 on the update). Side-file rewrites and invalidate-groups are
-\textit{declarations} that keep C1 sound, not a sixth class.
+\textit{declarations}; they do not establish entry locality for competing groups.
 
 \paragraph{Exactness (C0/C1).}
 \label{asm:det}\label{asm:pin}\label{asm:key}\label{asm:order}%
-Assumptions: (D)~\textbf{determinism}---fixed $(r,e,o,g)$ prints the same cells;
-(P)~\textbf{pin fixes $g$}---pinned options set every fitted size member of
-$g(E')$ to the full-release value; (K)~\textbf{unique attribution}---after key
-widening each body row has a unique $(r,e)$; (O)~\textbf{row-determined
-body}---the body is a deterministic function of its rows in fixed record order.
+Assumptions: (D)~\textbf{determinism}---fixed $(r,e,o,g)$ emits the same rows;
+(P)~\textbf{complete pin}---pinned options fix every reference-wide quantity
+affecting row existence, multiplicity, or bytes to its full-release value,
+including quantities not observed by the fitter, without changing other
+output-relevant behavior;
+(K)~\textbf{attribution}---each row occurrence is attributable to its record
+and entry, preserving repeated occurrences;
+(O)~\textbf{exact assembly}---the merge reconstructs stock ordering and
+formatting from these rows and the original record/reference order;
+(C)~\textbf{candidate completeness}---every entry producing a full-release
+row for $r$ belongs to its candidate set $C_r$;
+(I)~\textbf{record-subset invariance}---with reference and options fixed,
+running on a subset of records produces exactly the projection of the
+full-record body onto that subset.
 \begin{proposition}[Exact merge]\label{prop:exact}
-Assume C0 or C1 and (D)--(O). Let $C_r$ be $r$'s candidates (cached stable hits
-plus selection on $\Delta$). Running $P$ on each $r$ against $C_r$ with $g$
-pinned, then merging in record order, yields $\mathrm{body}(P(R,E',o))$.
+Assume C0 or C1 and (D), (P), (K), (O), (C), and (I).
+Running $P$ on each $r$ against $C_r$ with $g$ pinned, then applying
+the merge in (O), yields $\mathrm{body}(P(R,E',o))$.
 \end{proposition}
 \begin{proof}
-Under C0/C1 and (P), cells for $(r,e)$ equal $f(r,e,o,g(E'))$ on any universe
-containing $e$. Selection puts every new/changed hit in $C_r$; stable hits remain
-cached. By (K)--(O), assembling those rows reproduces the full body; (D) removes
-drift.
+By (I), isolating $r$ preserves its full-reference rows.
+Under C0/C1 and (P), restricting the reference to $C_r$ preserves the
+emitted rows for each retained pair, including empty sequences and
+multiplicities; (D) excludes execution drift. By (C), every omitted pair
+emits no full-release row. Replay therefore produces exactly the
+full-release row occurrences; (K) preserves attribution and (O)
+reconstructs the full body.
 \end{proof}
 The probe (R1), pin check (R3), pads (R5), and non-candidate tripwire (R4) test
 these assumptions; they do not prove C0/C1 on the full input. Not covered:
@@ -55,18 +68,23 @@ limitation F6 (coupling outside the closed family that still looks locally
 consistent).
 
 \paragraph{Audit bound.}
-If at least a fraction $\kappa$ of records would differ under a wrong update, a
-with-replacement sample of size $s$ misses all of them with probability
-$\le(1-\kappa)^s$. Setting that $\le\varepsilon$ gives
+Let $A$ be the stated audit population and fix the affected records
+independently of the audit draw. Under (I), sample-only stock is a valid
+oracle. If at least a fraction $\kappa$ of $A$ differs, a uniform sample
+of $s\le |A|$ records without replacement misses them with probability
+at most $(1-\kappa)^s$. The conservative with-replacement sizing rule is
 \begin{equation}
 s=\bigl\lceil\ln\varepsilon/\ln(1-\kappa)\bigr\rceil.
 \label{eq:audit-s}
 \end{equation}
-% source: MEASURED pipeline/docs/EXACT_REPLAY_PROTOCOL.md; TEXT s=299; NOMINAL eps=0.05; NOMINAL kappa=0.01
-For $\varepsilon=0.05$, $\kappa=0.01$, $s=299$. This bounds shipping a wrong
-update given $\ge\kappa$ affected (R6), not couplings below $\kappa$. Empirically,
-3 of 400 adversarial trials at $\ge 1\%$ affected shipped under the bounded audit.
-% source: MEASURED pipeline/results/adversarial/v2_summary.json arms.bounded.covered_unsafe=3 arms.bounded.covered_trials=400
+% source: MEASURED pipeline/docs/EXACT_REPLAY_PROTOCOL.md; TEXT s=299; NOMINAL eps=0.05; NOMINAL kappa=0.01; NOMINAL one=1
+For $\varepsilon=0.05$, $\kappa=0.01$, $s=299$; if $|A|<s$, audit all of $A$.
+The bound requires that the stated audit executes with a valid oracle.
+For the historical bounded timings, $A$ contains only candidate-bearing
+records; the all-record policy uses $A=R$ and requires its own timing evidence.
+In the historical adversarial evaluation, 3 of 400 trials shipped when
+at least 1\% of its audit population was affected.
+% source: MEASURED pipeline/results/adversarial/v2_summary.json arms.bounded.covered_unsafe=3 arms.bounded.covered_trials=400; NOMINAL eps=0.05; NOMINAL kappa=0.01; NOMINAL s=299; NOMINAL one=1
 \begin{plainbox}{What the audit does \emph{not} cover}
 It is not a 5\% per\nobreakdash-line error rate, nor a proof that the program is entry\nobreakdash-local.
 Couplings that affect fewer than $\kappa$ of records can still ship; so can structured faults that evade the pads and the sample (limitation F6).
@@ -82,5 +100,6 @@ T_{\sys}\approx a\,f_\Delta\,T_{\mathrm{stock}}+c\,T_{\mathrm{stock}},
 where $a$ scales selection and $c$ collects replay, check, audit, and parsing.
 Fallback when $f_\Delta>(1-c)/a$; default threshold $0.80$ with no timing history.
 % source: MEASURED pipeline/results/breakeven/measured.json threshold_default=0.8; NOMINAL one=1
-Any program whose rows factor as $f(r,e,o,g(E))$ fits; C2--C4 remain refuse
+Programs whose rows factor as $f(r,e,o,g(E))$ and satisfy the exact-merge
+assumptions fit; C2--C4 remain refuse
 classes. \sys never reads the program's source at run time.

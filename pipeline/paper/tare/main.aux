@@ -1,0 +1,215 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{pfam2025}
+\citation{uniprot2025}
+\citation{paysanlafosse2023interpro}
+\citation{eddy2011hmmer}
+\citation{jumper2021alphafold}
+\citation{uniprot2025,paysanlafosse2023interpro}
+\citation{pfam382relnotes}
+\citation{li2021refseq}
+\citation{chen2021img}
+\citation{chen2021img}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
+\newlabel{sec:intro@cref}{{[section][1][]1}{[1][1][]1}{}{}{}}
+\citation{curtsinger2022riker,xie2026incr,shiptoski2023processcache,ditommaso2017nextflow,molder2021snakemake}
+\citation{dash2021iblast,yoo2025iseqsearch}
+\citation{darling2003mpiblast}
+\citation{eddy2011hmmer}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {Reference databases change often, but usually only in part.} (a) Pfam grew from 21{,}979 to 30{,}134 families over eight releases; blue segments show the net families each release added. (b) Comparing every model of Pfam 38.2 with 38.1, ignoring build\nobreakdash -date, build\nobreakdash -command, and comment lines: 86.6\% are identical. Only 13.4\% (new or edited) can produce new results, yet a conventional update recomputes 100\%. Blue marks what PARE\xspace  reruns. Panel (b) is the pair we time; \cref  {fig:pairs} measures the six neighboring releases the same way (median changed fraction 12.2\%).}}{2}{figure.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:churn}{{1}{2}{\textbf {Reference databases change often, but usually only in part.} (a) Pfam grew from 21{,}979 to 30{,}134 families over eight releases; blue segments show the net families each release added. (b) Comparing every model of Pfam 38.2 with 38.1, ignoring build\nobreakdash -date, build\nobreakdash -command, and comment lines: 86.6\% are identical. Only 13.4\% (new or edited) can produce new results, yet a conventional update recomputes 100\%. Blue marks what \sys reruns. Panel (b) is the pair we time; \cref {fig:pairs} measures the six neighboring releases the same way (median changed fraction 12.2\%)}{figure.caption.1}{}}
+\newlabel{fig:churn@cref}{{[figure][1][]1}{[1][1][]2}{}{}{}}
+\citation{eddy2011hmmer}
+\citation{pfam2025}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Terms used in this paper.}}{3}{table.caption.2}\protected@file@percent }
+\newlabel{tab:glossary}{{1}{3}{Terms used in this paper}{table.caption.2}{}}
+\newlabel{tab:glossary@cref}{{[table][1][]1}{[1][3][]3}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background}{3}{section.2}\protected@file@percent }
+\newlabel{sec:background}{{2}{3}{Background}{section.2}{}}
+\newlabel{sec:background@cref}{{[section][2][]2}{[1][3][]3}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}How Annotation Works}{3}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Why Naive Reuse Fails}{3}{subsection.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textbf  {Why old results cannot simply be reused.} An E-value is a probability $P$ (fixed by the score) times the database size $Z$. The same hit prints a different E-value in each release, and a different one again if the program is rerun on a subset. Pinning $Z$ makes the subset run print the full\nobreakdash -run value. (Illustrative $P$; $Z$ values are Pfam 38.1, 38.2, and one proteome's candidate subset.)}}{3}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:pin}{{2}{3}{\textbf {Why old results cannot simply be reused.} An E-value is a probability $P$ (fixed by the score) times the database size $Z$. The same hit prints a different E-value in each release, and a different one again if the program is rerun on a subset. Pinning $Z$ makes the subset run print the full\nobreakdash -run value. (Illustrative $P$; $Z$ values are Pfam 38.1, 38.2, and one proteome's candidate subset.)}{figure.caption.3}{}}
+\newlabel{fig:pin@cref}{{[figure][2][]2}{[1][3][]3}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Problem Model}{3}{section.3}\protected@file@percent }
+\newlabel{sec:model}{{3}{3}{Problem Model}{section.3}{}}
+\newlabel{sec:model@cref}{{[section][3][]3}{[1][3][]3}{}{}{}}
+\@writefile{toc}{\contentsline {paragraph}{Program and release.}{3}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Coupling taxonomy.}{3}{section*.5}\protected@file@percent }
+\newlabel{asm:det}{{3}{3}{Exactness (C0/C1)}{section*.6}{}}
+\newlabel{asm:det@cref}{{[section][3][]3}{[1][3][]3}{}{}{}}
+\newlabel{asm:pin}{{3}{3}{Exactness (C0/C1)}{section*.6}{}}
+\newlabel{asm:pin@cref}{{[section][3][]3}{[1][3][]3}{}{}{}}
+\newlabel{asm:key}{{3}{3}{Exactness (C0/C1)}{section*.6}{}}
+\newlabel{asm:key@cref}{{[section][3][]3}{[1][3][]3}{}{}{}}
+\newlabel{asm:order}{{3}{3}{Exactness (C0/C1)}{section*.6}{}}
+\newlabel{asm:order@cref}{{[section][3][]3}{[1][3][]3}{}{}{}}
+\@writefile{toc}{\contentsline {paragraph}{Exactness (C0/C1).}{3}{section*.6}\protected@file@percent }
+\newlabel{prop:exact}{{1}{4}{Exact merge}{proposition.1}{}}
+\newlabel{prop:exact@cref}{{[proposition][1][]1}{[1][4][]4}{}{}{}}
+\@writefile{toc}{\contentsline {paragraph}{Audit bound.}{4}{section*.7}\protected@file@percent }
+\newlabel{eq:audit-s}{{1}{4}{Audit bound}{equation.1}{}}
+\newlabel{eq:audit-s@cref}{{[equation][1][]1}{[1][4][]4}{}{}{}}
+\@writefile{toc}{\contentsline {paragraph}{Cost model.}{4}{section*.8}\protected@file@percent }
+\newlabel{eq:cost}{{2}{4}{Cost model}{equation.2}{}}
+\newlabel{eq:cost@cref}{{[equation][2][]2}{[1][4][]4}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Design}{4}{section.4}\protected@file@percent }
+\newlabel{sec:design}{{4}{4}{Design}{section.4}{}}
+\newlabel{sec:design@cref}{{[section][4][]4}{[1][4][]4}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Stage 1: Entry Diff}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Stage 2: Contract Inference}{4}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:contract}{{4.2}{4}{Stage 2: Contract Inference}{subsection.4.2}{}}
+\newlabel{sec:contract@cref}{{[subsection][2][4]4.2}{[1][4][]4}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Stage 3: The Coupling Gate}{4}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:gate}{{4.3}{4}{Stage 3: The Coupling Gate}{subsection.4.3}{}}
+\newlabel{sec:gate@cref}{{[subsection][3][4]4.3}{[1][4][]4}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textbf  {How PARE\xspace  updates an annotation.} Blue boxes do work; gray boxes are decision points. The top row decides whether the program's coupling can be neutralized; the bottom row reruns the unmodified program on candidates only and checks the result. Dashed arrows read stored state. Every refusal (red) leads to a full stock run, so a user always receives the program's own output. A shipped replay is exact under the contract; finite checks do not prove the contract.}}{5}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:pipeline}{{3}{5}{\textbf {How \sys updates an annotation.} Blue boxes do work; gray boxes are decision points. The top row decides whether the program's coupling can be neutralized; the bottom row reruns the unmodified program on candidates only and checks the result. Dashed arrows read stored state. Every refusal (red) leads to a full stock run, so a user always receives the program's own output. A shipped replay is exact under the contract; finite checks do not prove the contract}{figure.caption.9}{}}
+\newlabel{fig:pipeline@cref}{{[figure][3][]3}{[1][4][]5}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Stage 4: Selection}{5}{subsection.4.4}\protected@file@percent }
+\newlabel{eq:cand}{{3}{5}{Stage 4: Selection}{equation.3}{}}
+\newlabel{eq:cand@cref}{{[equation][3][]3}{[1][5][]5}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Stage 5: Batched Exact Replay}{5}{subsection.4.5}\protected@file@percent }
+\newlabel{sec:replay}{{4.5}{5}{Stage 5: Batched Exact Replay}{subsection.4.5}{}}
+\newlabel{sec:replay@cref}{{[subsection][5][4]4.5}{[1][5][]5}{}{}{}}
+\newlabel{eq:batch}{{4}{5}{Stage 5: Batched Exact Replay}{equation.4}{}}
+\newlabel{eq:batch@cref}{{[equation][4][]4}{[1][5][]5}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Stage 6: Check or Refuse}{6}{subsection.4.6}\protected@file@percent }
+\newlabel{sec:check}{{4.6}{6}{Stage 6: Check or Refuse}{subsection.4.6}{}}
+\newlabel{sec:check@cref}{{[subsection][6][4]4.6}{[1][5][]6}{}{}{}}
+\newlabel{eq:miss}{{5}{6}{Stage 6: Check or Refuse}{equation.5}{}}
+\newlabel{eq:miss@cref}{{[equation][5][]5}{[1][6][]6}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Cost Model}{6}{subsection.4.7}\protected@file@percent }
+\newlabel{sec:cost}{{4.7}{6}{Cost Model}{subsection.4.7}{}}
+\newlabel{sec:cost@cref}{{[subsection][7][4]4.7}{[1][6][]6}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Implementation}{6}{section.5}\protected@file@percent }
+\newlabel{sec:impl}{{5}{6}{Implementation}{section.5}{}}
+\newlabel{sec:impl@cref}{{[section][5][]5}{[1][6][]6}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Evaluation}{6}{section.6}\protected@file@percent }
+\newlabel{sec:eval}{{6}{6}{Evaluation}{section.6}{}}
+\newlabel{sec:eval@cref}{{[section][6][]6}{[1][6][]6}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Metrics}{6}{subsection.6.1}\protected@file@percent }
+\newlabel{sec:metrics}{{6.1}{6}{Metrics}{subsection.6.1}{}}
+\newlabel{sec:metrics@cref}{{[subsection][1][6]6.1}{[1][6][]6}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Q1: Is the Output Exact?}{6}{subsection.6.2}\protected@file@percent }
+\newlabel{sec:eval-exact}{{6.2}{6}{Q1: Is the Output Exact?}{subsection.6.2}{}}
+\newlabel{sec:eval-exact@cref}{{[subsection][2][6]6.2}{[1][6][]6}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Exactness experiments. ``Lines'': output lines compared byte for byte with a stock run on the new release (HMMER: hit plus domain table). ``Differ'': lines that differed. ``Unpinned'': the same replay without the pin. ``Replay'' runs the replay engine alone; ``tool'' runs PARE\xspace  end to end, with batching and the check.}}{7}{table.caption.10}\protected@file@percent }
+\newlabel{tab:exact}{{2}{7}{Exactness experiments. ``Lines'': output lines compared byte for byte with a stock run on the new release (HMMER: hit plus domain table). ``Differ'': lines that differed. ``Unpinned'': the same replay without the pin. ``Replay'' runs the replay engine alone; ``tool'' runs \sys end to end, with batching and the check}{table.caption.10}{}}
+\newlabel{tab:exact@cref}{{[table][2][]2}{[1][6][]7}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textbf  {Where the time goes.} Each bar is one update run, split into four stages; the black tick is a stock run on the same genome. Top (laptop, indicative): the first version, the median of three alternating runs, spent 668\,s in its safety check and was slower than stock; batching and sampling (two fresh genomes) cut the update to under a third of a stock run. Bottom (historical Bernoulli audit): the median\nobreakdash -time update of the genomes with the lowest, median, and highest speedup. Dotted ticks: the cost model's prediction for selection.}}{7}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:phases}{{4}{7}{\textbf {Where the time goes.} Each bar is one update run, split into four stages; the black tick is a stock run on the same genome. Top (laptop, indicative): the first version, the median of three alternating runs, spent 668\,s in its safety check and was slower than stock; batching and sampling (two fresh genomes) cut the update to under a third of a stock run. Bottom (historical Bernoulli audit): the median\nobreakdash -time update of the genomes with the lowest, median, and highest speedup. Dotted ticks: the cost model's prediction for selection}{figure.caption.11}{}}
+\newlabel{fig:phases@cref}{{[figure][4][]4}{[1][7][]7}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textbf  {The cost model across release sizes.} Speedup $1/(a f_\Delta + c)$. (a) HMMER: the server fit from the nine historical Bernoulli\nobreakdash -audit genomes ($a = 0.973$, $c = 0.098$, solid) with that policy's median and 95\% CI (open diamond); the laptop fit ($a = 1.06$, $c = 0.152$, dashed) and its two updates (filled circles); the server model at the measured $f_\Delta $ of the other Pfam pairs (ticks); the bound $1/f_\Delta $ (dashed gray) and the server ceiling $1/c$ (dotted). (b) Infernal, with its own larger overhead: the first version (cross) and the shipped tool, medians of ten genomes with 95\% bootstrap CIs.}}{8}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:model}{{5}{8}{\textbf {The cost model across release sizes.} Speedup $1/(a f_\Delta + c)$. (a) HMMER: the server fit from the nine historical Bernoulli\nobreakdash -audit genomes ($a = 0.973$, $c = 0.098$, solid) with that policy's median and 95\% CI (open diamond); the laptop fit ($a = 1.06$, $c = 0.152$, dashed) and its two updates (filled circles); the server model at the measured $f_\Delta $ of the other Pfam pairs (ticks); the bound $1/f_\Delta $ (dashed gray) and the server ceiling $1/c$ (dotted). (b) Infernal, with its own larger overhead: the first version (cross) and the shipped tool, medians of ten genomes with 95\% bootstrap CIs}{figure.caption.12}{}}
+\newlabel{fig:model@cref}{{[figure][5][]5}{[1][8][]8}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Q2: How Much Faster?}{8}{subsection.6.3}\protected@file@percent }
+\newlabel{sec:eval-time}{{6.3}{8}{Q2: How Much Faster?}{subsection.6.3}{}}
+\newlabel{sec:eval-time@cref}{{[subsection][3][6]6.3}{[1][7][]8}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \textbf  {Edits, not just new families, decide how much an update reruns.} Strict hashes of seven consecutive Pfam releases. Gray is unchanged. Light blue is edited and dark blue is new; both are what PARE\xspace  reruns. The label is $f_\Delta = (\text  {edited} + \text  {new}) / Z_{\text  {new}}$. Pfam 37.4$\rightarrow $38.0 reruns 93.1\% of the new release: 22{,}965 edited and 822 new, with 1{,}758 unchanged, of 25{,}545. Pfam 38.1$\rightarrow $38.2 reruns 13.4\%: 1{,}378 edited and 2{,}674 new, with 26{,}082 unchanged, of 30{,}134, the same pair as \cref  {fig:churn}. The smallest change is 37.3$\rightarrow $37.4, at 2.0\%.}}{9}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:pairs}{{6}{9}{\textbf {Edits, not just new families, decide how much an update reruns.} Strict hashes of seven consecutive Pfam releases. Gray is unchanged. Light blue is edited and dark blue is new; both are what \sys reruns. The label is $f_\Delta = (\text {edited} + \text {new}) / Z_{\text {new}}$. Pfam 37.4$\rightarrow $38.0 reruns 93.1\% of the new release: 22{,}965 edited and 822 new, with 1{,}758 unchanged, of 25{,}545. Pfam 38.1$\rightarrow $38.2 reruns 13.4\%: 1{,}378 edited and 2{,}674 new, with 26{,}082 unchanged, of 30{,}134, the same pair as \cref {fig:churn}. The smallest change is 37.3$\rightarrow $37.4, at 2.0\%}{figure.caption.13}{}}
+\newlabel{fig:pairs@cref}{{[figure][6][]6}{[1][8][]9}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Q3: Does PARE\xspace  Refuse When It Should?}{9}{subsection.6.4}\protected@file@percent }
+\newlabel{sec:eval-safety}{{6.4}{9}{Q3: Does \sys Refuse When It Should?}{subsection.6.4}{}}
+\newlabel{sec:eval-safety@cref}{{[subsection][4][6]6.4}{[1][9][]9}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Safety controls under the shipped check. Every case known to be wrong was refused, the correct case passed, and no run produced wrong output.}}{9}{table.caption.15}\protected@file@percent }
+\newlabel{tab:safety}{{3}{9}{Safety controls under the shipped check. Every case known to be wrong was refused, the correct case passed, and no run produced wrong output}{table.caption.15}{}}
+\newlabel{tab:safety@cref}{{[table][3][]3}{[1][9][]9}{}{}{}}
+\citation{xie2026incr}
+\citation{shiptoski2023processcache}
+\citation{curtsinger2022riker}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \textbf  {Why DIAMOND cannot be replayed exactly.} DIAMOND stores database entries back to back, separated by a single byte. Its first filter examines a window of 16 bytes before and 32 after each short matching ``seed'' without stopping at the entry boundary (DIAMOND 2.2.5, \texttt  {finger\_print.h}). A seed near the start of entry B therefore reads the end of whichever entry precedes B. Removing that neighbor from the database changes the window and can drop B's hit. The neighbor pad adds A back, the file\nobreakdash -order neighbor of every candidate; B's line then reappears, the check sees a line change, and PARE\xspace  refuses (R5). Each of the six lines DIAMOND lost was restored by exactly one such neighbor.}}{10}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:diamond}{{7}{10}{\textbf {Why DIAMOND cannot be replayed exactly.} DIAMOND stores database entries back to back, separated by a single byte. Its first filter examines a window of 16 bytes before and 32 after each short matching ``seed'' without stopping at the entry boundary (DIAMOND 2.2.5, \texttt {finger\_print.h}). A seed near the start of entry B therefore reads the end of whichever entry precedes B. Removing that neighbor from the database changes the window and can drop B's hit. The neighbor pad adds A back, the file\nobreakdash -order neighbor of every candidate; B's line then reappears, the check sees a line change, and \sys refuses (R5). Each of the six lines DIAMOND lost was restored by exactly one such neighbor}{figure.caption.14}{}}
+\newlabel{fig:diamond@cref}{{[figure][7][]7}{[1][9][]10}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Audit configurations and their sampling populations. Each historical policy retains its own freeze and timing evidence. The all-record row is the locked MEASURED\_PROTOCOL\_v3 campaign (nine genomes, three repeats; one wall-quality FLAGGED genome excluded from the median).}}{10}{table.caption.16}\protected@file@percent }
+\newlabel{tab:config}{{4}{10}{Audit configurations and their sampling populations. Each historical policy retains its own freeze and timing evidence. The all-record row is the locked MEASURED\_PROTOCOL\_v3 campaign (nine genomes, three repeats; one wall-quality FLAGGED genome excluded from the median)}{table.caption.16}{}}
+\newlabel{tab:config@cref}{{[table][4][]4}{[1][10][]10}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Q4: Comparison with Existing Tools}{10}{subsection.6.5}\protected@file@percent }
+\newlabel{sec:eval-baselines}{{6.5}{10}{Q4: Comparison with Existing Tools}{subsection.6.5}{}}
+\newlabel{sec:eval-baselines@cref}{{[subsection][5][6]6.5}{[1][10][]10}{}{}{}}
+\citation{yoo2025iseqsearch}
+\citation{curtsinger2022riker,shiptoski2023processcache,xie2026incr}
+\citation{ditommaso2017nextflow,molder2021snakemake}
+\citation{dash2021iblast}
+\citation{yoo2025iseqsearch}
+\citation{pedersen2014gestore}
+\citation{jones2014interproscan,cantalapiedra2021eggnog}
+\citation{shen2022kumquat}
+\citation{blakeley1986views,acar2003selective}
+\citation{darling2003mpiblast}
+\citation{hadjieleftheriou2009incremental,staudinger2024reproducible}
+\citation{frank2011spectral,aggarwal2022fdr}
+\citation{delchambre2023gaia}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Per\nobreakdash -genome all\nobreakdash -record $S_g$ and $C/B$. A\nobreakdash -spread $=(\max /\min {-}1)$ on stock repeats. $^\dagger $FLAGGED (excluded from headline).}}{11}{table.caption.17}\protected@file@percent }
+\newlabel{tab:allrecord-genomes}{{5}{11}{Per\nobreakdash -genome all\nobreakdash -record $S_g$ and $C/B$. A\nobreakdash -spread $=(\max /\min {-}1)$ on stock repeats. $^\dagger $FLAGGED (excluded from headline)}{table.caption.17}{}}
+\newlabel{tab:allrecord-genomes@cref}{{[table][5][]5}{[1][10][]11}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Matched \textbf  {first run $\neq  $ update} cost on one exclusive EPYC 7542 node (500 proteins, Pfam\nobreakdash -A 30{,}134 models, $n{=}4$ paired): $\rho = T/T_{\mathrm  {stock}}$ (mean, 95\% $t$-interval). With $n{=}4$, INCR's interval is wide ([0.87, 2.13]); do not remember only ProcessCache's $14.49\times $. ``New release'' is what happens when the reference database changes. Riker was blocked on this cluster (\texttt  {PTRACE\_GET\_SYSCALL\_INFO}, errno 5); a laptop build measured $1.62\times $ [1.53, 1.71] on the same protein count.}}{11}{table.caption.19}\protected@file@percent }
+\newlabel{tab:baselines}{{6}{11}{Matched \textbf {first run $\neq $ update} cost on one exclusive EPYC 7542 node (500 proteins, Pfam\nobreakdash -A 30{,}134 models, $n{=}4$ paired): $\rho = T/T_{\mathrm {stock}}$ (mean, 95\% $t$-interval). With $n{=}4$, INCR's interval is wide ([0.87, 2.13]); do not remember only ProcessCache's $14.49\times $. ``New release'' is what happens when the reference database changes. Riker was blocked on this cluster (\texttt {PTRACE\_GET\_SYSCALL\_INFO}, errno 5); a laptop build measured $1.62\times $ [1.53, 1.71] on the same protein count}{table.caption.19}{}}
+\newlabel{tab:baselines@cref}{{[table][6][]6}{[1][10][]11}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{11}{section.7}\protected@file@percent }
+\newlabel{sec:discussion}{{7}{11}{Discussion}{section.7}{}}
+\newlabel{sec:discussion@cref}{{[section][7][]7}{[1][11][]11}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces \textbf  {The random pads miss coupling that is not a file\nobreakdash -order neighbor.} Each point is the fraction of trials the check refused, with a Wilson 95\% interval. Dashed curves are the random\nobreakdash -pad formula (\cref  {eq:miss}) for the forms it describes. File\nobreakdash -wide coupling sits at the top of the plot; hidden and distant coupling does not. With no coupling (C0), 0 of 200 trials were refused. C4's squares are offset slightly right so both markers at 1.0 stay visible. The audit did not run in these trials.}}{11}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:adversarial}{{8}{11}{\textbf {The random pads miss coupling that is not a file\nobreakdash -order neighbor.} Each point is the fraction of trials the check refused, with a Wilson 95\% interval. Dashed curves are the random\nobreakdash -pad formula (\cref {eq:miss}) for the forms it describes. File\nobreakdash -wide coupling sits at the top of the plot; hidden and distant coupling does not. With no coupling (C0), 0 of 200 trials were refused. C4's squares are offset slightly right so both markers at 1.0 stay visible. The audit did not run in these trials}{figure.caption.18}{}}
+\newlabel{fig:adversarial@cref}{{[figure][8][]8}{[1][10][]11}{}{}{}}
+\citation{curtsinger2022riker,shiptoski2023processcache,xie2026incr,ditommaso2017nextflow,molder2021snakemake}
+\citation{xie2026incr}
+\citation{lamprou2025caruca}
+\citation{dash2021iblast,yoo2025iseqsearch,pedersen2014gestore}
+\citation{darling2003mpiblast}
+\citation{shen2022kumquat,vasilakis2021pash,blakeley1986views,acar2003selective}
+\citation{chen1998metamorphic,segura2016survey}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Prior work on the problem of updating annotations after a database release. ``Unmodified'': runs the program as is. ``Release\nobreakdash -aware'': reuses work when the database changes. ``Identical'': output equals a full run byte for byte. ``Per\nobreakdash -tool code'': requires code or formulas written for each program. $^\dagger $PARE\xspace  's pins, side files, groups, and reporting thresholds are declared as data on the command line; its core has no program\nobreakdash -specific code.}}{12}{table.caption.21}\protected@file@percent }
+\newlabel{tab:prior}{{7}{12}{Prior work on the problem of updating annotations after a database release. ``Unmodified'': runs the program as is. ``Release\nobreakdash -aware'': reuses work when the database changes. ``Identical'': output equals a full run byte for byte. ``Per\nobreakdash -tool code'': requires code or formulas written for each program. $^\dagger $\sys 's pins, side files, groups, and reporting thresholds are declared as data on the command line; its core has no program\nobreakdash -specific code}{table.caption.21}{}}
+\newlabel{tab:prior@cref}{{[table][7][]7}{[1][11][]12}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces \textbf  {Approximate versus exact.} Output of iSeqSearch's incremental DIAMOND after a Swiss\nobreakdash -Prot update, compared line by line with a full run. Its numbers are close, but only 1.3\% of lines match exactly and 133 lines report sequences the new release deleted. PARE\xspace  refuses this program and returns the stock run (exact, not faster).}}{12}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:idiamond}{{9}{12}{\textbf {Approximate versus exact.} Output of iSeqSearch's incremental DIAMOND after a Swiss\nobreakdash -Prot update, compared line by line with a full run. Its numbers are close, but only 1.3\% of lines match exactly and 133 lines report sequences the new release deleted. \sys refuses this program and returns the stock run (exact, not faster)}{figure.caption.20}{}}
+\newlabel{fig:idiamond@cref}{{[figure][9][]9}{[1][11][]12}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Related Work}{12}{section.8}\protected@file@percent }
+\newlabel{sec:related}{{8}{12}{Related Work}{section.8}{}}
+\newlabel{sec:related@cref}{{[section][8][]8}{[1][12][]12}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{12}{section.9}\protected@file@percent }
+\newlabel{sec:conclusion}{{9}{12}{Conclusion}{section.9}{}}
+\newlabel{sec:conclusion@cref}{{[section][9][]9}{[1][12][]12}{}{}{}}
+\@writefile{toc}{\contentsline {paragraph}{Availability.}{12}{section*.22}\protected@file@percent }
+\newlabel{paper:body-end}{{9}{12}{Availability}{section*.22}{}}
+\newlabel{paper:body-end@cref}{{[section][9][]9}{[1][12][]12}{}{}{}}
+\bibstyle{plain}
+\bibdata{refs}
+\bibcite{acar2003selective}{1}
+\bibcite{aggarwal2022fdr}{2}
+\bibcite{blakeley1986views}{3}
+\bibcite{cantalapiedra2021eggnog}{4}
+\bibcite{chen2021img}{5}
+\bibcite{chen1998metamorphic}{6}
+\bibcite{curtsinger2022riker}{7}
+\bibcite{darling2003mpiblast}{8}
+\bibcite{dash2021iblast}{9}
+\bibcite{delchambre2023gaia}{10}
+\bibcite{ditommaso2017nextflow}{11}
+\bibcite{eddy2011hmmer}{12}
+\bibcite{frank2011spectral}{13}
+\bibcite{hadjieleftheriou2009incremental}{14}
+\bibcite{jones2014interproscan}{15}
+\bibcite{jumper2021alphafold}{16}
+\bibcite{lamprou2025caruca}{17}
+\bibcite{li2021refseq}{18}
+\bibcite{molder2021snakemake}{19}
+\bibcite{pfam2025}{20}
+\bibcite{paysanlafosse2023interpro}{21}
+\bibcite{pedersen2014gestore}{22}
+\bibcite{pfam382relnotes}{23}
+\bibcite{segura2016survey}{24}
+\bibcite{shen2022kumquat}{25}
+\bibcite{shiptoski2023processcache}{26}
+\bibcite{staudinger2024reproducible}{27}
+\bibcite{uniprot2025}{28}
+\bibcite{vasilakis2021pash}{29}
+\bibcite{xie2026incr}{30}
+\bibcite{yoo2025iseqsearch}{31}
+\gdef \@abspage@last{14}

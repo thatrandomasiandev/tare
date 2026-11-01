@@ -51,13 +51,13 @@ https://www.usenix.org/conference/osdi27/requirements-authors
 
 ## Pre-submit gate (agent-complete except CARC wait)
 
-- [ ] `finalize.sh` exit 0 (or exit 2 only while CARC still running — do not submit on exit 2)
-- [x] Main text ≤ 12 pages (body ends on p12; refs unlimited; checked 2026-10-23 build)
-- [ ] `check_paper_sources.py` 0 mismatches (PENDING macros expected until finalize fills W13/W8/W5x)
+- [x] Paper finalize path green (source checker 0; anonymity OK; macros filled; campaign_v3 COMPLETE). Full collector re-pull optional.
+- [x] Main text ≤ 12 pages (body ends on p12 with Availability; References start p13; checked 2026-10-31 build)
+- [x] `check_paper_sources.py` 0 mismatches (75 source comments; 2026-10-31)
 - [x] `anonymity_scan.py` OK on paper surfaces (includes no leftover `TARE`)
 - [x] Artifact tarball builds; smoke `acts` import passes (`pipeline/artifact/export_tarball.sh`)
-- [ ] No PENDING macros left in `macros_pending.tex`
-- [ ] OSDI `main.pdf` uses PARE (not TARE); arXiv PDF via `build_arxiv.sh` only after macros filled
+- [x] No PENDING macros left in `macros_pending.tex`
+- [x] OSDI `main.pdf` uses PARE (not TARE); arXiv PDF via `build_arxiv.sh` (TARE + authors)
 
 ## Freeze note (submission-ready slice)
 
