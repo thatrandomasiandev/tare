@@ -70,12 +70,14 @@ Campaign analysis: [`pipeline/results/research_upgrade/08_measurement/campaign_v
 If you use TARE, please cite:
 
 ```bibtex
-@misc{terranova2026tare,
-  title        = {Pin and Replay, or Refuse: Exact Incremental Re-annotation Across Reference Database Releases},
-  author       = {Terranova, Joshua and Zhang, Jiapeng},
-  year         = {2026},
-  howpublished = {\url{https://github.com/thatrandomasiandev/tare}},
-  note         = {Manuscript; arXiv submission pending announcement}
+@misc{terranova2026pinreplayrefuseconditional,
+      title={Pin and Replay, or Refuse: Conditional Exactness and Probabilistic Validation Across Reference Releases}, 
+      author={Joshua Terranova and Jiapeng Zhang},
+      year={2026},
+      eprint={2611.02182},
+      archivePrefix={arXiv},
+      primaryClass={q-bio.GN},
+      url={https://arxiv.org/abs/2611.02182}, 
 }
 ```
 
