@@ -11,7 +11,7 @@ authors:
 repository-code: "https://github.com/thatrandomasiandev/tare"
 preferred-citation:
   type: article
-  title: "Pin and Replay, or Refuse: Exact Incremental Re-annotation Across Reference Database Releases"
+  title: "Pin and Replay, or Refuse: Conditional Exactness and Probabilistic Validation Across Reference Releases"
   authors:
     - family-names: Terranova
       given-names: Joshua
